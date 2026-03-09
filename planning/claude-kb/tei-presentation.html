@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEI Data Model for Divinum Officium</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/serif.css">
+    <style>
+        .reveal section {
+            height: 100%;
+            overflow-y: auto !important;
+            padding: 20px 40px !important;
+        }
+        .reveal h1 { font-size: 2.2em; margin-bottom: 0.5em; }
+        .reveal h2 { font-size: 1.8em; margin-bottom: 0.4em; margin-top: 0.5em; }
+        .reveal h3 { font-size: 1.4em; margin-bottom: 0.3em; margin-top: 0.4em; }
+        .reveal p { font-size: 0.9em; line-height: 1.4; margin: 0.5em 0; }
+        .reveal code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-size: 0.85em; color: #c7254e; }
+        .reveal pre { margin: 0.5em 0; background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; }
+        .reveal pre code {
+            padding: 15px;
+            font-size: 0.55em;
+            line-height: 1.4;
+            background: #f8f8f8;
+            color: #333;
+            display: block;
+            overflow-x: auto;
+        }
+        /* Syntax highlighting with high contrast */
+        .reveal pre code .hljs-comment { color: #008000; font-style: italic; }
+        .reveal pre code .hljs-string { color: #d14; }
+        .reveal pre code .hljs-number { color: #0086b3; }
+        .reveal pre code .hljs-literal { color: #0086b3; }
+        .reveal pre code .hljs-keyword { color: #a71d5d; font-weight: bold; }
+        .reveal pre code .hljs-attr { color: #795da3; }
+        .reveal pre code .hljs-name { color: #333; font-weight: bold; }
+        .reveal pre code .hljs-variable { color: #333; }
+        .reveal pre code .hljs-title { color: #795da3; }
+        .reveal pre code .hljs-built_in { color: #0086b3; }
+        .reveal pre code .hljs-meta { color: #999; }
+
+        .reveal table { font-size: 0.65em; margin: 0.5em 0; }
+        .reveal table th { background: #3498db; color: white; padding: 6px; }
+        .reveal table td { border: 1px solid #ddd; padding: 6px; }
+        .reveal ul { text-align: left; font-size: 0.9em; margin: 0.3em 0; }
+        .reveal ol { text-align: left; font-size: 0.9em; margin: 0.3em 0; }
+        .reveal li { margin: 0.2em 0; }
+        .reveal strong { color: #2c3e50; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+<section>
+<h1>TEI Data Model for Divinum Officium</h1><p><strong>Modernizing Liturgical Text Encoding</strong></p><p>A Proposal for Migration to TEI XML</p>
+</section><section>
+<h2>Agenda</h2><ol>
+<li>Current State & Challenges</li>
+<li>What is TEI?</li>
+<li>Why TEI for Divinum Officium?</li>
+<li>Proposed TEI Structure</li>
+<li>Migration Strategy</li>
+<li>Benefits & Impact</li>
+<li>Timeline & Resources</li>
+<li>Decision Points</li>
+</ol>
+</section><section>
+<h1>Part 1: Current State</h1>
+</section><section>
+<h2>The Divinum Officium Project</h2><p><strong>Mission</strong>: Provide traditional Roman Catholic liturgy online</p><p><strong>Current Implementation</strong>:
+<ul>
+<li>Perl-based web application</li>
+<li>Plain text data files</li>
+<li>15+ languages supported</li>
+<li>Multiple historical rubrics (1570, 1960, etc.)</li>
+</ul><p><strong>Users</strong>: Thousands worldwide praying the Divine Office and Mass daily</p>
+</section><section>
+<h2>Current Data Format</h2><p><pre><code class="language-">[Rank]
+In Nativitate Domini;;Duplex I classis;;7.0
+
+[Ant Vespera]
+O admirábile commércium: * Creátor géneris humáni...;;109
+
+[Hymnus Vespera]
+v. Jesu, Redémptor ómnium,
+Quem lucis ante oríginem
+_
+Te mane laudum cármine...
+
+[Lectio4]
+Sermo sancti Leónis Papæ
+!Sermo 7 de Nativitate Domini
+Festivitátis hodiérnæ, dilectíssimi...
+</code></pre></p><p><strong>Convention-based structure with special characters</strong>
+</section><section>
+<h2>Current Challenges</h2><h3>Data Structure Issues</h3><p>❌ <strong>No Formal Schema</strong>
+<ul>
+<li>Structure enforced by convention only</li>
+<li>Easy to introduce errors</li>
+<li>No automatic validation</li>
+</ul><p>❌ <strong>Special Characters</strong>
+<ul>
+<li><code>@</code> = cross-reference</li>
+<li><code>$</code> = prayer reference</li>
+<li><code>#</code> = chapter label</li>
+<li><code>!</code> = red text (rubric)</li>
+<li><code>~</code> = line contraction</li>
+</ul><p><strong>Meaning defined in code, not in data</strong>
+</section><section>
+<h2>Current Challenges (continued)</h2><h3>Technical Limitations</h3><p>❌ <strong>Hard to Query</strong>
+<ul>
+<li>Can't easily search across offices</li>
+<li>No structured data analysis</li>
+<li>Difficult to extract information programmatically</li>
+</ul><p>❌ <strong>No Semantic Markup</strong>
+<ul>
+<li>Formatting mixed with content</li>
+<li>Meaning implicit, not explicit</li>
+<li>Lost scholarly context</li>
+</ul><p>❌ <strong>Maintenance Burden</strong>
+<ul>
+<li>Perl expertise scarce</li>
+<li>Complex parsing logic scattered</li>
+<li>Difficult for new contributors</li>
+</ul>
+</section><section>
+<h1>Part 2: What is TEI?</h1>
+</section><section>
+<h2>Text Encoding Initiative (TEI)</h2><p><strong>Industry Standard for Digital Texts</strong></p><ul>
+<li><strong>Established</strong>: 1987 (35+ years)</li>
+<li><strong>Current Version</strong>: TEI P5 (Version 4.7.0)</li>
+<li><strong>Maintained</strong>: TEI Consortium</li>
+<li><strong>Used By</strong>: Libraries, archives, digital humanities projects worldwide</li>
+</ul><p><strong>Website</strong>: https://tei-c.org/</p>
+</section><section>
+<h2>TEI Core Principles</h2><h3>1. <strong>Descriptive, Not Prescriptive</strong></h3>
+Describe what text <strong>is</strong>, not how it <strong>looks</strong></p><h3>2. <strong>Semantic Markup</strong></h3>
+Capture <strong>meaning</strong> and <strong>structure</strong></p><h3>3. <strong>Standards-Based</strong></h3>
+XML with documented schema</p><h3>4. <strong>Extensible</strong></h3>
+Customize for specific domains (like liturgy)</p>
+</section><section>
+<h2>TEI in Action: Example</h2><p><strong>Plain Text</strong>:
+<pre><code class="language-">Ant. O admirábile commércium: Creátor géneris humáni
+</code></pre></p><p><strong>TEI XML</strong>:
+<pre><code class="language-xml">&lt;div type=&quot;antiphon&quot; n=&quot;1&quot; xml:id=&quot;ant-vesp-1&quot;&gt;
+  &lt;label&gt;Ant.&lt;/label&gt;
+  &lt;p&gt;
+    O admirábile commércium: *
+    &lt;seg type=&quot;emphasis&quot;&gt;Creátor géneris humáni&lt;/seg&gt;,
+    animátum corpus sumens,
+    de Vírgine nasci dignátus est.
+  &lt;/p&gt;
+  &lt;note type=&quot;psalm-link&quot;&gt;
+    &lt;ref target=&quot;#ps-109&quot;&gt;With Psalm 109&lt;/ref&gt;
+  &lt;/note&gt;
+&lt;/div&gt;
+</code></pre></p><p><strong>Semantic structure is explicit</strong>
+</section><section>
+<h2>TEI Success Stories</h2><h3>Digital Projects Using TEI</h3><ul>
+<li><strong>Perseus Digital Library</strong> - Ancient Greek/Latin texts</li>
+<li><strong>Oxford Text Archive</strong> - Literary works</li>
+<li><strong>Women Writers Project</strong> - Pre-Victorian women's writing</li>
+<li><strong>Digital Vulgate Project</strong> - Latin Bible</li>
+<li><strong>Electronic Beowulf</strong> - Old English manuscript</li>
+</ul><h3>Liturgical Applications</h3><ul>
+<li><strong>Corpus Corporum</strong> - Medieval Latin texts including liturgy</li>
+<li><strong>Monumenta Germaniae Historica</strong> - Historical sources</li>
+<li>Various digital breviaries and missals</li>
+</ul>
+</section><section>
+<h1>Part 3: Why TEI for Divinum Officium?</h1>
+</section><section>
+<h2>Scholarly Benefits</h2><p>✅ <strong>Academic Legitimacy</strong>
+<ul>
+<li>Recognized standard in liturgical studies</li>
+<li>Enables scholarly citation</li>
+<li>Interoperable with other liturgical databases</li>
+</ul><p>✅ <strong>Semantic Encoding</strong>
+<ul>
+<li>Distinguish antiphons, psalms, readings, responses</li>
+<li>Preserve liturgical structure</li>
+<li>Document sources and variants</li>
+</ul><p>✅ <strong>Long-Term Preservation</strong>
+<ul>
+<li>Vendor-neutral format</li>
+<li>Will outlast current technologies</li>
+<li>Archival quality</li>
+</ul>
+</section><section>
+<h2>Technical Benefits</h2><p>✅ <strong>Validation</strong>
+<ul>
+<li>XML Schema ensures structural correctness</li>
+<li>Catches errors automatically</li>
+<li>Enforces consistency across 1000s of files</li>
+</ul><p>✅ <strong>Queryability</strong>
+<ul>
+<li>XPath for precise searching</li>
+<li>XQuery for complex analysis</li>
+<li>Find all Duplex I classis feasts</li>
+<li>Extract all readings from St. Leo</li>
+<li>Analyze psalm usage patterns</li>
+</ul>
+</section><section>
+<h2>Technical Benefits (continued)</h2><p>✅ <strong>Flexibility</strong>
+<ul>
+<li>Extensible for project needs</li>
+<li>Customizable via TEI ODD</li>
+<li>Supports multiple versions (1570, 1960, etc.)</li>
+<li>Handles variants and annotations</li>
+</ul><p>✅ <strong>Tool Ecosystem</strong>
+<ul>
+<li>XML editors with validation (Oxygen, VS Code)</li>
+<li>Processing libraries (lxml, Saxon, BaseX)</li>
+<li>Version control friendly (git diff)</li>
+<li>Transform to multiple formats</li>
+</ul>
+</section><section>
+<h2>Practical Benefits</h2><p>✅ <strong>Multiple Output Formats</strong></p><p><strong>From Single TEI Source</strong>:
+<ul>
+<li>HTML for web display</li>
+<li>PDF via XSL-FO for printing</li>
+<li>ePub for e-readers</li>
+<li>LaTeX for scholarly editions</li>
+<li>JSON for APIs</li>
+<li>Plain text for accessibility</li>
+</ul><p>✅ <strong>Future-Proof</strong>
+<ul>
+<li>Format will remain readable for decades</li>
+<li>Not tied to specific software</li>
+<li>Human-readable XML</li>
+</ul>
+</section><section>
+<h2>Comparison: Current vs. TEI</h2><table>
+<thead><tr>
+<th>Aspect</th>
+<th>Current Format</th>
+<th>TEI XML</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Validation</strong></td>
+<td>Manual checking</td>
+<td>Automatic schema</td>
+</tr>
+<tr>
+<td><strong>Semantics</strong></td>
+<td>Implicit</td>
+<td>Explicit markup</td>
+</tr>
+<tr>
+<td><strong>Queries</strong></td>
+<td>Text search only</td>
+<td>XPath/XQuery</td>
+</tr>
+<tr>
+<td><strong>Standards</strong></td>
+<td>Project-specific</td>
+<td>International standard</td>
+</tr>
+<tr>
+<td><strong>Tools</strong></td>
+<td>Custom Perl</td>
+<td>Industry standard</td>
+</tr>
+<tr>
+<td><strong>Preservation</strong></td>
+<td>Uncertain</td>
+<td>Archival quality</td>
+</tr>
+<tr>
+<td><strong>Interoperability</strong></td>
+<td>Limited</td>
+<td>High</td>
+</tr>
+</tbody></table>
+</section><section>
+<h1>Part 4: Proposed TEI Structure</h1>
+</section><section>
+<h2>Overall Document Structure</h2><p><pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;TEI xmlns=&quot;http://www.tei-c.org/ns/1.0&quot;
+     xml:id=&quot;sancti-12-25&quot;&gt;
+
+  &lt;teiHeader&gt;
+    &lt;!-- Metadata: title, source, edition, etc. --&gt;
+  &lt;/teiHeader&gt;
+
+  &lt;text xml:lang=&quot;la&quot;&gt;
+    &lt;body&gt;
+      &lt;!-- The actual liturgical content --&gt;
+    &lt;/body&gt;
+  &lt;/text&gt;
+
+&lt;/TEI&gt;
+</code></pre></p><p><strong>Two main parts</strong>: Header (metadata) + Body (content)</p>
+</section><section>
+<h2>TEI Header: Metadata</h2><p><pre><code class="language-xml">&lt;teiHeader&gt;
+  &lt;fileDesc&gt;
+    &lt;titleStmt&gt;
+      &lt;title xml:lang=&quot;la&quot;&gt;In Nativitate Domini&lt;/title&gt;
+      &lt;title xml:lang=&quot;en&quot;&gt;The Nativity of Our Lord&lt;/title&gt;
+    &lt;/titleStmt&gt;
+
+    &lt;publicationStmt&gt;
+      &lt;publisher&gt;Divinum Officium Project&lt;/publisher&gt;
+      &lt;availability&gt;
+        &lt;licence target=&quot;https://opensource.org/licenses/MIT&quot;&gt;
+          MIT License
+        &lt;/licence&gt;
+      &lt;/availability&gt;
+    &lt;/publicationStmt&gt;
+
+    &lt;sourceDesc&gt;
+      &lt;bibl&gt;Breviarium Romanum 1962&lt;/bibl&gt;
+    &lt;/sourceDesc&gt;
+  &lt;/fileDesc&gt;
+
+  &lt;profileDesc&gt;
+    &lt;textClass&gt;
+      &lt;keywords&gt;
+        &lt;term&gt;Duplex I classis&lt;/term&gt;
+        &lt;term&gt;Christmas&lt;/term&gt;
+        &lt;term&gt;Feast of the Lord&lt;/term&gt;
+      &lt;/keywords&gt;
+    &lt;/textClass&gt;
+  &lt;/profileDesc&gt;
+&lt;/teiHeader&gt;
+</code></pre></p>
+</section><section>
+<h2>Body: Liturgical Structure</h2><p><pre><code class="language-xml">&lt;body&gt;
+  &lt;div type=&quot;office&quot; xml:id=&quot;office-12-25&quot;&gt;
+    &lt;head&gt;In Nativitate Domini&lt;/head&gt;
+
+    &lt;!-- Metadata section --&gt;
+    &lt;div type=&quot;metadata&quot;&gt;
+      &lt;ab type=&quot;rank&quot; n=&quot;7.0&quot;&gt;
+        &lt;seg type=&quot;class&quot;&gt;Duplex I classis&lt;/seg&gt;
+      &lt;/ab&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Canonical Hours --&gt;
+    &lt;div type=&quot;hour&quot; subtype=&quot;matins&quot;&gt;...&lt;/div&gt;
+    &lt;div type=&quot;hour&quot; subtype=&quot;lauds&quot;&gt;...&lt;/div&gt;
+    &lt;div type=&quot;hour&quot; subtype=&quot;vespers&quot;&gt;...&lt;/div&gt;
+    &lt;!-- etc. --&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+</code></pre></p>
+</section><section>
+<h2>Example: Matins Structure</h2><p><pre><code class="language-xml">&lt;div type=&quot;hour&quot; subtype=&quot;matins&quot; xml:id=&quot;matins&quot;&gt;
+  &lt;head&gt;Ad Matutinum&lt;/head&gt;
+
+  &lt;!-- Invitatory --&gt;
+  &lt;div type=&quot;invitatory&quot;&gt;
+    &lt;div type=&quot;antiphon&quot;&gt;
+      &lt;p&gt;Christus natus est nobis: * Veníte, adorémus.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div type=&quot;psalm&quot; xml:id=&quot;ps-94&quot;&gt;
+      &lt;ref target=&quot;psalterium:ps-94&quot;&gt;Venite&lt;/ref&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Hymn --&gt;
+  &lt;div type=&quot;hymn&quot;&gt;
+    &lt;lg type=&quot;stanza&quot; n=&quot;1&quot;&gt;
+      &lt;l&gt;Jesu, Redémptor ómnium,&lt;/l&gt;
+      &lt;l&gt;Quem lucis ante oríginem&lt;/l&gt;
+    &lt;/lg&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Nocturns --&gt;
+  &lt;div type=&quot;nocturn&quot; n=&quot;1&quot;&gt;...&lt;/div&gt;
+  &lt;div type=&quot;nocturn&quot; n=&quot;2&quot;&gt;...&lt;/div&gt;
+  &lt;div type=&quot;nocturn&quot; n=&quot;3&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre></p>
+</section><section>
+<h2>Example: Antiphon Encoding</h2><p><pre><code class="language-xml">&lt;div type=&quot;antiphon&quot; n=&quot;1&quot; xml:id=&quot;ant-vesp-1&quot;&gt;
+  &lt;label&gt;Ant. 1&lt;/label&gt;
+
+  &lt;p&gt;
+    O admirábile commércium: *
+    &lt;seg type=&quot;emphasis&quot;&gt;Creátor géneris humáni,&lt;/seg&gt;
+    animátum corpus sumens,
+    de Vírgine nasci dignátus est;
+    et procédens homo sine sémine,
+    largítus est nobis suam Deitátem.
+  &lt;/p&gt;
+
+  &lt;note type=&quot;psalm-link&quot;&gt;
+    &lt;ref target=&quot;#ps-109&quot;&gt;With Psalm 109&lt;/ref&gt;
+  &lt;/note&gt;
+&lt;/div&gt;
+</code></pre></p><p><strong>Clear semantic structure</strong>:
+<ul>
+<li><code>type="antiphon"</code> - What it is</li>
+<li><code>n="1"</code> - Which one</li>
+<li><code>xml:id</code> - Unique identifier</li>
+<li><code>&lt;seg type="emphasis"&gt;</code> - Emphasized text</li>
+</ul>
+</section><section>
+<h2>Example: Reading (Lectio)</h2><p><pre><code class="language-xml">&lt;div type=&quot;reading&quot; n=&quot;4&quot; xml:id=&quot;lect4&quot;&gt;
+  &lt;head&gt;Lectio iv&lt;/head&gt;
+
+  &lt;div type=&quot;source&quot;&gt;
+    &lt;bibl&gt;
+      &lt;author&gt;Sanctus Leo Papa&lt;/author&gt;
+      &lt;title&gt;Sermo 7 de Nativitate Domini&lt;/title&gt;
+    &lt;/bibl&gt;
+  &lt;/div&gt;
+
+  &lt;p n=&quot;1&quot;&gt;
+    Festivitátis hodiérnæ, dilectíssimi,
+    verus venerátor est, et pius cultor,
+    qui nec de Incarnatióne Dómini áliquid falsum,
+    nec de Deitáte áliquid sentit indígnum.
+  &lt;/p&gt;
+
+  &lt;p n=&quot;2&quot;&gt;
+    Paris enim perículi malum est...
+  &lt;/p&gt;
+&lt;/div&gt;
+</code></pre></p><p><strong>Source attribution</strong>: Clear bibliographic information</p>
+</section><section>
+<h2>Example: Responsory</h2><p><pre><code class="language-xml">&lt;div type=&quot;responsory&quot; n=&quot;1&quot; xml:id=&quot;resp1&quot;&gt;
+
+  &lt;div type=&quot;response&quot; subtype=&quot;initial&quot;&gt;
+    &lt;label&gt;℟.&lt;/label&gt;
+    &lt;p&gt;
+      Hodie nobis cælórum Rex
+      de Vírgine nasci dignátus est,
+      &lt;seg type=&quot;asterisk&quot;&gt;*&lt;/seg&gt;
+      Gaudet exércitus Angelórum.
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div type=&quot;verse&quot;&gt;
+    &lt;label&gt;℣.&lt;/label&gt;
+    &lt;p&gt;Glória in excélsis Deo...&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div type=&quot;response&quot; subtype=&quot;repetition&quot;&gt;
+    &lt;label&gt;℟.&lt;/label&gt;
+    &lt;p&gt;Gaudet exércitus Angelórum.&lt;/p&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre></p><p><strong>Structure clear</strong>: Response, verse, repetition</p>
+</section><section>
+<h2>Handling Multiple Versions</h2><p><strong>Version-Specific Content</strong>:</p><p><pre><code class="language-xml">&lt;div type=&quot;reading&quot; n=&quot;1&quot; source=&quot;#brev1962&quot;&gt;
+  &lt;p&gt;Reading for 1962 rubrics...&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div type=&quot;reading&quot; n=&quot;1&quot; source=&quot;#brev1570&quot;&gt;
+  &lt;p&gt;Different reading for 1570 rubrics...&lt;/p&gt;
+&lt;/div&gt;
+</code></pre></p><p><strong>Or using <code>&lt;choice&gt;</code></strong>:</p><p><pre><code class="language-xml">&lt;choice&gt;
+  &lt;seg source=&quot;#brev1962&quot;&gt;
+    Festivitátis hodiérnæ, dilectíssimi...
+  &lt;/seg&gt;
+  &lt;seg source=&quot;#brev1570&quot;&gt;
+    Hodiérna die, caríssimi...
+  &lt;/seg&gt;
+&lt;/choice&gt;
+</code></pre></p>
+</section><section>
+<h2>Cross-References</h2><p><strong>Current Format</strong>:
+<pre><code class="language-">@Tempora/Nat1-0:Hymnus Vespera
+</code></pre></p><p><strong>TEI Equivalent</strong>:
+<pre><code class="language-xml">&lt;div type=&quot;hymn&quot;&gt;
+  &lt;ref target=&quot;tempora:Nat1-0:hymn-vesp&quot;&gt;
+    Same as First Vespers of Christmas
+  &lt;/ref&gt;
+&lt;/div&gt;
+</code></pre></p><p><strong>Benefits</strong>:
+<ul>
+<li>Explicit relationship</li>
+<li>Can validate target exists</li>
+<li>Tools can follow links</li>
+<li>Generate dependency graphs</li>
+</ul>
+</section><section>
+<h2>Chant Integration (GABC)</h2><p><pre><code class="language-xml">&lt;div type=&quot;antiphon&quot; n=&quot;1&quot;&gt;
+  &lt;!-- Text --&gt;
+  &lt;p xml:id=&quot;ant-text-1&quot;&gt;
+    Dóminus dixit ad me: Fílius meus es tu,
+    ego hódie génui te.
+  &lt;/p&gt;
+
+  &lt;!-- Musical notation --&gt;
+  &lt;notatedMusic xml:id=&quot;ant-gabc-1&quot;&gt;
+    &lt;ab type=&quot;gabc&quot;&gt;
+      name: Dominus dixit;
+      mode: 8;
+      %%
+      (c4) Dó(f)mi(g)nus(h) di(g)xit(f)...
+    &lt;/ab&gt;
+  &lt;/notatedMusic&gt;
+&lt;/div&gt;
+</code></pre></p><p><strong>Preserves both text and music</strong>
+</section><section>
+<h2>Mass Structure</h2><p><pre><code class="language-xml">&lt;div type=&quot;mass&quot; xml:id=&quot;mass-nativity&quot;&gt;
+  &lt;head&gt;Missa in Nativitate Domini&lt;/head&gt;
+
+  &lt;div type=&quot;propers&quot;&gt;
+    &lt;div type=&quot;introit&quot;&gt;...&lt;/div&gt;
+    &lt;div type=&quot;collect&quot;&gt;...&lt;/div&gt;
+    &lt;div type=&quot;epistle&quot;&gt;...&lt;/div&gt;
+    &lt;div type=&quot;gospel&quot;&gt;...&lt;/div&gt;
+    &lt;div type=&quot;gradual&quot;&gt;...&lt;/div&gt;
+    &lt;div type=&quot;alleluia&quot;&gt;...&lt;/div&gt;
+    &lt;div type=&quot;offertory&quot;&gt;...&lt;/div&gt;
+    &lt;div type=&quot;secret&quot;&gt;...&lt;/div&gt;
+    &lt;div type=&quot;communion&quot;&gt;...&lt;/div&gt;
+    &lt;div type=&quot;postcommunion&quot;&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></p><p><strong>Clear Mass structure</strong>: All propers explicitly marked</p>
+</section><section>
+<h1>Part 5: Migration Strategy</h1>
+</section><section>
+<h2>Migration Approach</h2><h3>Gradual Parallel Migration</h3><p><strong>Keep existing system running while</strong>:
+<ol>
+<li>Converting data to TEI</li>
+<li>Building new system</li>
+<li>Validating equivalence</li>
+<li>Transitioning users</li>
+</ol><p><strong>No disruption to current users</strong>
+</section><section>
+<h2>Phase 1: Data Conversion (3 months)</h2><p><strong>Tasks</strong>:
+<ol>
+<li>Design TEI schema</li>
+<li>Build automated conversion tools</li>
+<li>Convert Latin offices to TEI</li>
+<li>Convert Latin Masses to TEI</li>
+<li>Quality assurance & validation</li>
+</ol><p><strong>Deliverables</strong>:
+<ul>
+<li>TEI XML for all Latin texts</li>
+<li>JSON metadata files</li>
+<li>Conversion scripts</li>
+<li>Validation reports</li>
+</ul><p><strong>Success</strong>: 100% of Latin content in valid TEI</p>
+</section><section>
+<h2>Conversion Process</h2><p><pre><code class="language-">┌─────────────────┐
+│  Current Text   │
+│     Files       │
+│  (Rank, Ant,    │
+│   Hymnus, etc.) │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│   Conversion    │
+│      Tool       │
+│   (Python)      │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│   TEI XML       │
+│    Files        │
+│ + JSON Metadata │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│   Validation    │
+│   (RelaxNG      │
+│    Schema)      │
+└────────┬────────┘
+         │
+         ▼
+    ✅ Valid TEI
+</code></pre></p>
+</section><section>
+<h2>Example: Converting an Antiphon</h2><p><strong>Input</strong> (Current Format):
+<pre><code class="language-">[Ant Vespera]
+O admirábile commércium: * Creátor géneris humáni...;;109
+</code></pre></p><p><strong>Output</strong> (TEI):
+<pre><code class="language-xml">&lt;div type=&quot;antiphon&quot; n=&quot;1&quot;&gt;
+  &lt;label&gt;Ant.&lt;/label&gt;
+  &lt;p&gt;
+    O admirábile commércium: *
+    Creátor géneris humáni...
+  &lt;/p&gt;
+  &lt;note type=&quot;psalm&quot;&gt;
+    &lt;ref target=&quot;#ps-109&quot;&gt;Psalm 109&lt;/ref&gt;
+  &lt;/note&gt;
+&lt;/div&gt;
+</code></pre></p><p><strong>Automated with quality checks</strong>
+</section><section>
+<h2>Phase 2-3: New System (6 months)</h2><p><strong>Phase 2</strong>: Python engine for reading TEI
+<strong>Phase 3</strong>: Web interface</p><p><strong>Built in parallel with Office-focused work</strong>:
+<ul>
+<li>TEI/XML parsing (lxml)</li>
+<li>Flask web application</li>
+<li>HTML rendering from TEI</li>
+<li>API endpoints</li>
+<li>Mobile-responsive interface</li>
+</ul><p><strong>Leverages same infrastructure as Office</strong>
+</section><section>
+<h2>Phase 4-5: Validation & Launch (9 months)</h2><p><strong>Phase 4</strong>: Parallel validation
+<ul>
+<li>Compare outputs (old vs. new)</li>
+<li>Fix discrepancies</li>
+<li>Beta testing with users</li>
+</ul><p><strong>Phase 5</strong>: Gradual transition
+<ul>
+<li>Soft launch at beta subdomain</li>
+<li>User feedback & fixes</li>
+<li>Full cutover</li>
+<li>Archive old system</li>
+</ul><p><strong>Total Timeline</strong>: 18-24 months</p>
+</section><section>
+<h1>Part 6: Benefits & Impact</h1>
+</section><section>
+<h2>Data Quality Improvements</h2><h3>Before TEI</h3>
+<pre><code class="language-">[Ant Vespra]  ← Typo!
+O admirabile commercium...;;109
+
+[Hymnus]
+v. Jesu, Redemptor omnium  ← Missing line break
+Quem lucis ante originem
+</code></pre></p><p><strong>Errors caught manually (or not at all)</strong></p><h3>After TEI</h3>
+<pre><code class="language-xml">&lt;div type=&quot;antiphon&quot;&gt;  ← Schema validates type
+  &lt;label&gt;Ant.&lt;/label&gt;
+  &lt;p&gt;O admirábile commércium...&lt;/p&gt;
+  &lt;note type=&quot;psalm&quot;&gt;
+    &lt;ref target=&quot;#ps-109&quot;/&gt;  ← Link validated
+  &lt;/note&gt;
+&lt;/div&gt;
+</code></pre></p><p><strong>Schema catches errors automatically</strong>
+</section><section>
+<h2>Query Capabilities</h2><h3>Find All Duplex I Classis Feasts</h3><p><pre><code class="language-xpath">//div[@type='metadata']/ab[@type='rank' and @n &gt;= 6.0]
+</code></pre></p><p><strong>Returns</strong>:
+<ul>
+<li>Christmas</li>
+<li>Easter</li>
+<li>Pentecost</li>
+<li>Epiphany</li>
+<li>etc.</li>
+</ul><h3>Get All Readings from St. Leo</h3><p><pre><code class="language-xpath">//div[@type='reading']//bibl[contains(author, 'Leo')]
+</code></pre></p><p><strong>Enables scholarly analysis</strong>
+</section><section>
+<h2>Transformation Capabilities</h2><h3>One Source, Multiple Outputs</h3><p><pre><code class="language-">                    ┌──────────────┐
+                    │   TEI XML    │
+                    │  (one file)  │
+                    └──────┬───────┘
+                           │
+        ┌──────────────────┼──────────────────┐
+        │                  │                  │
+        ▼                  ▼                  ▼
+   ┌─────────┐      ┌──────────┐      ┌──────────┐
+   │  HTML   │      │   PDF    │      │   ePub   │
+   │  (Web)  │      │ (Print)  │      │ (eReader)│
+   └─────────┘      └──────────┘      └──────────┘
+        │                  │                  │
+        ▼                  ▼                  ▼
+   ┌─────────┐      ┌──────────┐      ┌──────────┐
+   │  JSON   │      │  LaTeX   │      │  Plain   │
+   │  (API)  │      │(Scholarly)│     │  Text    │
+   └─────────┘      └──────────┘      └──────────┘
+</code></pre></p><p><strong>Single authoritative source</strong>
+</section><section>
+<h2>Scholarly Benefits</h2><p>✅ <strong>Citability</strong>
+<ul>
+<li>Standard format for academic citation</li>
+<li>Persistent identifiers</li>
+<li>Version tracking</li>
+</ul><p>✅ <strong>Interoperability</strong>
+<ul>
+<li>Share data with other projects</li>
+<li>Digital Vulgate Project</li>
+<li>Medieval Latin databases</li>
+<li>Liturgical research projects</li>
+</ul><p>✅ <strong>Critical Editions</strong>
+<ul>
+<li>Document textual variants</li>
+<li>Note editorial decisions</li>
+<li>Track sources</li>
+</ul>
+</section><section>
+<h2>Developer Benefits</h2><h3>For Contributors</h3><p>✅ <strong>Easier to Understand</strong>
+<ul>
+<li>XML is self-documenting</li>
+<li>Clear structure visible</li>
+<li>Standard tools available</li>
+</ul><p>✅ <strong>Better Tooling</strong>
+<ul>
+<li>XML editors with autocomplete</li>
+<li>Validation in real-time</li>
+<li>Git-friendly diffs</li>
+</ul><p>✅ <strong>Lower Barrier to Entry</strong>
+<ul>
+<li>No need to learn Perl</li>
+<li>XML/TEI documentation abundant</li>
+<li>Examples and tutorials available</li>
+</ul>
+</section><section>
+<h2>User Benefits</h2><h3>Enhanced Features</h3><p>✅ <strong>Better Search</strong>
+<ul>
+<li>Find all offices for a saint</li>
+<li>Search by rank, season, type</li>
+<li>Full-text search with context</li>
+</ul><p>✅ <strong>API Access</strong>
+<ul>
+<li>Third-party apps can integrate</li>
+<li>Mobile apps</li>
+<li>Personal prayer tools</li>
+<li>Research tools</li>
+</ul><p>✅ <strong>Multiple Formats</strong>
+<ul>
+<li>Read online</li>
+<li>Download PDF</li>
+<li>ePub for e-readers</li>
+<li>Print-optimized layouts</li>
+</ul>
+</section><section>
+<h2>Long-Term Preservation</h2><h3>Archival Quality</h3><p><strong>TEI files will be readable in 50+ years</strong></p><ul>
+<li>Not dependent on specific software</li>
+<li>XML parsers will always exist</li>
+<li>Human-readable text format</li>
+<li>Well-documented standard</li>
+<li>Maintained by TEI Consortium</li>
+</ul><p><strong>vs. Proprietary Formats</strong>:
+<ul>
+<li>WordPerfect files from 1990s?</li>
+<li>Microsoft Works documents?</li>
+<li>PageMaker files?</li>
+</ul><p><strong>TEI = Future-proof</strong>
+</section><section>
+<h1>Part 7: Timeline & Resources</h1>
+</section><section>
+<h2>Proposed Timeline</h2><h3>24-Month Plan (Conservative)</h3><table>
+<thead><tr>
+<th>Quarter</th>
+<th>Phase</th>
+<th>Deliverable</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Q1</strong></td>
+<td>Data Conversion</td>
+<td>Latin TEI complete</td>
+</tr>
+<tr>
+<td><strong>Q2</strong></td>
+<td>Schema & Tools</td>
+<td>Conversion validated</td>
+</tr>
+<tr>
+<td><strong>Q3</strong></td>
+<td>Python Engine</td>
+<td>TEI processing working</td>
+</tr>
+<tr>
+<td><strong>Q4</strong></td>
+<td>Web Interface</td>
+<td>Beta site live</td>
+</tr>
+<tr>
+<td><strong>Q5</strong></td>
+<td>Testing</td>
+<td>User feedback</td>
+</tr>
+<tr>
+<td><strong>Q6</strong></td>
+<td>Launch</td>
+<td>Production cutover</td>
+</tr>
+</tbody></table><p><strong>Can be done in 18 months with adequate resources</strong>
+</section><section>
+<h2>Resource Requirements</h2><h3>Minimum Team (24 months)</h3><ul>
+<li><strong>1 Python Developer</strong> (20 hrs/week)</li>
+</ul>
+  - TEI processing
+  - Web development</p><ul>
+<li><strong>1 TEI Specialist</strong> (5 hrs/week)</li>
+</ul>
+  - Schema design
+  - Quality review</p><ul>
+<li><strong>1 QA Tester</strong> (10 hrs/week)</li>
+</ul>
+  - Validation
+  - User testing</p><p><strong>Total</strong>: ~35 hours/week</p>
+</section><section>
+<h2>Resource Requirements (continued)</h2><h3>Ideal Team (18 months)</h3><ul>
+<li><strong>2 Python Developers</strong> (40 hrs/week total)</li>
+<li><strong>1 TEI Specialist</strong> (10 hrs/week)</li>
+<li><strong>1 Frontend Developer</strong> (10 hrs/week)</li>
+<li><strong>1 QA Tester</strong> (15 hrs/week)</li>
+</ul><p><strong>Total</strong>: ~75 hours/week</p><h3>Infrastructure</h3><ul>
+<li>Git repository (existing)</li>
+<li>CI/CD pipeline (GitHub Actions - free)</li>
+<li>Development/staging server ($20/month)</li>
+<li>Production hosting (scales with usage)</li>
+</ul><p><strong>Monthly Cost</strong>: $20-50 during development</p>
+</section><section>
+<h2>Risk Management</h2><h3>Technical Risks</h3><table>
+<thead><tr>
+<th>Risk</th>
+<th>Likelihood</th>
+<th>Mitigation</th>
+</tr></thead><tbody>
+<tr>
+<td>Data loss in conversion</td>
+<td>Low</td>
+<td>Automated + manual validation</td>
+</tr>
+<tr>
+<td>Performance issues</td>
+<td>Medium</td>
+<td>Caching, optimization</td>
+</tr>
+<tr>
+<td>Schema complexity</td>
+<td>Medium</td>
+<td>TEI expert consultation</td>
+</tr>
+</tbody></table><h3>Project Risks</h3><table>
+<tr>
+<td>Risk</td>
+<td>Likelihood</td>
+<td>Mitigation</td>
+</tr>
+<tr>
+<td>Insufficient resources</td>
+<td>Medium</td>
+<td>Phased approach, extend timeline</td>
+</tr>
+<tr>
+<td>Community resistance</td>
+<td>Low</td>
+<td>Clear communication, beta period</td>
+</tr>
+<tr>
+<td>Scope creep</td>
+<td>High</td>
+<td>Strict phase definitions</td>
+</tr>
+</tbody></table>
+</section><section>
+<h1>Part 8: Decision Points</h1>
+</section><section>
+<h2>Key Questions</h2><h3>1. Should we modernize the data format?</h3><p><strong>Status Quo</strong>: Keep current text files
+<ul>
+<li>Works today</li>
+<li>Familiar to current maintainers</li>
+<li>But: technical debt growing</li>
+</ul><p><strong>TEI Migration</strong>: Adopt scholarly standard
+<ul>
+<li>Future-proof</li>
+<li>Better quality</li>
+<li>Enables new features</li>
+<li>But: requires investment</li>
+</ul>
+</section><section>
+<h2>Key Questions (continued)</h2><h3>2. What timeline is realistic?</h3><p><strong>Options</strong>:
+<ul>
+<li><strong>18 months</strong> - Full-time dedicated team</li>
+<li><strong>21 months</strong> - Part-time volunteers (realistic)</li>
+<li><strong>24 months</strong> - Conservative estimate</li>
+<li><strong>36+ months</strong> - Very limited resources</li>
+</ul><p><strong>Recommendation</strong>: Plan for 21-24 months</p><h3>3. Include Mass from Day One?</h3><p><strong>Yes</strong> - Recommended
+<ul>
+<li>Same architecture</li>
+<li>User expectation</li>
+<li>Only +15% timeline</li>
+</ul><p><strong>No</strong> - Do Office first
+<ul>
+<li>Lower risk</li>
+<li>Simpler scope</li>
+<li>Mass later as separate project</li>
+</ul>
+</section><section>
+<h2>Success Criteria</h2><h3>Phase 1 Success</h3>
+✅ 100% of Latin content in valid TEI
+✅ All files validate against schema
+✅ No content loss verified
+✅ Conversion process documented</p><h3>Overall Success</h3>
+✅ New system matches old system output
+✅ User satisfaction maintained/improved
+✅ Contributor growth
+✅ Codebase more maintainable
+✅ Data quality improved</p>
+</section><section>
+<h2>Next Steps</h2><h3>If Approved</h3><p><strong>Month 1</strong>:
+<ol>
+<li>Form development team</li>
+<li>Set up infrastructure</li>
+<li>Design TEI schema (draft)</li>
+<li>Build proof-of-concept conversion</li>
+</ol><p><strong>Month 2-3</strong>:
+<ol>
+<li>Refine schema based on POC</li>
+<li>Convert sample offices</li>
+<li>Validate approach</li>
+<li>Adjust plan as needed</li>
+</ol><p><strong>Month 4+</strong>:
+<ol>
+<li>Full conversion</li>
+<li>Engine development</li>
+<li>Web interface</li>
+<li>Testing and launch</li>
+</ol>
+</section><section>
+<h1>Conclusion</h1>
+</section><section>
+<h2>Summary: Why TEI?</h2><h3>✅ Scholarly Standard</h3>
+Industry-recognized format for liturgical texts</p><h3>✅ Data Quality</h3>
+Validation prevents errors, ensures consistency</p><h3>✅ Future-Proof</h3>
+Will be readable and usable for decades</p><h3>✅ Powerful</h3>
+Enables queries, analysis, transformations</p><h3>✅ Practical</h3>
+Multiple output formats from single source</p>
+</section><section>
+<h2>The Vision</h2><h3>From This...</h3><p><pre><code class="language-">[Ant Vespera]
+O admirábile commércium: * Creátor...;;109
+
+[Hymnus Vespera]
+v. Jesu, Redémptor ómnium,
+</code></pre></p><h3>To This...</h3><p><pre><code class="language-xml">&lt;div type=&quot;antiphon&quot; xml:id=&quot;ant-vesp-1&quot;&gt;
+  &lt;label&gt;Ant.&lt;/label&gt;
+  &lt;p&gt;O admirábile commércium: *
+     &lt;seg type=&quot;emphasis&quot;&gt;Creátor géneris humáni&lt;/seg&gt;...
+  &lt;/p&gt;
+  &lt;note type=&quot;psalm&quot;&gt;&lt;ref target=&quot;#ps-109&quot;/&gt;&lt;/note&gt;
+&lt;/div&gt;
+</code></pre></p><p><strong>Semantic, validated, queryable, preservable</strong>
+</section><section>
+<h2>The Impact</h2><h3>For Scholars</h3>
+<ul>
+<li>Citeable, analyzable liturgical texts</li>
+<li>Interoperable with other projects</li>
+<li>Critical edition capabilities</li>
+</ul><h3>For Developers</h3>
+<ul>
+<li>Modern, maintainable codebase</li>
+<li>Standard tools and libraries</li>
+<li>Lower barrier to contribution</li>
+</ul><h3>For Users</h3>
+<ul>
+<li>Same trusted content</li>
+<li>Better search and navigation</li>
+<li>Multiple formats (web, PDF, ePub)</li>
+<li>API for integrations</li>
+</ul>
+</section><section>
+<h2>The Ask</h2><h3>Decision Needed</h3><p><strong>Approve TEI migration as part of modernization?</strong></p><p><strong>Commitment Required</strong>:
+<ul>
+<li>21-24 months development</li>
+<li>Development team (2-3 people, part-time)</li>
+<li>~$1,000-2,000 infrastructure cost</li>
+<li>Community support and patience</li>
+</ul><p><strong>Value Delivered</strong>:
+<ul>
+<li>Future-proof liturgical database</li>
+<li>Improved data quality</li>
+<li>Enhanced capabilities</li>
+<li>Scholarly legitimacy</li>
+<li>Sustainable long-term maintenance</li>
+</ul>
+</section><section>
+<h2>Timeline Summary</h2><p><pre><code class="language-">┌──────────────────────────────────────────────────────┐
+│                   24 Month Plan                       │
+├────────┬────────┬────────┬────────┬────────┬─────────┤
+│   Q1   │   Q2   │   Q3   │   Q4   │   Q5   │   Q6   │
+├────────┼────────┼────────┼────────┼────────┼─────────┤
+│ Schema │Convert │ Engine │  Web   │ Test   │ Launch │
+│ Design │  Data  │  Build │  Build │ &amp; Fix  │&amp; Cutover│
+├────────┴────────┴────────┴────────┴────────┴─────────┤
+│  ✓ TEI XML      ✓ Python     ✓ Beta    ✓ Production │
+│  ✓ Validated    ✓ Rendering  ✓ Tested  ✓ Archived  │
+└──────────────────────────────────────────────────────┘
+</code></pre></p><p><strong>Start</strong>: Q1 2026
+<strong>Beta</strong>: Q4 2026
+<strong>Launch</strong>: Q2 2027</p>
+</section><section>
+<h1>Questions & Discussion</h1>
+</section><section>
+<h2>Discussion Topics</h2><ol>
+<li><strong>Scope</strong>: Office + Mass together, or sequential?</li>
+</ol><ol>
+<li><strong>Timeline</strong>: 18, 21, or 24 months?</li>
+</ol><ol>
+<li><strong>Resources</strong>: Who can contribute? Funding available?</li>
+</ol><ol>
+<li><strong>Priorities</strong>: What matters most?</li>
+</ol>
+   - Speed of delivery?
+   - Risk minimization?
+   - Feature completeness?</p><ol>
+<li><strong>Concerns</strong>: What worries you about this proposal?</li>
+</ol>
+</section><section>
+<h2>Contact & Resources</h2><h3>Documentation</h3><ul>
+<li><strong>Full Proposal</strong>: <code>claude-kb/migration-proposal.md</code></li>
+<li><strong>TEI Specification</strong>: <code>claude-kb/tei-data-model.md</code></li>
+<li><strong>Mass Addendum</strong>: <code>claude-kb/mass-migration-addendum.md</code></li>
+</ul><h3>TEI Resources</h3><ul>
+<li><strong>TEI Guidelines</strong>: https://tei-c.org/guidelines/</li>
+<li><strong>TEI by Example</strong>: https://teibyexample.org/</li>
+<li><strong>TEI Consortium</strong>: https://tei-c.org/</li>
+</ul><h3>Project</h3><ul>
+<li><strong>Repository</strong>: https://github.com/DivinumOfficium/divinum-officium</li>
+<li><strong>Website</strong>: https://divinumofficium.com/</li>
+</ul>
+</section><section>
+<h1>Thank You</h1><p><strong>Questions?</strong>
+</section><section>
+<h2>Appendix: Technical Details</h2><p>(Additional slides for reference)</p>
+</section><section>
+<h2>Appendix A: XML Schema Example</h2><p><pre><code class="language-xml">&lt;define name=&quot;antiphon&quot;&gt;
+  &lt;element name=&quot;div&quot;&gt;
+    &lt;attribute name=&quot;type&quot;&gt;
+      &lt;value&gt;antiphon&lt;/value&gt;
+    &lt;/attribute&gt;
+    &lt;optional&gt;
+      &lt;attribute name=&quot;n&quot;&gt;
+        &lt;data type=&quot;positiveInteger&quot;/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name=&quot;xml:id&quot;&gt;
+        &lt;data type=&quot;ID&quot;/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+
+    &lt;optional&gt;
+      &lt;element name=&quot;label&quot;&gt;&lt;text/&gt;&lt;/element&gt;
+    &lt;/optional&gt;
+
+    &lt;oneOrMore&gt;
+      &lt;element name=&quot;p&quot;&gt;
+        &lt;ref name=&quot;textContent&quot;/&gt;
+      &lt;/element&gt;
+    &lt;/oneOrMore&gt;
+  &lt;/element&gt;
+&lt;/define&gt;
+</code></pre></p>
+</section><section>
+<h2>Appendix B: Conversion Script</h2><p><pre><code class="language-python">def convert_antiphon(section_text):
+    &quot;&quot;&quot;Convert [Ant Vespera] to TEI&quot;&quot;&quot;
+    lines = section_text.strip().split('\n')
+    antiphons = []
+
+    for i, line in enumerate(lines, 1):
+        # Parse: &quot;Text;;Psalm&quot;
+        parts = line.split(';;')
+        text = parts[0]
+        psalm = parts[1] if len(parts) &gt; 1 else None
+
+        # Create TEI element
+        ant_div = etree.Element('div',
+                                type='antiphon',
+                                n=str(i))
+
+        label = etree.SubElement(ant_div, 'label')
+        label.text = f&quot;Ant. {i}&quot;
+
+        p = etree.SubElement(ant_div, 'p')
+        p.text = text
+
+        if psalm:
+            note = etree.SubElement(ant_div, 'note',
+                                   type='psalm')
+            ref = etree.SubElement(note, 'ref',
+                                  target=f&quot;#ps-{psalm}&quot;)
+            ref.text = f&quot;Psalm {psalm}&quot;
+
+        antiphons.append(ant_div)
+
+    return antiphons
+</code></pre></p>
+</section><section>
+<h2>Appendix C: XPath Query Examples</h2><p><strong>Find all Christmas offices</strong>:
+<pre><code class="language-xpath">//TEI[contains(head, 'Nativitate')]
+</code></pre></p><p><strong>Get Vespers antiphons for a date</strong>:
+<pre><code class="language-xpath">//TEI[@xml:id='sancti-12-25']
+  //div[@subtype='vespers']
+  //div[@type='antiphon']
+</code></pre></p><p><strong>Count readings per office</strong>:
+<pre><code class="language-xpath">for $office in //TEI
+return &lt;count id=&quot;{$office/@xml:id}&quot;&gt;
+  {count($office//div[@type='reading'])}
+&lt;/count&gt;
+</code></pre></p><p><strong>Find offices with Te Deum</strong>:
+<pre><code class="language-xpath">//div[@type='canticle'][@subtype='te-deum']
+  /ancestor::TEI/@xml:id
+</code></pre></p>
+</section><section>
+<h2>Appendix D: Migration Phases Detail</h2><h3>Phase 1: Data Conversion (3 months)</h3><p><strong>Week 1-2</strong>: Schema design
+<ul>
+<li>Draft RelaxNG schema</li>
+<li>Review with TEI expert</li>
+<li>Finalize structure</li>
+</ul><p><strong>Week 3-4</strong>: Build converter
+<ul>
+<li>Parse current format</li>
+<li>Generate TEI</li>
+<li>Handle special characters</li>
+</ul><p><strong>Week 5-8</strong>: Convert Sanctoral
+<ul>
+<li>All saint feast days</li>
+<li>Quality checks</li>
+<li>Manual review of samples</li>
+</ul><p><strong>Week 9-12</strong>: Convert Temporal & Commune
+<ul>
+<li>Seasonal offices</li>
+<li>Common offices</li>
+<li>Final validation</li>
+</ul>
+</section><section>
+<h2>Appendix E: Technology Stack</h2><h3>Development</h3>
+<ul>
+<li><strong>Python 3.11+</strong>: Main language</li>
+<li><strong>lxml</strong>: XML/TEI processing</li>
+<li><strong>Flask</strong>: Web framework</li>
+<li><strong>Jinja2</strong>: Templating</li>
+<li><strong>pytest</strong>: Testing</li>
+</ul><h3>Validation</h3>
+<ul>
+<li><strong>RelaxNG</strong>: Schema validation</li>
+<li><strong>Oxygen XML</strong>: Editor (commercial)</li>
+<li><strong>VS Code</strong>: Free alternative</li>
+</ul><h3>Deployment</h3>
+<ul>
+<li><strong>Docker</strong>: Containerization</li>
+<li><strong>GitHub Actions</strong>: CI/CD</li>
+<li><strong>SQLite</strong>: Caching</li>
+<li><strong>Nginx</strong>: Web server</li>
+</ul>
+</section><section>
+<h2>Appendix F: Comparison with Alternatives</h2><table>
+<thead><tr>
+<th>Approach</th>
+<th>Pros</th>
+<th>Cons</th>
+<th>Verdict</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Status Quo</strong></td>
+<td>Works today, no effort</td>
+<td>Technical debt grows</td>
+<td>❌ Not sustainable</td>
+</tr>
+<tr>
+<td><strong>Improve Current</strong></td>
+<td>Less disruption</td>
+<td>Still custom format</td>
+<td>⚠️ Partial solution</td>
+</tr>
+<tr>
+<td><strong>Custom XML</strong></td>
+<td>Full control</td>
+<td>Reinventing wheel</td>
+<td>❌ Not recommended</td>
+</tr>
+<tr>
+<td><strong>JSON</strong></td>
+<td>Modern, simple</td>
+<td>Not scholarly std</td>
+<td>⚠️ Good for rules</td>
+</tr>
+<tr>
+<td><strong>TEI XML</strong></td>
+<td>Standard, validated</td>
+<td>Learning curve</td>
+<td>✅ <strong>Recommended</strong></td>
+</tr>
+</tbody></table>
+</section><section>
+<h2>Appendix G: Success Stories</h2><h3>Similar Projects</h3><p><strong>Digital Vulgate Project</strong>
+<ul>
+<li>Medieval Latin Bible in TEI</li>
+<li>Multiple manuscript witnesses</li>
+<li>Critical apparatus</li>
+<li>Successfully serving scholars since 2010</li>
+</ul><p><strong>Corpus Corporum</strong>
+<ul>
+<li>200M+ words of Latin texts</li>
+<li>Includes liturgical materials</li>
+<li>TEI-based</li>
+<li>Powerful search capabilities</li>
+</ul><p><strong>Oxford Text Archive</strong>
+<ul>
+<li>2,500+ TEI texts</li>
+<li>Long-term preservation</li>
+<li>Academic standard</li>
+</ul>
+</section><section>
+<h2>Appendix H: Glossary</h2><p><strong>TEI</strong>: Text Encoding Initiative - XML standard for texts</p><p><strong>XML</strong>: Extensible Markup Language - structured data format</p><p><strong>Schema</strong>: Formal definition of valid structure</p><p><strong>XPath</strong>: Query language for XML</p><p><strong>XQuery</strong>: Advanced query language for XML databases</p><p><strong>XSLT</strong>: Transformation language (XML to HTML, etc.)</p><p><strong>RelaxNG</strong>: Schema language (alternative to XML Schema)</p><p><strong>ODD</strong>: One Document Does-it-all (TEI customization)</p><p><strong>Nocturn</strong>: Division of Matins (3 per night)</p><p><strong>Propers</strong>: Variable parts of Mass/Office</p>
+</section><section>
+<h1>End of Presentation</h1><p><strong>Questions? Discussion?</strong></p><p>Contact: [Project Team Contact Info]</p><p>Repository: https://github.com/DivinumOfficium/divinum-officium</p>
+</section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/highlight/highlight.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'slide',
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+        });
+    </script>
+</body>
+</html>

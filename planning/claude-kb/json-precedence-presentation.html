@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEI Data Model for Divinum Officium</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/serif.css">
+    <style>
+        .reveal section {
+            height: 100%;
+            overflow-y: auto !important;
+            padding: 20px 40px !important;
+        }
+        .reveal h1 { font-size: 2.2em; margin-bottom: 0.5em; }
+        .reveal h2 { font-size: 1.8em; margin-bottom: 0.4em; margin-top: 0.5em; }
+        .reveal h3 { font-size: 1.4em; margin-bottom: 0.3em; margin-top: 0.4em; }
+        .reveal p { font-size: 0.9em; line-height: 1.4; margin: 0.5em 0; }
+        .reveal code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-size: 0.85em; color: #c7254e; }
+        .reveal pre { margin: 0.5em 0; background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; }
+        .reveal pre code {
+            padding: 15px;
+            font-size: 0.55em;
+            line-height: 1.4;
+            background: #f8f8f8;
+            color: #333;
+            display: block;
+            overflow-x: auto;
+        }
+        /* Syntax highlighting with high contrast */
+        .reveal pre code .hljs-comment { color: #008000; font-style: italic; }
+        .reveal pre code .hljs-string { color: #d14; }
+        .reveal pre code .hljs-number { color: #0086b3; }
+        .reveal pre code .hljs-literal { color: #0086b3; }
+        .reveal pre code .hljs-keyword { color: #a71d5d; font-weight: bold; }
+        .reveal pre code .hljs-attr { color: #795da3; }
+        .reveal pre code .hljs-name { color: #333; font-weight: bold; }
+        .reveal pre code .hljs-variable { color: #333; }
+        .reveal pre code .hljs-title { color: #795da3; }
+        .reveal pre code .hljs-built_in { color: #0086b3; }
+        .reveal pre code .hljs-meta { color: #999; }
+
+        .reveal table { font-size: 0.65em; margin: 0.5em 0; }
+        .reveal table th { background: #3498db; color: white; padding: 6px; }
+        .reveal table td { border: 1px solid #ddd; padding: 6px; }
+        .reveal ul { text-align: left; font-size: 0.9em; margin: 0.3em 0; }
+        .reveal ol { text-align: left; font-size: 0.9em; margin: 0.3em 0; }
+        .reveal li { margin: 0.2em 0; }
+        .reveal strong { color: #2c3e50; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+<section>
+<h1>JSON-Based Precedence Rules</h1><p><strong>A Modern Approach for Divinum Officium</strong></p><p>Flexible, Git-Friendly, Human-Readable</p>
+</section><section>
+<h2>Agenda</h2><ol>
+<li>The Precedence Challenge</li>
+<li>Why JSON?</li>
+<li>Proposed JSON Architecture</li>
+<li>Data Model Deep Dive</li>
+<li>Rule Engine Design</li>
+<li>Migration from Perl</li>
+<li>Benefits & Trade-offs</li>
+<li>Implementation Roadmap</li>
+</ol>
+</section><section>
+<h1>Part 1: The Precedence Challenge</h1>
+</section><section>
+<h2>What is Liturgical Precedence?</h2><p><strong>The Problem</strong>: What office should be celebrated on a given day?</p><p><strong>Complexity</strong>:
+<ul>
+<li>Temporal cycle (Sundays, seasons)</li>
+<li>Sanctoral cycle (Saints' feasts)</li>
+<li>Different ranks (Duplex I, Duplex II, Semiduplex, etc.)</li>
+<li>Multiple rubrics (1570, 1960, Cistercian, Dominican)</li>
+<li>Transfers based on Easter date</li>
+<li>Commemorations</li>
+<li>Vespers (1st vs 2nd)</li>
+</ul><p><strong>Result</strong>: Intricate precedence calculations</p>
+</section><section>
+<h2>Current Implementation Issues</h2><h3>Perl Code Complexity</h3><p><pre><code class="language-perl">if ($srank[2] &gt; $trank[2]) {
+    $sanctoraloffice = 1;
+} elsif ($trank[0] =~ /Dominica/i &amp;&amp; $dayname[0] !~ /Nat1/i) {
+    if ($version =~ /196/) {
+        if ($trank[2] &lt;= 5 &amp;&amp;
+            ($srank[2] &gt;= 6 ||
+             ($srank[2] &gt;= 5 &amp;&amp; $saint{Rule} =~ /Festum Domini/i))) {
+            $sanctoraloffice = 1;
+        }
+    }
+}
+</code></pre></p><p><strong>Problems</strong>:
+<ul>
+<li>Logic scattered across 2000+ lines</li>
+<li>Version rules embedded in code</li>
+<li>Hard to understand</li>
+<li>Difficult to modify</li>
+<li>No clear separation of rules and logic</li>
+</ul>
+</section><section>
+<h2>Current Challenges</h2><p>❌ <strong>Maintainability</strong>
+<ul>
+<li>Complex if/else chains</li>
+<li>Version-specific code branches</li>
+<li>Hard to add new rubrics</li>
+</ul><p>❌ <strong>Transparency</strong>
+<ul>
+<li>Rules hidden in Perl code</li>
+<li>Non-programmers can't understand</li>
+<li>Difficult to verify correctness</li>
+</ul><p>❌ <strong>Testing</strong>
+<ul>
+<li>Hard to test individual rules</li>
+<li>Edge cases buried in code</li>
+<li>No clear rule inventory</li>
+</ul><p>❌ <strong>Documentation</strong>
+<ul>
+<li>Rules not self-documenting</li>
+<li>Require code comments</li>
+<li>Expert knowledge needed</li>
+</ul>
+</section><section>
+<h1>Part 2: Why JSON?</h1>
+</section><section>
+<h2>JSON Advantages</h2><h3>1. <strong>Human-Readable</strong></h3><p><pre><code class="language-json">{
+  &quot;rule&quot;: &quot;Duplex I beats Duplex II Sunday&quot;,
+  &quot;conditions&quot;: {
+    &quot;sanctoral_rank&quot;: {&quot;min&quot;: 6.0},
+    &quot;temporal_rank&quot;: {&quot;max&quot;: 5.0},
+    &quot;temporal_is_sunday&quot;: true
+  },
+  &quot;result&quot;: {
+    &quot;winner&quot;: &quot;sanctoral&quot;
+  }
+}
+</code></pre></p><p><strong>Anyone can read and understand this!</strong>
+</section><section>
+<h2>JSON Advantages (continued)</h2><h3>2. <strong>Git-Friendly</strong></h3><p>✅ Clear diffs show rule changes
+✅ Easy code review
+✅ Branching for experimental rules
+✅ Version history of rule changes</p><p><pre><code class="language-diff">  &quot;conditions&quot;: {
+-   &quot;sanctoral_rank&quot;: {&quot;min&quot;: 5.0},
++   &quot;sanctoral_rank&quot;: {&quot;min&quot;: 6.0},
+    &quot;temporal_is_sunday&quot;: true
+  }
+</code></pre></p><p><strong>See exactly what changed</strong>
+</section><section>
+<h2>JSON Advantages (continued)</h2><h3>3. <strong>No Database Server</strong></h3><p>✅ Just files in a directory
+✅ No PostgreSQL to install/maintain
+✅ No connection pooling
+✅ No migrations
+✅ Simple deployment</p><p><pre><code class="language-">data/
+  versions/
+    rubrics-1960.json
+    tridentine-1570.json
+  calendars/
+    ...
+  transfers/
+    ...
+</code></pre></p><p><strong>Copy folder = deploy database</strong>
+</section><section>
+<h2>JSON Advantages (continued)</h2><h3>4. <strong>Language-Agnostic</strong></h3><p><pre><code class="language-python"># Python
+import json
+rules = json.load(open('rules.json'))
+</code></pre></p><p><pre><code class="language-javascript">// JavaScript
+const rules = require('./rules.json');
+</code></pre></p><p><pre><code class="language-ruby"># Ruby
+rules = JSON.parse(File.read('rules.json'))
+</code></pre></p><p><strong>Works with any language</strong>
+</section><section>
+<h2>JSON Advantages (continued)</h2><h3>5. <strong>Easy Editing</strong></h3><ul>
+<li><strong>Any text editor</strong> works</li>
+<li><strong>VS Code</strong> has JSON schema validation</li>
+<li><strong>Online editors</strong> available</li>
+<li><strong>No special tools</strong> required</li>
+</ul><p><strong>Lower barrier for contributors</strong>
+</section><section>
+<h2>When SQL Would Be Better</h2><p>SQL databases excel at:</p><p>❌ Complex ad-hoc queries across versions
+❌ High-frequency writes
+❌ Concurrent modifications
+❌ Referential integrity enforcement
+❌ Large-scale analytics</p><p><strong>Reality</strong>: Divinum Officium doesn't need these!</p><p>✅ Queries are predictable
+✅ Writes are infrequent (content updates)
+✅ Few concurrent editors
+✅ Integrity validated on load
+✅ Limited analytics needs</p>
+</section><section>
+<h1>Part 3: Proposed JSON Architecture</h1>
+</section><section>
+<h2>Overall Architecture</h2><p><pre><code class="language-">data/
+├── offices/                    # Office content (TEI XML)
+│   ├── temporal/
+│   ├── sanctoral/
+│   └── commune/
+│
+├── versions/                   # Version rules (JSON)
+│   ├── tridentine-1570.json
+│   ├── rubrics-1960.json
+│   └── cistercian.json
+│
+├── calendars/                  # Calendars (JSON)
+│   └── rubrics-1960/
+│       ├── sanctoral.json
+│       └── temporal.json
+│
+├── transfers/                  # Transfer rules (JSON)
+│   └── rubrics-1960/
+│       ├── easter-a.json
+│       └── permanent.json
+│
+└── metadata/                   # Shared data (JSON)
+    └── ranks.json
+
+cache/                          # SQLite cache (generated)
+    └── offices.db
+</code></pre></p>
+</section><section>
+<h2>Three-Layer Approach</h2><h3>Layer 1: JSON Files (Source of Truth)</h3>
+<ul>
+<li>Version definitions</li>
+<li>Rank metadata</li>
+<li>Calendars</li>
+<li>Transfer rules</li>
+<li>Precedence rules</li>
+</ul><h3>Layer 2: Python Engine</h3>
+<ul>
+<li>Load JSON data</li>
+<li>Apply rules</li>
+<li>Resolve precedence</li>
+<li>Cache results</li>
+</ul><h3>Layer 3: SQLite Cache (Optional)</h3>
+<ul>
+<li>Store computed results</li>
+<li>Enable fast queries</li>
+<li>Regenerate anytime from JSON</li>
+</ul><p><strong>Best of both worlds!</strong>
+</section><section>
+<h1>Part 4: Data Model Deep Dive</h1>
+</section><section>
+<h2>Office Metadata (JSON Sidecar)</h2><p><pre><code class="language-json">{
+  &quot;office_key&quot;: &quot;12-25&quot;,
+  &quot;office_type&quot;: &quot;sanctoral&quot;,
+  &quot;names&quot;: {
+    &quot;latin&quot;: &quot;In Nativitate Domini&quot;,
+    &quot;english&quot;: &quot;The Nativity of Our Lord&quot;
+  },
+  &quot;ranks&quot;: {
+    &quot;tridentine-1570&quot;: {
+      &quot;rank_numeric&quot;: 7.0,
+      &quot;rank_name&quot;: &quot;Duplex I classis cum Octava privilegiata&quot;,
+      &quot;properties&quot;: {
+        &quot;has_first_vespers&quot;: true,
+        &quot;has_second_vespers&quot;: true,
+        &quot;lectiones_count&quot;: 9,
+        &quot;is_feast_of_lord&quot;: true,
+        &quot;octave_type&quot;: &quot;privileged&quot;
+      }
+    },
+    &quot;rubrics-1960&quot;: {
+      &quot;rank_numeric&quot;: 6.0,
+      &quot;rank_name&quot;: &quot;Duplex I classis&quot;,
+      &quot;properties&quot;: {
+        &quot;has_first_vespers&quot;: true,
+        &quot;lectiones_count&quot;: 9,
+        &quot;is_feast_of_lord&quot;: true
+      }
+    }
+  },
+  &quot;tei_file&quot;: &quot;12-25.xml&quot;
+}
+</code></pre></p>
+</section><section>
+<h2>Version Definition</h2><p><pre><code class="language-json">{
+  &quot;version&quot;: {
+    &quot;code&quot;: &quot;rubrics-1960&quot;,
+    &quot;name&quot;: &quot;Rubrics of 1960&quot;,
+    &quot;year&quot;: 1960,
+    &quot;parent_version&quot;: &quot;rubrics-1955&quot;
+  },
+
+  &quot;parameters&quot;: {
+    &quot;vespers&quot;: {
+      &quot;min_rank_first_vespers&quot;: 6.0
+    },
+    &quot;commemorations&quot;: {
+      &quot;strategy&quot;: &quot;strict_1960&quot;,
+      &quot;max_per_hour&quot;: 1
+    },
+    &quot;octaves&quot;: {
+      &quot;suppress_common_octaves&quot;: true,
+      &quot;privileged_octaves_only&quot;: true
+    }
+  },
+
+  &quot;concurrence_rules&quot;: [ ... ],
+  &quot;commemoration_rules&quot;: [ ... ],
+  &quot;vespers_rules&quot;: [ ... ]
+}
+</code></pre></p><p><strong>Inheritance</strong>: Loads parent, merges child overrides</p>
+</section><section>
+<h2>Concurrence Rules</h2><p><pre><code class="language-json">{
+  &quot;concurrence_rules&quot;: [
+    {
+      &quot;priority&quot;: 1,
+      &quot;name&quot;: &quot;Duplex I feast of Lord beats Duplex II Sunday&quot;,
+      &quot;conditions&quot;: {
+        &quot;office1&quot;: {
+          &quot;type&quot;: &quot;sanctoral&quot;,
+          &quot;rank&quot;: {&quot;min&quot;: 6.0},
+          &quot;properties&quot;: {&quot;is_feast_of_lord&quot;: true}
+        },
+        &quot;office2&quot;: {
+          &quot;type&quot;: &quot;temporal&quot;,
+          &quot;rank&quot;: {&quot;max&quot;: 5.0},
+          &quot;properties&quot;: {&quot;is_sunday&quot;: true}
+        }
+      },
+      &quot;result&quot;: {
+        &quot;winner&quot;: &quot;office1&quot;,
+        &quot;commemorate_loser&quot;: false
+      }
+    },
+
+    {
+      &quot;priority&quot;: 100,
+      &quot;name&quot;: &quot;Default: higher rank wins&quot;,
+      &quot;conditions&quot;: {},
+      &quot;result&quot;: {
+        &quot;winner&quot;: &quot;higher_rank&quot;,
+        &quot;commemorate_loser&quot;: true
+      }
+    }
+  ]
+}
+</code></pre></p>
+</section><section>
+<h2>Commemoration Rules</h2><p><pre><code class="language-json">{
+  &quot;commemoration_rules&quot;: [
+    {
+      &quot;canonical_hours&quot;: [&quot;matins&quot;, &quot;lauds&quot;, &quot;prime&quot;, &quot;terce&quot;, &quot;sext&quot;, &quot;none&quot;],
+      &quot;conditions&quot;: {
+        &quot;winner&quot;: {
+          &quot;properties&quot;: {&quot;is_sunday&quot;: true},
+          &quot;rank&quot;: {&quot;max&quot;: 5.99}
+        },
+        &quot;candidate&quot;: {
+          &quot;type&quot;: &quot;sanctoral&quot;,
+          &quot;rank&quot;: {&quot;min&quot;: 5.0, &quot;max&quot;: 5.99}
+        }
+      },
+      &quot;result&quot;: {
+        &quot;commemorated&quot;: true,
+        &quot;type&quot;: &quot;full&quot;
+      }
+    },
+
+    {
+      &quot;canonical_hours&quot;: [&quot;lauds&quot;],
+      &quot;conditions&quot;: {
+        &quot;winner&quot;: {&quot;properties&quot;: {&quot;is_sunday&quot;: true}},
+        &quot;candidate&quot;: {&quot;rank&quot;: {&quot;min&quot;: 5.0, &quot;max&quot;: 5.99}}
+      },
+      &quot;result&quot;: {
+        &quot;commemorated&quot;: true,
+        &quot;type&quot;: &quot;laudes_only&quot;
+      }
+    }
+  ]
+}
+</code></pre></p>
+</section><section>
+<h2>Vespers Rules</h2><p><pre><code class="language-json">{
+  &quot;vespers_rules&quot;: [
+    {
+      &quot;priority&quot;: 1,
+      &quot;name&quot;: &quot;No first Vespers below Duplex I&quot;,
+      &quot;conditions&quot;: {
+        &quot;tomorrow&quot;: {
+          &quot;rank&quot;: {&quot;max&quot;: 5.99}
+        }
+      },
+      &quot;result&quot;: {
+        &quot;suppress_first_vespers&quot;: true
+      }
+    },
+
+    {
+      &quot;priority&quot;: 2,
+      &quot;name&quot;: &quot;Exception: Feast of Lord on Sunday&quot;,
+      &quot;conditions&quot;: {
+        &quot;tomorrow&quot;: {
+          &quot;rank&quot;: {&quot;min&quot;: 5.0, &quot;max&quot;: 5.99},
+          &quot;properties&quot;: {&quot;is_feast_of_lord&quot;: true},
+          &quot;day_of_week&quot;: 0
+        }
+      },
+      &quot;result&quot;: {
+        &quot;suppress_first_vespers&quot;: false
+      }
+    }
+  ]
+}
+</code></pre></p>
+</section><section>
+<h2>Calendar Files</h2><h3>Sanctoral Calendar</h3><p><pre><code class="language-json">{
+  &quot;version&quot;: &quot;rubrics-1960&quot;,
+  &quot;calendar_type&quot;: &quot;sanctoral&quot;,
+  &quot;entries&quot;: {
+    &quot;01-01&quot;: [
+      {
+        &quot;office_key&quot;: &quot;01-01&quot;,
+        &quot;priority&quot;: 1,
+        &quot;note&quot;: &quot;Octave of Christmas&quot;
+      }
+    ],
+    &quot;12-25&quot;: [
+      {
+        &quot;office_key&quot;: &quot;12-25&quot;,
+        &quot;priority&quot;: 1,
+        &quot;note&quot;: &quot;Nativity of Our Lord&quot;
+      }
+    ]
+  }
+}
+</code></pre></p>
+</section><section>
+<h2>Calendar Files (continued)</h2><h3>Temporal Calendar</h3><p><pre><code class="language-json">{
+  &quot;version&quot;: &quot;rubrics-1960&quot;,
+  &quot;calendar_type&quot;: &quot;temporal&quot;,
+  &quot;entries&quot;: [
+    {
+      &quot;office_key&quot;: &quot;Pasc0-0&quot;,
+      &quot;offset_from_easter&quot;: 0,
+      &quot;name&quot;: &quot;Dominica Resurrectionis&quot;,
+      &quot;season&quot;: &quot;easter&quot;
+    },
+    {
+      &quot;office_key&quot;: &quot;Pent0-0&quot;,
+      &quot;offset_from_easter&quot;: 49,
+      &quot;name&quot;: &quot;Dominica Pentecostes&quot;,
+      &quot;season&quot;: &quot;pentecost&quot;
+    },
+    {
+      &quot;office_key&quot;: &quot;Quad1-0&quot;,
+      &quot;offset_from_easter&quot;: -42,
+      &quot;name&quot;: &quot;Dominica I in Quadragesima&quot;,
+      &quot;season&quot;: &quot;lent&quot;
+    }
+  ]
+}
+</code></pre></p>
+</section><section>
+<h2>Transfer Rules</h2><p><pre><code class="language-json">{
+  &quot;version&quot;: &quot;rubrics-1960&quot;,
+  &quot;trigger&quot;: {
+    &quot;type&quot;: &quot;easter_date&quot;,
+    &quot;easter_month&quot;: 3,
+    &quot;easter_day&quot;: 22,
+    &quot;description&quot;: &quot;Earliest possible Easter&quot;
+  },
+  &quot;transfers&quot;: [
+    {
+      &quot;from&quot;: {
+        &quot;date&quot;: &quot;03-19&quot;,
+        &quot;office_key&quot;: &quot;03-19&quot;,
+        &quot;name&quot;: &quot;St. Joseph&quot;
+      },
+      &quot;to&quot;: {
+        &quot;date&quot;: &quot;04-19&quot;,
+        &quot;reason&quot;: &quot;Falls in Holy Week, transferred after Easter Octave&quot;
+      }
+    },
+    {
+      &quot;from&quot;: {
+        &quot;date&quot;: &quot;03-25&quot;,
+        &quot;office_key&quot;: &quot;03-25&quot;,
+        &quot;name&quot;: &quot;Annunciation&quot;
+      },
+      &quot;to&quot;: {
+        &quot;date&quot;: &quot;04-08&quot;,
+        &quot;reason&quot;: &quot;Falls in Holy Week&quot;
+      }
+    }
+  ]
+}
+</code></pre></p>
+</section><section>
+<h2>Shared Rank Definitions</h2><p><pre><code class="language-json">{
+  &quot;rank_classes&quot;: {
+    &quot;duplex_i&quot;: {
+      &quot;numeric_range&quot;: [6.0, 6.99],
+      &quot;name_latin&quot;: &quot;Duplex I classis&quot;,
+      &quot;name_english&quot;: &quot;Double of the First Class&quot;,
+      &quot;properties&quot;: {
+        &quot;has_first_vespers&quot;: true,
+        &quot;has_second_vespers&quot;: true,
+        &quot;default_lectiones&quot;: 9
+      }
+    },
+    &quot;duplex_ii&quot;: {
+      &quot;numeric_range&quot;: [5.0, 5.99],
+      &quot;name_latin&quot;: &quot;Duplex II classis&quot;,
+      &quot;name_english&quot;: &quot;Double of the Second Class&quot;,
+      &quot;properties&quot;: {
+        &quot;has_first_vespers&quot;: false,
+        &quot;has_second_vespers&quot;: true,
+        &quot;default_lectiones&quot;: 9,
+        &quot;first_vespers_exceptions&quot;: [
+          &quot;is_feast_of_lord &amp;&amp; day_of_week == 0&quot;
+        ]
+      }
+    }
+  }
+}
+</code></pre></p>
+</section><section>
+<h1>Part 5: Rule Engine Design</h1>
+</section><section>
+<h2>Python Rule Engine Architecture</h2><p><pre><code class="language-python">class PrecedenceEngine:
+    def __init__(self, version_code, target_date):
+        self.version_code = version_code
+        self.target_date = target_date
+        self.loader = DataLoader()
+        self.version_data = self.loader.load_version(version_code)
+        self.rule_engine = RuleEngine(self.version_data)
+
+    def get_office(self, canonical_hour):
+        &quot;&quot;&quot;Get office for a specific hour&quot;&quot;&quot;
+        if canonical_hour in ['vespers', 'completorium']:
+            return self._resolve_vespers()
+        return self._resolve_standard_hour(canonical_hour)
+
+    def _resolve_standard_hour(self, hour):
+        temporal = self._get_temporal_office()
+        sanctorals = self._get_sanctoral_offices()
+
+        # Apply transfers
+        temporal = self._apply_transfer(temporal)
+        sanctorals = [self._apply_transfer(s) for s in sanctorals]
+
+        # Resolve concurrence
+        winner = self.rule_engine.resolve_concurrence(
+            temporal, sanctorals, self._build_context(hour)
+        )
+
+        return winner
+</code></pre></p>
+</section><section>
+<h2>Data Loader</h2><p><pre><code class="language-python">class DataLoader:
+    def __init__(self, data_root):
+        self.data_root = data_root
+        self._cache = {}
+
+    def load_version(self, version_code):
+        &quot;&quot;&quot;Load version with parent inheritance&quot;&quot;&quot;
+        version_path = self.data_root / &quot;versions&quot; / f&quot;{version_code}.json&quot;
+
+        with open(version_path) as f:
+            version_data = json.load(f)
+
+        # Load parent if exists
+        parent_code = version_data.get(&quot;version&quot;, {}).get(&quot;parent_version&quot;)
+        if parent_code:
+            parent_data = self.load_version(parent_code)
+            version_data = self._merge_versions(parent_data, version_data)
+
+        return version_data
+
+    def _merge_versions(self, parent, child):
+        &quot;&quot;&quot;Deep merge: child overrides parent&quot;&quot;&quot;
+        result = parent.copy()
+        for key, value in child.items():
+            if key in result and isinstance(result[key], dict):
+                result[key] = self._merge_versions(result[key], value)
+            else:
+                result[key] = value
+        return result
+</code></pre></p>
+</section><section>
+<h2>Rule Evaluation</h2><p><pre><code class="language-python">class RuleEngine:
+    def __init__(self, version_data):
+        self.concurrence_rules = version_data.get(&quot;concurrence_rules&quot;, [])
+        self.commemoration_rules = version_data.get(&quot;commemoration_rules&quot;, [])
+        self.vespers_rules = version_data.get(&quot;vespers_rules&quot;, [])
+
+    def resolve_concurrence(self, temporal, sanctorals, context):
+        &quot;&quot;&quot;Apply concurrence rules to determine winner&quot;&quot;&quot;
+        if not sanctorals:
+            return temporal
+        if not temporal:
+            return max(sanctorals, key=lambda o: o.rank.numeric)
+
+        best_sanctoral = max(sanctorals, key=lambda o: o.rank.numeric)
+
+        # Apply rules in priority order
+        for rule in sorted(self.concurrence_rules,
+                          key=lambda r: r.get(&quot;priority&quot;, 999)):
+            if self._matches_rule(rule, temporal, best_sanctoral, context):
+                winner_choice = rule[&quot;result&quot;][&quot;winner&quot;]
+
+                if winner_choice == &quot;office1&quot;:
+                    return best_sanctoral
+                elif winner_choice == &quot;office2&quot;:
+                    return temporal
+                elif winner_choice == &quot;higher_rank&quot;:
+                    return (best_sanctoral if best_sanctoral.rank.numeric &gt;
+                            temporal.rank.numeric else temporal)
+
+        # Default
+        return (best_sanctoral if best_sanctoral.rank.numeric &gt;
+                temporal.rank.numeric else temporal)
+</code></pre></p>
+</section><section>
+<h2>Condition Matching</h2><p><pre><code class="language-python">def _matches_rule(self, rule, office1, office2, context):
+    &quot;&quot;&quot;Check if rule conditions match&quot;&quot;&quot;
+    conditions = rule.get(&quot;conditions&quot;, {})
+
+    if not conditions:
+        return True  # Default rule
+
+    # Check office1 conditions
+    if &quot;office1&quot; in conditions:
+        if not self._matches_office_conditions(
+            office1, conditions[&quot;office1&quot;], context
+        ):
+            return False
+
+    # Check office2 conditions
+    if &quot;office2&quot; in conditions:
+        if not self._matches_office_conditions(
+            office2, conditions[&quot;office2&quot;], context
+        ):
+            return False
+
+    return True
+
+def _matches_office_conditions(self, office, conditions, context):
+    &quot;&quot;&quot;Check if office matches specific conditions&quot;&quot;&quot;
+    # Type check
+    if &quot;type&quot; in conditions and office.type != conditions[&quot;type&quot;]:
+        return False
+
+    # Rank range
+    if &quot;rank&quot; in conditions:
+        rank_cond = conditions[&quot;rank&quot;]
+        if &quot;min&quot; in rank_cond and office.rank.numeric &lt; rank_cond[&quot;min&quot;]:
+            return False
+        if &quot;max&quot; in rank_cond and office.rank.numeric &gt; rank_cond[&quot;max&quot;]:
+            return False
+
+    # Properties
+    if &quot;properties&quot; in conditions:
+        for prop, expected in conditions[&quot;properties&quot;].items():
+            if getattr(office.rank, prop, None) != expected:
+                return False
+
+    return True
+</code></pre></p>
+</section><section>
+<h2>Transfer Resolution</h2><p><pre><code class="language-python">class TransferResolver:
+    def __init__(self, version_code, year, easter_date):
+        self.version_code = version_code
+        self.year = year
+        self.easter_date = easter_date
+        self.easter_letter = self._calculate_easter_letter()
+        self.transfers = self._load_transfers()
+
+    def get_transfer(self, office_key, office_type, target_date):
+        &quot;&quot;&quot;Check if office is transferred from this date&quot;&quot;&quot;
+        date_key = f&quot;{target_date.month:02d}-{target_date.day:02d}&quot;
+
+        for transfer in self.transfers:
+            if transfer.get(&quot;from&quot;, {}).get(&quot;date&quot;) == date_key:
+                if transfer.get(&quot;from&quot;, {}).get(&quot;office_key&quot;) == office_key:
+                    return transfer.get(&quot;to&quot;, {}).get(&quot;date&quot;)
+
+        return None
+
+    def _load_transfers(self):
+        &quot;&quot;&quot;Load applicable transfers for this Easter&quot;&quot;&quot;
+        transfer_dir = Path(f&quot;data/transfers/{self.version_code}&quot;)
+        transfers = []
+
+        # Permanent transfers
+        perm_file = transfer_dir / &quot;permanent.json&quot;
+        if perm_file.exists():
+            with open(perm_file) as f:
+                transfers.extend(json.load(f).get(&quot;transfers&quot;, []))
+
+        # Easter letter specific
+        letter_file = transfer_dir / f&quot;easter-{self.easter_letter}.json&quot;
+        if letter_file.exists():
+            with open(letter_file) as f:
+                transfers.extend(json.load(f).get(&quot;transfers&quot;, []))
+
+        return transfers
+</code></pre></p>
+</section><section>
+<h2>Caching with SQLite</h2><p><pre><code class="language-python">class CacheManager:
+    def __init__(self, cache_db_path):
+        self.db = sqlite3.connect(cache_db_path)
+        self._init_schema()
+
+    def _init_schema(self):
+        self.db.execute(&quot;&quot;&quot;
+            CREATE TABLE IF NOT EXISTS computed_offices (
+                version_code TEXT,
+                date TEXT,
+                canonical_hour TEXT,
+                winner_office_key TEXT,
+                winner_office_type TEXT,
+                commemorations TEXT,
+                computed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (version_code, date, canonical_hour)
+            )
+        &quot;&quot;&quot;)
+
+    def get_cached(self, version, date, hour):
+        &quot;&quot;&quot;Try to get from cache&quot;&quot;&quot;
+        cursor = self.db.execute(&quot;&quot;&quot;
+            SELECT winner_office_key, winner_office_type, commemorations
+            FROM computed_offices
+            WHERE version_code = ? AND date = ? AND canonical_hour = ?
+        &quot;&quot;&quot;, (version, date.isoformat(), hour))
+
+        row = cursor.fetchone()
+        if row:
+            return {
+                &quot;winner&quot;: {&quot;key&quot;: row[0], &quot;type&quot;: row[1]},
+                &quot;commemorations&quot;: json.loads(row[2])
+            }
+        return None
+
+    def set_cached(self, version, date, hour, result):
+        &quot;&quot;&quot;Store in cache&quot;&quot;&quot;
+        self.db.execute(&quot;&quot;&quot;
+            INSERT OR REPLACE INTO computed_offices
+            (version_code, date, canonical_hour, winner_office_key,
+             winner_office_type, commemorations)
+            VALUES (?, ?, ?, ?, ?, ?)
+        &quot;&quot;&quot;, (
+            version, date.isoformat(), hour,
+            result[&quot;winner&quot;][&quot;key&quot;], result[&quot;winner&quot;][&quot;type&quot;],
+            json.dumps(result[&quot;commemorations&quot;])
+        ))
+        self.db.commit()
+</code></pre></p>
+</section><section>
+<h1>Part 6: Migration from Perl</h1>
+</section><section>
+<h2>Migration Strategy</h2><h3>Phase 1: Extract Rules from Perl</h3><p><strong>Task</strong>: Analyze current Perl code and extract rules</p><p><pre><code class="language-perl"># Current Perl
+if ($srank[2] &gt;= 6 &amp;&amp; $trank[2] &lt;= 5 &amp;&amp; $trank[0] =~ /Dominica/i) {
+    $sanctoraloffice = 1;
+}
+</code></pre></p><p><strong>Becomes</strong>:</p><p><pre><code class="language-json">{
+  &quot;rule&quot;: &quot;Duplex I beats Duplex II Sunday&quot;,
+  &quot;conditions&quot;: {
+    &quot;sanctoral_rank&quot;: {&quot;min&quot;: 6.0},
+    &quot;temporal_rank&quot;: {&quot;max&quot;: 5.0},
+    &quot;temporal_is_sunday&quot;: true
+  },
+  &quot;result&quot;: {&quot;winner&quot;: &quot;sanctoral&quot;}
+}
+</code></pre></p>
+</section><section>
+<h2>Migration Strategy (continued)</h2><h3>Phase 2: Build Python Engine</h3><p><strong>Tasks</strong>:
+<ol>
+<li>Implement data loader</li>
+<li>Build rule engine</li>
+<li>Write transfer resolver</li>
+<li>Create caching layer</li>
+</ol><p><strong>Timeline</strong>: 2-3 months</p><h3>Phase 3: Parallel Validation</h3><p><strong>Tasks</strong>:
+<ol>
+<li>Run both systems on same inputs</li>
+<li>Compare outputs</li>
+<li>Fix discrepancies</li>
+<li>Document differences</li>
+</ol><p><strong>Timeline</strong>: 2-3 months</p>
+</section><section>
+<h2>Validation Example</h2><p><pre><code class="language-python">def validate_precedence():
+    &quot;&quot;&quot;Compare Perl vs Python outputs&quot;&quot;&quot;
+    test_dates = generate_test_dates(year=2025, count=365)
+
+    discrepancies = []
+
+    for date in test_dates:
+        # Get Perl result (call existing system)
+        perl_result = call_perl_system(date, &quot;vespers&quot;, &quot;rubrics-1960&quot;)
+
+        # Get Python result
+        engine = PrecedenceEngine(&quot;rubrics-1960&quot;, date)
+        python_result = engine.get_office(&quot;vespers&quot;)
+
+        # Compare
+        if perl_result.office_key != python_result.primary.key:
+            discrepancies.append({
+                &quot;date&quot;: date,
+                &quot;perl&quot;: perl_result,
+                &quot;python&quot;: python_result
+            })
+
+    if discrepancies:
+        print(f&quot;Found {len(discrepancies)} discrepancies&quot;)
+        analyze_discrepancies(discrepancies)
+    else:
+        print(&quot;✅ Perfect match!&quot;)
+</code></pre></p>
+</section><section>
+<h2>Conversion Tools</h2><p><pre><code class="language-python">def convert_perl_to_json():
+    &quot;&quot;&quot;Semi-automated Perl → JSON conversion&quot;&quot;&quot;
+
+    # Parse Perl code
+    perl_rules = parse_perl_file(&quot;horascommon.pl&quot;)
+
+    # Convert to JSON structures
+    json_rules = []
+    for rule in perl_rules:
+        json_rule = {
+            &quot;priority&quot;: rule.order,
+            &quot;name&quot;: infer_rule_name(rule),
+            &quot;conditions&quot;: extract_conditions(rule),
+            &quot;result&quot;: extract_result(rule)
+        }
+        json_rules.append(json_rule)
+
+    # Write JSON
+    output = {
+        &quot;version&quot;: {&quot;code&quot;: &quot;rubrics-1960&quot;},
+        &quot;concurrence_rules&quot;: json_rules
+    }
+
+    with open(&quot;rubrics-1960.json&quot;, &quot;w&quot;) as f:
+        json.dump(output, f, indent=2)
+</code></pre></p>
+</section><section>
+<h1>Part 7: Benefits & Trade-offs</h1>
+</section><section>
+<h2>Benefits: Data Quality</h2><h3>Before (Perl)</h3><p><pre><code class="language-perl"># Easy to make mistakes
+if ($srank[2] &gt; $trank[2]) {  # Typo in variable?
+    $sanctoralofice = 1;  # Misspelled!
+}
+</code></pre></p><p><strong>No validation, runtime errors</strong></p><h3>After (JSON)</h3><p><pre><code class="language-json">{
+  &quot;conditions&quot;: {
+    &quot;sanctoral_rank&quot;: {&quot;min&quot;: 6.0},
+    &quot;temporal_rank&quot;: {&quot;max&quot;: 5.0}
+  }
+}
+</code></pre></p><p><strong>JSON schema validates structure</strong>
+</section><section>
+<h2>Benefits: Transparency</h2><h3>Current State</h3>
+"What's the rule for Christmas on Sunday?"</p><p><strong>Answer</strong>: Read 200 lines of Perl, trace execution</p><h3>With JSON</h3>
+"What's the rule for Christmas on Sunday?"</p><p><strong>Answer</strong>:
+<pre><code class="language-bash">cat versions/rubrics-1960.json | grep -A10 &quot;Duplex I&quot;
+</code></pre></p><p>Or use a simple web viewer:
+<pre><code class="language-">http://localhost:8080/rules/rubrics-1960
+</code></pre></p><p><strong>Rules are discoverable and readable</strong>
+</section><section>
+<h2>Benefits: Version Control</h2><h3>Git History</h3><p><pre><code class="language-bash">$ git log --oneline versions/rubrics-1960.json
+
+abc123 Fix: Feast of Lord on Sunday now has 1st Vespers
+def456 Update: Lower commemoration rank threshold to 5.0
+789ghi Add: New rule for transferred vigils
+</code></pre></p><h3>Compare Versions</h3><p><pre><code class="language-bash">$ git diff tridentine-1570.json rubrics-1960.json
+</code></pre></p><p><strong>See exactly how rubrics evolved</strong>
+</section><section>
+<h2>Benefits: Testing</h2><h3>Rule-Level Tests</h3><p><pre><code class="language-python">def test_duplex_i_beats_sunday():
+    &quot;&quot;&quot;Test: Duplex I feast of Lord beats Duplex II Sunday&quot;&quot;&quot;
+
+    # Setup
+    sanctoral = create_office(
+        key=&quot;03-25&quot;,
+        rank=6.0,
+        is_feast_of_lord=True
+    )
+    temporal = create_office(
+        key=&quot;Quad4-0&quot;,
+        rank=5.0,
+        is_sunday=True
+    )
+
+    engine = RuleEngine(load_version(&quot;rubrics-1960&quot;))
+
+    # Execute
+    winner = engine.resolve_concurrence(temporal, [sanctoral], {})
+
+    # Assert
+    assert winner == sanctoral
+    assert winner.key == &quot;03-25&quot;
+</code></pre></p><p><strong>Test each rule in isolation</strong>
+</section><section>
+<h2>Benefits: Extensibility</h2><h3>Adding New Rubric</h3><p><strong>Steps</strong>:
+<ol>
+<li>Copy existing JSON (e.g., rubrics-1960.json)</li>
+<li>Modify rules</li>
+<li>Save as new-rubric-2030.json</li>
+<li>Test</li>
+</ol><p><strong>No code changes needed!</strong></p><h3>A/B Testing Rules</h3><p><pre><code class="language-json">{
+  &quot;version&quot;: {
+    &quot;code&quot;: &quot;experimental-vespers&quot;,
+    &quot;parent_version&quot;: &quot;rubrics-1960&quot;
+  },
+  &quot;vespers_rules&quot;: [
+    {
+      &quot;name&quot;: &quot;Experimental: All feasts get 1st Vespers&quot;,
+      &quot;conditions&quot;: {&quot;tomorrow&quot;: {&quot;rank&quot;: {&quot;min&quot;: 3.0}}},
+      &quot;result&quot;: {&quot;suppress_first_vespers&quot;: false}
+    }
+  ]
+}
+</code></pre></p><p><strong>Try variations without touching production</strong>
+</section><section>
+<h2>Trade-offs: Query Limitations</h2><h3>SQL Can Do</h3><p><pre><code class="language-sql">-- Find all offices that beat Sundays
+SELECT o.name, r.rank_numeric
+FROM offices o
+JOIN ranks r ON o.id = r.office_id
+WHERE r.rank_numeric &gt; (
+    SELECT rank_numeric FROM ranks
+    WHERE properties-&gt;&gt;'is_sunday' = 'true'
+)
+</code></pre></p><h3>JSON Cannot Do This Easily</h3><p><strong>Workaround</strong>: Build indices in SQLite cache</p><p><pre><code class="language-python"># Pre-compute and cache
+for office in all_offices:
+    if office.rank.numeric &gt; 5.0:
+        db.insert(&quot;high_rank_offices&quot;, office)
+</code></pre></p><p><strong>Limitation</strong>: Ad-hoc queries harder, but rarely needed</p>
+</section><section>
+<h2>Trade-offs: Validation</h2><h3>SQL Enforces</h3><p><pre><code class="language-sql">CREATE TABLE offices (
+    id SERIAL PRIMARY KEY,
+    rank_numeric DECIMAL(4,2) CHECK (rank_numeric BETWEEN 1.0 AND 7.0),
+    office_type VARCHAR(20) CHECK (office_type IN ('temporal', 'sanctoral'))
+);
+</code></pre></p><p><strong>Database prevents invalid data</strong></p><h3>JSON Requires</h3><p><pre><code class="language-python"># Validation in code
+schema = {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;rank_numeric&quot;: {
+            &quot;type&quot;: &quot;number&quot;,
+            &quot;minimum&quot;: 1.0,
+            &quot;maximum&quot;: 7.0
+        }
+    }
+}
+
+validate(office_data, schema)
+</code></pre></p><p><strong>Must validate on load, but works well</strong>
+</section><section>
+<h2>Trade-offs Summary</h2><table>
+<thead><tr>
+<th>Aspect</th>
+<th>JSON</th>
+<th>SQL</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Deployment</strong></td>
+<td>✅ Simple (files)</td>
+<td>❌ Complex (server)</td>
+</tr>
+<tr>
+<td><strong>Version Control</strong></td>
+<td>✅ Native git</td>
+<td>⚠️ Needs dumps</td>
+</tr>
+<tr>
+<td><strong>Readability</strong></td>
+<td>✅ Very readable</td>
+<td>⚠️ Need SQL knowledge</td>
+</tr>
+<tr>
+<td><strong>Validation</strong></td>
+<td>⚠️ Manual</td>
+<td>✅ Automatic</td>
+</tr>
+<tr>
+<td><strong>Queries</strong></td>
+<td>⚠️ Limited</td>
+<td>✅ Powerful</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>✅ Fast (cached)</td>
+<td>✅ Fast (indexed)</td>
+</tr>
+<tr>
+<td><strong>Backup</strong></td>
+<td>✅ Copy folder</td>
+<td>⚠️ DB dumps</td>
+</tr>
+</tbody></table><p><strong>For Divinum Officium</strong>: JSON advantages outweigh SQL advantages</p>
+</section><section>
+<h1>Part 8: Implementation Roadmap</h1>
+</section><section>
+<h2>Phase 1: Foundation (Months 1-2)</h2><p><strong>Tasks</strong>:
+<ul>
+<li>[ ] Design JSON schemas</li>
+<li>[ ] Create example version files</li>
+<li>[ ] Build data loader (Python)</li>
+<li>[ ] Implement version inheritance</li>
+<li>[ ] Create validation tools</li>
+</ul><p><strong>Deliverables</strong>:
+<ul>
+<li>JSON schemas for all data types</li>
+<li>Sample rubrics-1960.json</li>
+<li>Python loader library</li>
+<li>Validation scripts</li>
+</ul><p><strong>Success</strong>: Can load and validate JSON files</p>
+</section><section>
+<h2>Phase 2: Rule Engine (Months 3-4)</h2><p><strong>Tasks</strong>:
+<ul>
+<li>[ ] Implement concurrence resolver</li>
+<li>[ ] Build commemoration engine</li>
+<li>[ ] Create Vespers resolver</li>
+<li>[ ] Add transfer handling</li>
+<li>[ ] Write unit tests</li>
+</ul><p><strong>Deliverables</strong>:
+<ul>
+<li>Complete Python rule engine</li>
+<li>100+ unit tests</li>
+<li>Performance benchmarks</li>
+</ul><p><strong>Success</strong>: Engine produces correct outputs for test cases</p>
+</section><section>
+<h2>Phase 3: Data Migration (Months 5-6)</h2><p><strong>Tasks</strong>:
+<ul>
+<li>[ ] Extract rules from Perl</li>
+<li>[ ] Convert to JSON format</li>
+<li>[ ] Create all version files</li>
+<li>[ ] Populate calendar data</li>
+<li>[ ] Build transfer tables</li>
+</ul><p><strong>Deliverables</strong>:
+<ul>
+<li>JSON files for all rubrics (1570, 1960, etc.)</li>
+<li>Complete calendar data</li>
+<li>All transfer rules</li>
+</ul><p><strong>Success</strong>: Complete JSON dataset</p>
+</section><section>
+<h2>Phase 4: Validation (Months 7-8)</h2><p><strong>Tasks</strong>:
+<ul>
+<li>[ ] Parallel testing (Perl vs Python)</li>
+<li>[ ] Compare outputs for 365+ days</li>
+<li>[ ] Fix discrepancies</li>
+<li>[ ] Document differences</li>
+<li>[ ] Performance optimization</li>
+</ul><p><strong>Deliverables</strong>:
+<ul>
+<li>Validation report</li>
+<li>Discrepancy analysis</li>
+<li>Performance metrics</li>
+</ul><p><strong>Success</strong>: 99%+ match with Perl system</p>
+</section><section>
+<h2>Phase 5: Integration (Months 9-10)</h2><p><strong>Tasks</strong>:
+<ul>
+<li>[ ] Integrate with Flask app</li>
+<li>[ ] Add SQLite caching</li>
+<li>[ ] Build API endpoints</li>
+<li>[ ] Create admin UI for JSON editing</li>
+<li>[ ] Documentation</li>
+</ul><p><strong>Deliverables</strong>:
+<ul>
+<li>Working Flask application</li>
+<li>REST API</li>
+<li>Admin interface</li>
+<li>User documentation</li>
+</ul><p><strong>Success</strong>: Production-ready system</p>
+</section><section>
+<h2>Timeline Overview</h2><p><pre><code class="language-">┌────────────────────────────────────────────────┐
+│           10-Month Implementation              │
+├──────┬──────┬──────┬──────┬──────┬──────┬─────┤
+│  M1  │  M2  │  M3  │  M4  │  M5  │  M6  │ ... │
+├──────┼──────┼──────┼──────┼──────┼──────┼─────┤
+│Schema│Loader│Engine│Engine│Extract│Convert│Test│
+│Design│Build │Core  │Complete│Rules│Data │ Valid│
+└──────┴──────┴──────┴──────┴──────┴──────┴─────┘
+       │              │             │        │
+       ▼              ▼             ▼        ▼
+   Foundation    Rule Engine   Migration  Deploy
+</code></pre></p><p><strong>Total</strong>: 10 months to production-ready JSON system</p>
+</section><section>
+<h2>Resource Requirements</h2><h3>Development Team</h3><p><strong>Minimum</strong>:
+<ul>
+<li>1 Python developer (20 hrs/week)</li>
+<li>1 QA tester (5 hrs/week)</li>
+</ul><p><strong>Recommended</strong>:
+<ul>
+<li>1.5 Python developers (30 hrs/week)</li>
+<li>0.5 Liturgical expert (10 hrs/week)</li>
+<li>1 QA tester (10 hrs/week)</li>
+</ul><h3>Infrastructure</h3><ul>
+<li>Development server (optional, can use local)</li>
+<li>GitHub repository (existing)</li>
+<li>CI/CD pipeline (GitHub Actions - free)</li>
+</ul><p><strong>Cost</strong>: $0-20/month</p>
+</section><section>
+<h2>Risk Mitigation</h2><h3>Risk: Rule Extraction Errors</h3><p><strong>Mitigation</strong>:
+<ul>
+<li>Semi-automated extraction</li>
+<li>Manual review of each rule</li>
+<li>Parallel validation</li>
+<li>Liturgical expert review</li>
+</ul><h3>Risk: Performance Issues</h3><p><strong>Mitigation</strong>:
+<ul>
+<li>SQLite caching layer</li>
+<li>Pre-compute common queries</li>
+<li>Optimize hot paths</li>
+<li>Benchmark early</li>
+</ul><h3>Risk: JSON Schema Changes</h3><p><strong>Mitigation</strong>:
+<ul>
+<li>Version JSON schemas</li>
+<li>Migration tools for upgrades</li>
+<li>Backward compatibility</li>
+<li>Clear upgrade path</li>
+</ul>
+</section><section>
+<h1>Conclusion</h1>
+</section><section>
+<h2>Why JSON Works for Divinum Officium</h2><h3>✅ Perfect Fit</h3><ol>
+<li><strong>Configuration-Heavy</strong>: Rules are configuration, not transactions</li>
+<li><strong>Infrequent Writes</strong>: Rules change rarely</li>
+<li><strong>Git Workflow</strong>: Version control is critical</li>
+<li><strong>Small Team</strong>: Simple deployment matters</li>
+<li><strong>Transparency</strong>: Rules must be readable</li>
+</ol><h3>✅ Practical Benefits</h3><ul>
+<li>No database server to maintain</li>
+<li>Easy contributor onboarding</li>
+<li>Clear rule documentation</li>
+<li>Testable in isolation</li>
+<li>Version control friendly</li>
+</ul>
+</section><section>
+<h2>The Vision</h2><h3>From This (Perl)</h3><p><pre><code class="language-perl">if ($srank[2] &gt; $trank[2]) {
+    $sanctoraloffice = 1;
+} elsif ($trank[0] =~ /Dominica/i) {
+    if ($version =~ /196/ &amp;&amp; $srank[2] &gt;= 6) {
+        $sanctoraloffice = 1;
+    }
+}
+</code></pre></p><h3>To This (JSON)</h3><p><pre><code class="language-json">{
+  &quot;rule&quot;: &quot;Duplex I feast beats Sunday&quot;,
+  &quot;priority&quot;: 1,
+  &quot;conditions&quot;: {
+    &quot;sanctoral_rank&quot;: {&quot;min&quot;: 6.0},
+    &quot;temporal_is_sunday&quot;: true
+  },
+  &quot;result&quot;: {&quot;winner&quot;: &quot;sanctoral&quot;}
+}
+</code></pre></p><p><strong>Clear, declarative, maintainable</strong>
+</section><section>
+<h2>Combined with TEI</h2><p><strong>Perfect Architecture</strong>:</p><p><pre><code class="language-">TEI XML               →  Liturgical content
+JSON Rules            →  Precedence logic
+SQLite Cache          →  Performance
+Python/Flask          →  Application layer
+</code></pre></p><p><strong>Each technology used for its strength</strong>
+</section><section>
+<h2>Next Steps</h2><h3>Immediate Actions</h3><ol>
+<li><strong>Review this proposal</strong></li>
+<li><strong>Discuss with team</strong></li>
+<li><strong>Decide: JSON vs SQL</strong></li>
+<li><strong>If JSON: Start Phase 1</strong></li>
+</ol><h3>Phase 1 Kickoff (Month 1)</h3><ol>
+<li>Design JSON schemas</li>
+<li>Create sample files</li>
+<li>Build proof of concept</li>
+<li>Validate approach</li>
+</ol><p><strong>Ready to proceed?</strong>
+</section><section>
+<h2>Success Metrics</h2><h3>Technical Success</h3>
+✅ 99%+ match with Perl system
+✅ Performance < 100ms per office
+✅ 100% rule coverage
+✅ All versions supported</p><h3>Project Success</h3>
+✅ Team can understand and modify rules
+✅ New rubrics easy to add
+✅ Community can contribute
+✅ Long-term maintainable</p><h3>User Success</h3>
+✅ No disruption to users
+✅ Same accuracy as Perl
+✅ Better performance (cached)
+✅ New features enabled (API, search)</p>
+</section><section>
+<h1>Questions & Discussion</h1>
+</section><section>
+<h2>Discussion Topics</h2><ol>
+<li><strong>JSON vs SQL</strong>: Which fits better?</li>
+</ol><ol>
+<li><strong>Timeline</strong>: Is 10 months realistic?</li>
+</ol><ol>
+<li><strong>Resources</strong>: Who can contribute?</li>
+</ol><ol>
+<li><strong>Priorities</strong>:</li>
+</ol>
+   - Speed vs correctness?
+   - Simplicity vs power?</p><ol>
+<li><strong>Concerns</strong>: What worries you?</li>
+</ol>
+</section><section>
+<h2>Additional Resources</h2><h3>Documentation</h3>
+<ul>
+<li><strong>Full Analysis</strong>: <code>claude-kb/json-vs-sql-analysis.md</code></li>
+<li><strong>Migration Proposal</strong>: <code>claude-kb/migration-proposal.md</code></li>
+<li><strong>Precedence Model</strong>: <code>claude-kb/precedence-data-model.md</code></li>
+</ul><h3>JSON Resources</h3>
+<ul>
+<li><strong>JSON Schema</strong>: https://json-schema.org/</li>
+<li><strong>Python JSON</strong>: https://docs.python.org/3/library/json.html</li>
+<li><strong>Validation Libraries</strong>: jsonschema, pydantic</li>
+</ul><h3>Project</h3>
+<ul>
+<li><strong>Repository</strong>: https://github.com/DivinumOfficium/divinum-officium</li>
+</ul>
+</section><section>
+<h1>Thank You</h1><p><strong>Questions?</strong>
+</section><section>
+<h2>Appendix: Code Examples</h2>
+</section><section>
+<h2>Appendix A: Complete Version File</h2><p><pre><code class="language-json">{
+  &quot;version&quot;: {
+    &quot;code&quot;: &quot;rubrics-1960&quot;,
+    &quot;name&quot;: &quot;Rubrics of 1960&quot;,
+    &quot;year&quot;: 1960,
+    &quot;parent_version&quot;: &quot;rubrics-1955&quot;,
+    &quot;description&quot;: &quot;Last pre-Vatican II reform&quot;
+  },
+
+  &quot;parameters&quot;: {
+    &quot;vespers&quot;: {
+      &quot;min_rank_first_vespers&quot;: 6.0,
+      &quot;min_rank_first_vespers_exceptions&quot;: [
+        {&quot;condition&quot;: &quot;is_feast_of_lord &amp;&amp; day_of_week == 0&quot;, &quot;min_rank&quot;: 5.0}
+      ]
+    },
+    &quot;commemorations&quot;: {
+      &quot;strategy&quot;: &quot;strict_1960&quot;,
+      &quot;max_per_hour&quot;: 1,
+      &quot;min_rank_to_commemorate&quot;: 1.0
+    },
+    &quot;octaves&quot;: {
+      &quot;suppress_common_octaves&quot;: true,
+      &quot;privileged_octaves_only&quot;: true,
+      &quot;octaves_list&quot;: [&quot;Christmas&quot;, &quot;Easter&quot;, &quot;Pentecost&quot;]
+    },
+    &quot;special_offices&quot;: {
+      &quot;sanctoral_saturday_enabled&quot;: true,
+      &quot;sanctoral_saturday_min_temporal_rank&quot;: 1.4,
+      &quot;sanctoral_saturday_office&quot;: &quot;C10&quot;
+    }
+  },
+
+  &quot;concurrence_rules&quot;: [ /* ... */ ],
+  &quot;commemoration_rules&quot;: [ /* ... */ ],
+  &quot;vespers_rules&quot;: [ /* ... */ ]
+}
+</code></pre></p>
+</section><section>
+<h2>Appendix B: API Endpoints</h2><p><pre><code class="language-python">from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route('/api/office/&lt;date&gt;/&lt;hour&gt;')
+def get_office(date, hour):
+    &quot;&quot;&quot;Get office for specific date and hour&quot;&quot;&quot;
+    version = request.args.get('version', 'rubrics-1960')
+
+    engine = PrecedenceEngine(version, parse_date(date))
+    result = engine.get_office(hour)
+
+    return jsonify({
+        'date': date,
+        'hour': hour,
+        'version': version,
+        'primary': result.primary.to_dict(),
+        'commemorations': [c.to_dict() for c in result.commemorations]
+    })
+
+@app.route('/api/rules/&lt;version&gt;')
+def get_rules(version):
+    &quot;&quot;&quot;Get all rules for a version&quot;&quot;&quot;
+    loader = DataLoader()
+    rules = loader.load_version(version)
+
+    return jsonify(rules)
+
+@app.route('/api/calendar/&lt;year&gt;/&lt;month&gt;')
+def get_calendar(year, month):
+    &quot;&quot;&quot;Get calendar for month&quot;&quot;&quot;
+    # Implementation
+    pass
+</code></pre></p>
+</section><section>
+<h2>Appendix C: JSON Schema</h2><p><pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;http://json-schema.org/draft-07/schema#&quot;,
+  &quot;title&quot;: &quot;Divinum Officium Version&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;version&quot;, &quot;concurrence_rules&quot;],
+  &quot;properties&quot;: {
+    &quot;version&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [&quot;code&quot;, &quot;name&quot;],
+      &quot;properties&quot;: {
+        &quot;code&quot;: {&quot;type&quot;: &quot;string&quot;},
+        &quot;name&quot;: {&quot;type&quot;: &quot;string&quot;},
+        &quot;year&quot;: {&quot;type&quot;: &quot;integer&quot;},
+        &quot;parent_version&quot;: {&quot;type&quot;: &quot;string&quot;}
+      }
+    },
+    &quot;concurrence_rules&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;required&quot;: [&quot;priority&quot;, &quot;name&quot;, &quot;result&quot;],
+        &quot;properties&quot;: {
+          &quot;priority&quot;: {&quot;type&quot;: &quot;integer&quot;},
+          &quot;name&quot;: {&quot;type&quot;: &quot;string&quot;},
+          &quot;conditions&quot;: {&quot;type&quot;: &quot;object&quot;},
+          &quot;result&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;required&quot;: [&quot;winner&quot;],
+            &quot;properties&quot;: {
+              &quot;winner&quot;: {&quot;enum&quot;: [&quot;office1&quot;, &quot;office2&quot;, &quot;higher_rank&quot;]}
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre></p>
+</section><section>
+<h1>End of Presentation</h1><p><strong>Ready to build with JSON?</strong></p><p>Contact: [Project Team]</p><p>Repository: https://github.com/DivinumOfficium/divinum-officium</p>
+</section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/highlight/highlight.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'slide',
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+        });
+    </script>
+</body>
+</html>

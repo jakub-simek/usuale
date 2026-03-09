@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEI Data Model for Divinum Officium</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/serif.css">
+    <style>
+        .reveal section {
+            height: 100%;
+            overflow-y: auto !important;
+            padding: 20px 40px !important;
+        }
+        .reveal h1 { font-size: 2.2em; margin-bottom: 0.5em; }
+        .reveal h2 { font-size: 1.8em; margin-bottom: 0.4em; margin-top: 0.5em; }
+        .reveal h3 { font-size: 1.4em; margin-bottom: 0.3em; margin-top: 0.4em; }
+        .reveal p { font-size: 0.9em; line-height: 1.4; margin: 0.5em 0; }
+        .reveal code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-size: 0.85em; color: #c7254e; }
+        .reveal pre { margin: 0.5em 0; background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px; }
+        .reveal pre code {
+            padding: 15px;
+            font-size: 0.55em;
+            line-height: 1.4;
+            background: #f8f8f8;
+            color: #333;
+            display: block;
+            overflow-x: auto;
+        }
+        /* Syntax highlighting with high contrast */
+        .reveal pre code .hljs-comment { color: #008000; font-style: italic; }
+        .reveal pre code .hljs-string { color: #d14; }
+        .reveal pre code .hljs-number { color: #0086b3; }
+        .reveal pre code .hljs-literal { color: #0086b3; }
+        .reveal pre code .hljs-keyword { color: #a71d5d; font-weight: bold; }
+        .reveal pre code .hljs-attr { color: #795da3; }
+        .reveal pre code .hljs-name { color: #333; font-weight: bold; }
+        .reveal pre code .hljs-variable { color: #333; }
+        .reveal pre code .hljs-title { color: #795da3; }
+        .reveal pre code .hljs-built_in { color: #0086b3; }
+        .reveal pre code .hljs-meta { color: #999; }
+
+        .reveal table { font-size: 0.65em; margin: 0.5em 0; }
+        .reveal table th { background: #3498db; color: white; padding: 6px; }
+        .reveal table td { border: 1px solid #ddd; padding: 6px; }
+        .reveal ul { text-align: left; font-size: 0.9em; margin: 0.3em 0; }
+        .reveal ol { text-align: left; font-size: 0.9em; margin: 0.3em 0; }
+        .reveal li { margin: 0.2em 0; }
+        .reveal strong { color: #2c3e50; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+<section>
+<h1>YAML</h1>
+<h2>A Human-Friendly Data Format</h2><p><strong>YAML Ain't Markup Language</strong></p><p>Understanding YAML for the Divinum Officium Project</p>
+</section><section>
+<h2>Agenda</h2><ol>
+<li>What is YAML?</li>
+<li>Basic Syntax</li>
+<li>Data Types</li>
+<li>Advanced Features</li>
+<li>YAML vs JSON</li>
+<li>Why YAML for Precedence Rules?</li>
+<li>Real Examples from Our Project</li>
+<li>Tools and Best Practices</li>
+</ol>
+</section><section>
+<h1>Part 1: What is YAML?</h1>
+</section><section>
+<h2>What is YAML?</h2><p><strong>YAML</strong> = <strong>Y</strong>AML <strong>A</strong>in't <strong>M</strong>arkup <strong>L</strong>anguage</p><p><strong>Purpose</strong>: Human-readable data serialization format</p><p><strong>Common Uses</strong>:
+<ul>
+<li>Configuration files (Docker, Kubernetes, GitHub Actions)</li>
+<li>Data exchange between programs</li>
+<li>Structured documentation</li>
+<li>Rule definitions</li>
+</ul><p><strong>Philosophy</strong>: Optimized for human readability over machine efficiency</p>
+</section><section>
+<h2>Why Was YAML Created?</h2><p><strong>Problems with existing formats:</strong></p><p>❌ <strong>XML</strong>: Too verbose, hard to read
+<pre><code class="language-xml">&lt;person&gt;
+  &lt;name&gt;John Smith&lt;/name&gt;
+  &lt;age&gt;42&lt;/age&gt;
+&lt;/person&gt;
+</code></pre></p><p>❌ <strong>JSON</strong>: Requires quotes, no comments, rigid syntax
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;John Smith&quot;,
+  &quot;age&quot;: 42
+}
+</code></pre></p><p>✅ <strong>YAML</strong>: Clean, readable, flexible
+<pre><code class="language-yaml">name: John Smith
+age: 42
+</code></pre></p>
+</section><section>
+<h2>YAML History</h2><p><strong>Timeline</strong>:
+<ul>
+<li><strong>2001</strong>: First released by Clark Evans</li>
+<li><strong>2004</strong>: YAML 1.0 specification</li>
+<li><strong>2009</strong>: YAML 1.2 (current standard)</li>
+</ul><p><strong>Adoption</strong>:
+<ul>
+<li>Docker Compose</li>
+<li>Kubernetes configurations</li>
+<li>Ansible playbooks</li>
+<li>GitHub Actions</li>
+<li>Many programming language configs</li>
+</ul><p><strong>Fact</strong>: YAML is a superset of JSON (all valid JSON is valid YAML)</p>
+</section><section>
+<h1>Part 2: Basic Syntax</h1>
+</section><section>
+<h2>Key-Value Pairs</h2><p>The most basic YAML structure:</p><p><pre><code class="language-yaml"># Simple key-value pairs
+name: John Smith
+age: 42
+city: Rome
+occupation: Liturgist
+</code></pre></p><p><strong>Rules</strong>:
+<ul>
+<li>Key and value separated by colon and space (<code>: </code>)</li>
+<li>No quotes needed for simple strings</li>
+<li>Indentation matters!</li>
+<li><code>#</code> starts a comment (ignored by parser)</li>
+</ul>
+</section><section>
+<h2>Strings</h2><p><strong>Simple strings</strong> (no quotes needed):
+<pre><code class="language-yaml">name: John Smith
+title: Duplex I classis
+</code></pre></p><p><strong>Strings with special characters</strong> (quotes needed):
+<pre><code class="language-yaml">message: &quot;Hello, World!&quot;
+path: 'C:\Users\John'
+</code></pre></p><p><strong>Multi-line strings</strong>:
+<pre><code class="language-yaml"># Literal block (preserves newlines)
+description: |
+  This is a long description
+  that spans multiple lines
+  and preserves line breaks.
+
+# Folded block (folds into single line)
+summary: &gt;
+  This text will be folded
+  into a single line when
+  parsed by the program.
+</code></pre></p>
+</section><section>
+<h2>Numbers and Booleans</h2><p><strong>Numbers</strong>:
+<pre><code class="language-yaml"># Integers
+age: 42
+year: 1960
+
+# Floats
+priority: 1.5
+temperature: -3.14
+
+# Scientific notation
+large_number: 1.23e+10
+</code></pre></p><p><strong>Booleans</strong>:
+<pre><code class="language-yaml">enabled: true
+disabled: false
+
+# Also valid (case-insensitive)
+flag1: True
+flag2: FALSE
+flag3: yes
+flag4: no
+</code></pre></p>
+</section><section>
+<h2>Lists (Arrays)</h2><p><strong>Block style</strong> (recommended):
+<pre><code class="language-yaml"># List of strings
+feasts:
+  - Christmas
+  - Easter
+  - Pentecost
+  - Epiphany
+
+# List of numbers
+priorities:
+  - 1.0
+  - 1.5
+  - 2.0
+</code></pre></p><p><strong>Flow style</strong> (compact):
+<pre><code class="language-yaml">feasts: [Christmas, Easter, Pentecost]
+priorities: [1.0, 1.5, 2.0]
+</code></pre></p><p><strong>Note</strong>: Flow style is like JSON arrays</p>
+</section><section>
+<h2>Nested Lists</h2><p><pre><code class="language-yaml"># List of lists
+calendar:
+  - [January, February, March]
+  - [April, May, June]
+  - [July, August, September]
+  - [October, November, December]
+
+# Or in block style
+calendar:
+  -
+    - January
+    - February
+    - March
+  -
+    - April
+    - May
+    - June
+</code></pre></p>
+</section><section>
+<h2>Dictionaries (Objects)</h2><p><strong>Simple dictionary</strong>:
+<pre><code class="language-yaml">person:
+  name: John Smith
+  age: 42
+  city: Rome
+</code></pre></p><p><strong>Nested dictionaries</strong>:
+<pre><code class="language-yaml">liturgy:
+  office:
+    name: Vespers
+    time: 18:00
+  feast:
+    name: Christmas
+    rank: Duplex I classis
+    date: 12-25
+</code></pre></p>
+</section><section>
+<h2>Combining Lists and Dictionaries</h2><p><strong>List of dictionaries</strong> (very common):
+<pre><code class="language-yaml">feasts:
+  - name: Christmas
+    date: 12-25
+    rank: Duplex I classis
+
+  - name: Epiphany
+    date: 01-06
+    rank: Duplex I classis
+
+  - name: Easter
+    rank: Duplex I classis
+    moveable: true
+</code></pre></p>
+</section><section>
+<h1>Part 3: Data Types</h1>
+</section><section>
+<h2>Null Values</h2><p><strong>Representing null/empty</strong>:
+<pre><code class="language-yaml"># All these represent null
+unknown: null
+missing: ~
+empty:
+
+# In a list
+values:
+  - 1
+  - null
+  - 3
+  - ~
+</code></pre></p><p><strong>Use case</strong>: Optional fields that may not have values</p>
+</section><section>
+<h2>Dates and Timestamps</h2><p><strong>ISO 8601 format</strong> (automatically parsed):
+<pre><code class="language-yaml"># Dates
+christmas: 2025-12-25
+epiphany: 2025-01-06
+
+# Timestamps
+created: 2025-12-29T14:30:00Z
+updated: 2025-12-29 14:30:00
+
+# Alternative format
+event_date: !!timestamp 2025-12-25 00:00:00
+</code></pre></p><p><strong>Note</strong>: Different YAML parsers may handle dates differently</p>
+</section><section>
+<h2>Type Casting</h2><p><strong>Explicit types</strong> using <code>!!</code>:
+<pre><code class="language-yaml"># Force string (even though it looks like number)
+version: !!str 1960
+
+# Force integer
+rank: !!int &quot;42&quot;
+
+# Force float
+priority: !!float 1
+
+# Binary data
+image: !!binary |
+  R0lGODlhDAAMAIQAAP//9/X
+  17unp5WZmZgAAAOfn515eXv
+</code></pre></p><p><strong>Usually not needed</strong> - YAML infers types correctly</p>
+</section><section>
+<h1>Part 4: Advanced Features</h1>
+</section><section>
+<h2>Anchors and Aliases</h2><p><strong>Problem</strong>: Repeating the same data
+<pre><code class="language-yaml"># Without anchors - repetitive
+feast1:
+  rank: Duplex I classis
+  priority: 1.0
+
+feast2:
+  rank: Duplex I classis
+  priority: 1.0
+</code></pre></p><p><strong>Solution</strong>: Anchors (<code>&amp;</code>) and aliases (<code>*</code>)
+<pre><code class="language-yaml"># Define once with anchor
+default_rank: &amp;high_rank
+  rank: Duplex I classis
+  priority: 1.0
+
+# Reuse with alias
+feast1: *high_rank
+feast2: *high_rank
+</code></pre></p>
+</section><section>
+<h2>Anchors - Detailed Example</h2><p><pre><code class="language-yaml"># Define base configuration
+base_office: &amp;base
+  language: Latin
+  version: 1960
+  rubrics: true
+
+# Reuse in multiple places
+vespers:
+  &lt;&lt;: *base  # Merge base settings
+  hour: Vespers
+  time: 18:00
+
+lauds:
+  &lt;&lt;: *base  # Merge base settings
+  hour: Lauds
+  time: 06:00
+</code></pre></p><p><strong>Result</strong>: DRY (Don't Repeat Yourself) principle</p>
+</section><section>
+<h2>Merging with <code>&lt;&lt;</code></h2><p><strong>Merge keys</strong> to combine dictionaries:
+<pre><code class="language-yaml">defaults: &amp;defaults
+  language: Latin
+  version: 1960
+  rubrics: true
+
+christmas:
+  &lt;&lt;: *defaults      # Merge defaults
+  name: Christmas    # Add specific fields
+  rank: Duplex I classis
+
+result_is:
+  language: Latin
+  version: 1960
+  rubrics: true
+  name: Christmas
+  rank: Duplex I classis
+</code></pre></p>
+</section><section>
+<h2>Multiple Documents in One File</h2><p><strong>Separate documents</strong> with <code>---</code>:
+```yaml</p>
+</section><section>
+<h1>Document 1: Metadata</h1>
+title: Precedence Rules
+version: 1960</p>
+</section><section>
+<h1>Document 2: Actual rules</h1>
+rules:
+  - id: rule1
+    description: First rule</p><p>  - id: rule2
+    description: Second rule</p>
+</section><section>
+<h1>Document 3: Examples</h1>
+examples:
+  - case: advent_sunday
+    result: displaces
+```</p><p><strong>Use case</strong>: Organizing related data</p>
+</section><section>
+<h2>Comments</h2><p><pre><code class="language-yaml"># Single-line comment
+
+feasts:  # Inline comment
+  - Christmas  # Born of Mary
+  - Easter     # Resurrection
+  - Pentecost  # Holy Spirit
+
+# Multi-line comment block
+# This can explain complex rules
+# in as many lines as needed
+rule:
+  id: advent_precedence
+</code></pre></p><p><strong>Power</strong>: Explain liturgical reasoning alongside data</p>
+</section><section>
+<h1>Part 5: YAML vs JSON</h1>
+</section><section>
+<h2>Side-by-Side Comparison</h2><p><strong>JSON</strong>:
+<pre><code class="language-json">{
+  &quot;feast&quot;: {
+    &quot;name&quot;: &quot;Christmas&quot;,
+    &quot;rank&quot;: &quot;Duplex I classis&quot;,
+    &quot;date&quot;: &quot;12-25&quot;,
+    &quot;commemorations&quot;: [&quot;St. Anastasia&quot;]
+  }
+}
+</code></pre></p><p><strong>YAML</strong>:
+<pre><code class="language-yaml">feast:
+  name: Christmas
+  rank: Duplex I classis
+  date: 12-25
+  commemorations:
+    - St. Anastasia
+</code></pre></p><p><strong>Difference</strong>: ~30% less characters, more readable</p>
+</section><section>
+<h2>YAML vs JSON: Features</h2><table>
+<thead><tr>
+<th>Feature</th>
+<th>JSON</th>
+<th>YAML</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Comments</strong></td>
+<td>❌ No</td>
+<td>✅ Yes (<code>#</code>)</td>
+</tr>
+<tr>
+<td><strong>Quotes required</strong></td>
+<td>✅ Always</td>
+<td>❌ Optional</td>
+</tr>
+<tr>
+<td><strong>Multi-line strings</strong></td>
+<td>❌ Escape only</td>
+<td>✅ <code>\|</code> and <code>&gt;</code></td>
+</tr>
+<tr>
+<td><strong>Trailing commas</strong></td>
+<td>❌ Error</td>
+<td>✅ Allowed</td>
+</tr>
+<tr>
+<td><strong>Anchors/Aliases</strong></td>
+<td>❌ No</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td><strong>Human readable</strong></td>
+<td>⚠️ OK</td>
+<td>✅ Excellent</td>
+</tr>
+<tr>
+<td><strong>Machine speed</strong></td>
+<td>✅ Faster</td>
+<td>⚠️ Slower</td>
+</tr>
+<tr>
+<td><strong>Strict syntax</strong></td>
+<td>✅ Yes</td>
+<td>⚠️ Flexible</td>
+</tr>
+</tbody></table>
+</section><section>
+<h2>When to Use YAML vs JSON</h2><p><strong>Use YAML when</strong>:
+✅ Humans need to read/edit frequently
+✅ Comments are important
+✅ Configuration files
+✅ Documentation with data
+✅ Git-tracked files (clean diffs)</p><p><strong>Use JSON when</strong>:
+✅ APIs (web services)
+✅ Maximum parsing speed
+✅ JavaScript integration
+✅ Strict validation needed
+✅ No human editing</p>
+</section><section>
+<h2>YAML is a Superset of JSON</h2><p><strong>Any valid JSON is valid YAML</strong>:
+<pre><code class="language-yaml"># This is valid YAML (it's JSON!)
+{
+  &quot;name&quot;: &quot;John&quot;,
+  &quot;age&quot;: 42,
+  &quot;hobbies&quot;: [&quot;reading&quot;, &quot;music&quot;]
+}
+</code></pre></p><p><strong>Can mix styles</strong>:
+<pre><code class="language-yaml">person:
+  name: John
+  age: 42
+  hobbies: [&quot;reading&quot;, &quot;music&quot;]  # Flow style for list
+</code></pre></p>
+</section><section>
+<h1>Part 6: Why YAML for Precedence Rules?</h1>
+</section><section>
+<h2>Current Perl Code Problem</h2><p><pre><code class="language-perl">if ($srank[2] &gt; $trank[2]) {
+    $sanctoraloffice = 1;
+} elsif ($trank[0] =~ /Dominica/i &amp;&amp; $dayname[0] !~ /Nat1/i) {
+    if ($version =~ /196/) {
+        if ($trank[2] &lt;= 5 &amp;&amp;
+             ($srank[2] &gt;= 5 &amp;&amp; $saint{Rule} =~ /Festum Domini/i))) {
+            $sanctoraloffice = 1;
+        }
+    }
+}
+</code></pre></p><p><strong>Problems</strong>:
+<ul>
+<li>Rules hidden in code</li>
+<li>Non-programmers can't verify</li>
+<li>Hard to modify</li>
+<li>No documentation alongside rules</li>
+</ul>
+</section><section>
+<h2>YAML Solution: Readable Rules</h2><p><pre><code class="language-yaml"># Precedence rule for Advent Sundays
+- id: advent_sunday_precedence
+  description: |
+    Advent Sundays (I classis) displace all feasts
+    except Duplex I classis of the Lord.
+    Reference: Codex Rubricarum §102
+
+  version: &quot;1960&quot;
+
+  conditions:
+    rank: Dominica I classis
+    season: Advent
+    opponent_not:
+      rank: Duplex I classis
+      type: festum_domini
+
+  action: displace
+  priority: 1.5
+</code></pre></p>
+</section><section>
+<h2>Benefit 1: Human Readability</h2><p><strong>Liturgists can verify</strong> without programming:
+<pre><code class="language-yaml">transfer_rules:
+  # Epiphany transfer rule for 1570-1955
+  - feast: Epiphany
+    versions: [&quot;1570&quot;, &quot;1955&quot;]
+
+    condition: not_on_sunday
+
+    transfer_to: first_sunday_after_jan_6
+
+    explanation: |
+      Before Divino afflatu (1911), Epiphany was
+      transferred if it fell on a weekday.
+</code></pre></p><p><strong>Anyone</strong> familiar with liturgy can read this!</p>
+</section><section>
+<h2>Benefit 2: Inline Documentation</h2><p><pre><code class="language-yaml">ranks:
+  duplex_i_classis:
+    name: &quot;Duplex I classis&quot;
+    priority: 1.0
+    latin: &quot;Duplex primae classis&quot;
+
+    # Historical note
+    notes: |
+      Highest rank in pre-1960 rubrics.
+      Reserved for greatest solemnities:
+      - Christmas, Easter, Pentecost
+      - Epiphany, Ascension
+      - Major Marian feasts
+
+    # Rubrical references
+    references:
+      - &quot;Divino afflatu (1911)&quot;
+      - &quot;Codex Rubricarum (1960) §93&quot;
+</code></pre></p>
+</section><section>
+<h2>Benefit 3: Version Inheritance</h2><p>```yaml
+<h1>Base rules (1570)</h1>
+</section><section>
+<p>version: "1570"
+ranks:
+  duplex_i: &duplex1
+    priority: 1.0</p>
+</section><section>
+<h1>1960 extends 1570</h1>
+version: "1960"
+inherits_from: "1570"</p><h1>Add 1960-specific rules</h1>
+ranks:
+  dominica_i:
+    priority: 1.5  # New in 1960</p><h1>Can still reference 1570 definitions</h1>
+default_rank: *duplex1
+```</p>
+</section><section>
+<h2>Benefit 4: Git-Friendly Changes</h2><p><strong>Clean diffs</strong> when rules change:
+<pre><code class="language-diff"> precedence_rules:
+   - id: advent_sunday
+     rank: Dominica I classis
+-    priority: 2.0
++    priority: 1.5
+     action: displace
++    # Added reference
++    reference: &quot;Codex Rubricarum §102&quot;
+</code></pre></p><p><strong>Easy to review</strong> what changed and why</p>
+</section><section>
+<h2>Benefit 5: Multilingual Support</h2><p><pre><code class="language-yaml">feasts:
+  christmas:
+    id: nat01
+
+    names:
+      latin: &quot;In Nativitate Domini&quot;
+      english: &quot;The Nativity of Our Lord&quot;
+      deutsch: &quot;Weihnachten&quot;
+      italiano: &quot;Natale del Signore&quot;
+      francais: &quot;Noël&quot;
+
+    rank: Duplex I classis
+    date:
+      month: 12
+      day: 25
+</code></pre></p>
+</section><section>
+<h1>Part 7: Real Examples from Our Project</h1>
+</section><section>
+<h2>Example 1: Rank Definitions</h2><p><pre><code class="language-yaml"># ranks/1960-ranks.yaml
+version: &quot;1960&quot;
+description: &quot;Rank system per Codex Rubricarum (1960)&quot;
+
+ranks:
+  duplex_i_classis:
+    name: &quot;Duplex I classis&quot;
+    name_latin: &quot;Duplex primae classis&quot;
+    priority: 1.0
+    color_code: red
+    always_displaces:
+      - duplex_ii_classis
+      - duplex_majus
+      - semiduplex
+      - simplex
+
+  dominica_i_classis:
+    name: &quot;Dominica I classis&quot;
+    name_latin: &quot;Dominica primae classis&quot;
+    priority: 1.5
+    applies_to: [Advent, Lent, Easter_season]
+</code></pre></p>
+</section><section>
+<h2>Example 2: Precedence Rule</h2><p><pre><code class="language-yaml"># rules/1960-precedence.yaml
+precedence_rules:
+
+  - id: P001
+    name: &quot;Basic rank precedence&quot;
+    enabled: true
+
+    description: |
+      Higher priority ranks (lower numbers) always
+      displace lower priority ranks.
+
+    logic:
+      if: priority_a &lt; priority_b
+      then: office_a_displaces_office_b
+
+    exceptions: []
+
+    test_cases:
+      - case: &quot;Duplex I vs Duplex II&quot;
+        a_rank: duplex_i_classis
+        b_rank: duplex_ii_classis
+        expected: a_displaces
+</code></pre></p>
+</section><section>
+<h2>Example 3: Transfer Rules</h2><p><pre><code class="language-yaml"># rules/1960-transfers.yaml
+transfer_rules:
+
+  - feast_id: epiphany
+    feast_name: &quot;Epiphany&quot;
+
+    rule_version_1960:
+      condition: never
+      action: no_transfer
+      reason: &quot;Divino afflatu (1911) fixed to Jan 6&quot;
+
+    rule_version_1570:
+      condition:
+        type: falls_on
+        days: [monday, tuesday, wednesday,
+               thursday, friday, saturday]
+      action: transfer
+      transfer_to:
+        type: following_sunday
+        limit: within_octave
+      reason: &quot;Pre-1911 Epiphany could be transferred&quot;
+</code></pre></p>
+</section><section>
+<h2>Example 4: Commemorations</h2><p><pre><code class="language-yaml"># rules/1960-commemorations.yaml
+commemoration_rules:
+
+  - context: vespers
+
+    primary_office:
+      rank: duplex_i_classis
+
+    can_commemorate:
+      - rank: duplex_ii_classis
+        parts: [antiphon, versicle, oration]
+        position: after_primary_oration
+
+      - rank: dominica
+        parts: [antiphon, oration]
+        position: privileged  # Before other commemorations
+
+    max_commemorations: 3
+
+    note: |
+      Per Rubricae Generales, Vespers may have
+      up to 3 commemorations of displaced offices.
+</code></pre></p>
+</section><section>
+<h2>Example 5: Special Cases</h2><p><pre><code class="language-yaml"># rules/1960-special-cases.yaml
+special_rules:
+
+  # Christmas to Epiphany period
+  - period: christmas_to_epiphany
+    dates:
+      from: 12-25
+      to: 01-06
+
+    modifications:
+      # Sundays in this period are special
+      - type: sunday
+        rank_override: duplex_ii_classis
+        reason: &quot;Sundays in Christmas Octave&quot;
+
+      # Ferias take texts from Christmas
+
+      - type: feria
+        office_source: christmas
+        parts: [antiphons, psalms]
+
+    references:
+      - &quot;Divino afflatu §8&quot;
+      - &quot;Rubricae Generales, Tit. II&quot;
+</code></pre></p>
+</section><section>
+<h2>Example 6: Complete Rule with Tests</h2><p><pre><code class="language-yaml">- id: advent_sunday_special
+  name: &quot;Advent Sunday precedence (1960)&quot;
+  version: &quot;1960&quot;
+
+  # Rule definition
+  rule:
+    subject:
+      rank: dominica_i_classis
+      season: advent
+
+    opponent:
+      rank: any
+      except:
+        rank: duplex_i_classis
+        type: festum_domini
+
+    resolution: subject_displaces
+
+  # Inline documentation
+  explanation: |
+    Advent Sundays are Dominica I classis and
+    displace all feasts except Duplex I classis
+    of the Lord (e.g., Immaculate Conception).
+
+  references:
+    - source: &quot;Codex Rubricarum&quot;
+      section: &quot;§102&quot;
+
+  # Test cases
+  test_cases:
+    - name: &quot;Advent II vs St. Nicholas&quot;
+      date: 1960-12-04  # Advent II Sunday
+      subject:
+        rank: dominica_i_classis
+        name: &quot;Dominica II Adventus&quot;
+      opponent:
+        rank: duplex_majus
+        name: &quot;St. Nicholas&quot;
+      expected: subject_displaces
+
+    - name: &quot;Advent II vs Immaculate Conception&quot;
+      date: 1960-12-08  # If falls on Advent Sunday
+      subject:
+        rank: dominica_i_classis
+      opponent:
+        rank: duplex_i_classis
+        type: festum_domini
+      expected: opponent_displaces
+</code></pre></p>
+</section><section>
+<h1>Part 8: Tools and Best Practices</h1>
+</section><section>
+<h2>YAML Tools</h2><p><strong>Editors with YAML support</strong>:
+<ul>
+<li><strong>VS Code</strong>: Built-in syntax highlighting + extensions</li>
+<li><strong>IntelliJ IDEA</strong>: YAML plugin</li>
+<li><strong>Sublime Text</strong>: YAML syntax package</li>
+<li><strong>Vim/Neovim</strong>: YAML plugins</li>
+</ul><p><strong>Online tools</strong>:
+<ul>
+<li><strong>YAML Lint</strong>: http://www.yamllint.com/</li>
+<li><strong>JSON ↔ YAML converter</strong>: https://www.json2yaml.com/</li>
+<li><strong>YAML validator</strong>: https://codebeautify.org/yaml-validator</li>
+</ul>
+</section><section>
+<h2>VS Code YAML Extension</h2><p><strong>Recommended extension</strong>: "YAML" by Red Hat</p><p><strong>Features</strong>:
+<ul>
+<li>Syntax validation</li>
+<li>Auto-completion</li>
+<li>Schema validation (JSON Schema)</li>
+<li>Hover documentation</li>
+<li>Error highlighting</li>
+</ul><p><strong>Install</strong>:
+<pre><code class="language-bash">code --install-extension redhat.vscode-yaml
+</code></pre></p>
+</section><section>
+<h2>Python YAML Libraries</h2><p><strong>PyYAML</strong> (most common):
+<pre><code class="language-python">import yaml
+
+# Read YAML
+with open('rules.yaml') as f:
+    data = yaml.safe_load(f)
+
+# Write YAML
+with open('output.yaml', 'w') as f:
+    yaml.dump(data, f, default_flow_style=False)
+</code></pre></p><p><strong>ruamel.yaml</strong> (preserves comments):
+<pre><code class="language-python">from ruamel.yaml import YAML
+
+yaml = YAML()
+with open('rules.yaml') as f:
+    data = yaml.load(f)
+</code></pre></p>
+</section><section>
+<h2>YAML Best Practices</h2><p><strong>1. Use consistent indentation</strong> (2 or 4 spaces):
+<pre><code class="language-yaml"># Good - 2 spaces
+feasts:
+  - name: Christmas
+    rank: Duplex I
+
+# Bad - mixed indentation
+feasts:
+    - name: Christmas
+      rank: Duplex I
+</code></pre></p><p><strong>2. Prefer block style over flow style</strong>:
+<pre><code class="language-yaml"># Good (readable)
+ranks:
+  - Duplex I
+  - Duplex II
+
+# Avoid (compact but less clear)
+ranks: [Duplex I, Duplex II]
+</code></pre></p>
+</section><section>
+<h2>More Best Practices</h2><p><strong>3. Use comments liberally</strong>:
+<pre><code class="language-yaml"># Rule for Advent Sundays
+# Reference: Codex Rubricarum §102
+advent_rule:
+  rank: dominica_i_classis
+</code></pre></p><p><strong>4. Quote strings when ambiguous</strong>:
+<pre><code class="language-yaml"># Good
+version: &quot;1960&quot;  # Could be interpreted as number
+
+# Bad
+version: 1960  # Parsed as integer
+</code></pre></p><p><strong>5. Use meaningful key names</strong>:
+<pre><code class="language-yaml"># Good
+feast_rank: Duplex I classis
+
+# Bad
+r: Duplex I classis
+</code></pre></p>
+</section><section>
+<h2>YAML Gotchas to Avoid</h2><p><strong>1. Indentation is critical</strong>:
+<pre><code class="language-yaml"># Wrong - misaligned
+feasts:
+ - Christmas
+  - Easter  # Error!
+
+# Right
+feasts:
+  - Christmas
+  - Easter
+</code></pre></p><p><strong>2. Tabs vs Spaces</strong>:
+<pre><code class="language-yaml"># NEVER use tabs - use spaces only!
+# Tabs will cause parsing errors
+</code></pre></p>
+</section><section>
+<h2>More Gotchas</h2><p><strong>3. Norway problem</strong>:
+<pre><code class="language-yaml"># Bad - &quot;no&quot; is interpreted as false!
+country: no  # Becomes: country: false
+
+# Good - quote it
+country: &quot;no&quot;  # Stays as string &quot;no&quot;
+</code></pre></p><p><strong>4. Colons in strings</strong>:
+<pre><code class="language-yaml"># Bad - colon confuses parser
+title: Office: Vespers  # Error!
+
+# Good - quote it
+title: &quot;Office: Vespers&quot;
+</code></pre></p>
+</section><section>
+<h2>YAML Schema Validation</h2><p><strong>JSON Schema</strong> can validate YAML:</p><p><pre><code class="language-yaml"># schema.yaml
+type: object
+properties:
+  version:
+    type: string
+    pattern: &quot;^[0-9]{4}$&quot;
+  ranks:
+    type: array
+    items:
+      type: object
+      required: [name, priority]
+</code></pre></p><p><strong>Validation</strong> in Python:
+<pre><code class="language-python">import yaml
+from jsonschema import validate
+
+with open('schema.yaml') as f:
+    schema = yaml.safe_load(f)
+
+with open('rules.yaml') as f:
+    data = yaml.safe_load(f)
+
+validate(instance=data, schema=schema)
+</code></pre></p>
+</section><section>
+<h2>File Organization</h2><p><strong>Recommended structure</strong>:
+<pre><code class="language-">rules/
+  ├── metadata.yaml           # Overall metadata
+  ├── ranks/
+  │   ├── 1570-ranks.yaml
+  │   ├── 1960-ranks.yaml
+  │   └── cistercian-ranks.yaml
+  ├── precedence/
+  │   ├── 1570-precedence.yaml
+  │   └── 1960-precedence.yaml
+  ├── transfers/
+  │   ├── 1570-transfers.yaml
+  │   └── 1960-transfers.yaml
+  └── commemorations/
+      ├── 1570-commemorations.yaml
+      └── 1960-commemorations.yaml
+</code></pre></p><p><strong>Benefit</strong>: Modular, easy to navigate</p>
+</section><section>
+<h2>Version Control Best Practices</h2><p><strong>1. One logical rule per commit</strong>:
+<pre><code class="language-bash">git commit -m &quot;Add Advent Sunday precedence rule for 1960&quot;
+</code></pre></p><p><strong>2. Use meaningful commit messages</strong>:
+<pre><code class="language-bash"># Good
+git commit -m &quot;Fix Epiphany transfer rule for 1570 version&quot;
+
+# Bad
+git commit -m &quot;Update rules.yaml&quot;
+</code></pre></p><p><strong>3. Review diffs before committing</strong>:
+<pre><code class="language-bash">git diff rules/1960-precedence.yaml
+</code></pre></p>
+</section><section>
+<h2>Documentation in YAML</h2><p><strong>Use YAML to document itself</strong>:
+<pre><code class="language-yaml"># metadata.yaml
+project: Divinum Officium Precedence Rules
+version: 2.0
+format: YAML
+
+documentation:
+  description: |
+    This directory contains precedence rules for
+    various liturgical versions in YAML format.
+
+  how_to_read: |
+    Each rule file is organized by version.
+    Rules use anchors (&amp;) and aliases (*) to
+    avoid repetition.
+
+  conventions:
+    indentation: 2 spaces
+    string_quoting: &quot;only when necessary&quot;
+    comments: &quot;required for complex rules&quot;
+</code></pre></p>
+</section><section>
+<h1>Summary</h1>
+</section><section>
+<h2>YAML Key Takeaways</h2><p><strong>Syntax</strong>:
+✅ Key-value pairs with <code>: </code>
+✅ Lists with <code>- </code>
+✅ Indentation matters (spaces only!)
+✅ Comments with <code>#</code>
+✅ Quotes optional for simple strings</p><p><strong>Advanced Features</strong>:
+✅ Anchors (<code>&amp;</code>) and aliases (<code>*</code>) for reuse
+✅ Multi-line strings with <code>|</code> and <code>&gt;</code>
+✅ Type casting with <code>!!</code>
+✅ Multi-document files with <code>---</code></p>
+</section><section>
+<h2>YAML for Precedence Rules</h2><p><strong>Why YAML is ideal</strong>:
+<ol>
+<li><strong>Human-readable</strong> - liturgists can verify</li>
+<li><strong>Commentable</strong> - document rubrical reasoning</li>
+<li><strong>Structured</strong> - enforce consistency</li>
+<li><strong>Git-friendly</strong> - track changes clearly</li>
+<li><strong>Flexible</strong> - handle complex inheritance</li>
+<li><strong>Well-supported</strong> - excellent Python libraries</li>
+</ol><p><strong>Trade-off</strong>: Slightly slower parsing than JSON (but negligible for our use case)</p>
+</section><section>
+<h2>Comparison Summary</h2><table>
+<thead><tr>
+<th>Format</th>
+<th>Readable</th>
+<th>Comments</th>
+<th>Flexible</th>
+<th>Speed</th>
+<th>Best For</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>YAML</strong></td>
+<td>✅ Excellent</td>
+<td>✅ Yes</td>
+<td>✅ Very</td>
+<td>⚠️ OK</td>
+<td>Config files</td>
+</tr>
+<tr>
+<td><strong>JSON</strong></td>
+<td>⚠️ OK</td>
+<td>❌ No</td>
+<td>⚠️ OK</td>
+<td>✅ Fast</td>
+<td>APIs</td>
+</tr>
+<tr>
+<td><strong>XML</strong></td>
+<td>❌ Poor</td>
+<td>✅ Yes</td>
+<td>✅ Very</td>
+<td>⚠️ OK</td>
+<td>Complex docs</td>
+</tr>
+<tr>
+<td><strong>Perl</strong></td>
+<td>❌ Poor</td>
+<td>⚠️ Yes</td>
+<td>✅ Very</td>
+<td>✅ Fast</td>
+<td>Scripts</td>
+</tr>
+</tbody></table><p><strong>Winner for rules</strong>: YAML</p>
+</section><section>
+<h2>Next Steps</h2><p><strong>For Divinum Officium project</strong>:</p><ol>
+<li>✅ <strong>You now understand YAML</strong></li>
+<li>📝 <strong>Next</strong>: Review YAML-based precedence proposal</li>
+<li>🔧 <strong>Then</strong>: Prototype rule engine</li>
+<li>✅ <strong>Finally</strong>: Migrate Perl rules to YAML</li>
+</ol><p><strong>Resources</strong>:
+<ul>
+<li>YAML official site: https://yaml.org/</li>
+<li>YAML 1.2 spec: https://yaml.org/spec/1.2/spec.html</li>
+<li>Learn YAML in Y minutes: https://learnxinyminutes.com/docs/yaml/</li>
+</ul>
+</section><section>
+<h2>Questions to Consider</h2><p><strong>Before adopting YAML, ask</strong>:</p><ol>
+<li>Will non-programmers need to edit rules?</li>
+</ol>
+   - <strong>If yes</strong>: YAML is better than JSON</p><ol>
+<li>Do we need inline documentation?</li>
+</ol>
+   - <strong>If yes</strong>: YAML is essential</p><ol>
+<li>Is Git history important?</li>
+</ol>
+   - <strong>If yes</strong>: YAML gives cleaner diffs</p><ol>
+<li>Do we need maximum parsing speed?</li>
+</ol>
+   - <strong>If no</strong>: YAML is fine (speed difference negligible)</p><ol>
+<li>Will rules be complex with inheritance?</li>
+</ol>
+   - <strong>If yes</strong>: YAML anchors are powerful</p>
+</section><section>
+<h2>Thank You!</h2><p><strong>Questions?</strong></p><p><strong>Resources</strong>:
+<ul>
+<li>This presentation: <code>yaml-introduction.html</code></li>
+<li>YAML official: https://yaml.org/</li>
+<li>PyYAML docs: https://pyyaml.org/</li>
+</ul><p><strong>Next Steps</strong>:
+<ul>
+<li>Review YAML-based precedence proposal</li>
+<li>Experiment with YAML files</li>
+<li>Provide feedback on approach</li>
+</ul>
+</section><section>
+<h1>Appendix: Quick Reference</h1>
+</section><section>
+<h2>YAML Cheat Sheet - Basics</h2><p><pre><code class="language-yaml"># Comments start with #
+
+# Key-value pairs
+key: value
+number: 42
+float: 3.14
+boolean: true
+null_value: null
+
+# Strings
+simple: Hello World
+quoted: &quot;Hello: World&quot;
+single: 'Single quotes'
+
+# Multi-line
+literal: |
+  Preserves
+  newlines
+folded: &gt;
+  Folds into
+  single line
+</code></pre></p>
+</section><section>
+<h2>YAML Cheat Sheet - Collections</h2><p><pre><code class="language-yaml"># Lists (block style)
+list:
+  - item1
+  - item2
+  - item3
+
+# Lists (flow style)
+list: [item1, item2, item3]
+
+# Dictionaries
+dict:
+  key1: value1
+  key2: value2
+
+# Nested
+nested:
+  level1:
+    level2:
+      - item1
+      - item2
+</code></pre></p>
+</section><section>
+<h2>YAML Cheat Sheet - Advanced</h2><p>```yaml
+<h1>Anchors and aliases</h1>
+base: &base
+  name: Default
+  value: 42</p><p>derived1: *base  # Copy entire base
+derived2:
+  <<: *base      # Merge base
+  extra: field   # Add more</p><h1>Type casting</h1>
+string: !!str 1960
+integer: !!int "42"</p><h1>Multiple documents</h1>
+</section><section>
+<p>document: 1</p>
+</section><section>
+<p>document: 2
+```</p>
+</section><section>
+<h2>Common Patterns for Rules</h2><p><pre><code class="language-yaml"># Rule template
+- id: unique_id
+  name: &quot;Human readable name&quot;
+  description: |
+    Multi-line explanation
+
+  version: &quot;1960&quot;
+
+  conditions:
+    field1: value1
+    field2: value2
+
+  actions:
+    primary: action_name
+
+  references:
+    - &quot;Source citation&quot;
+
+  test_cases:
+    - input: test_input
+      expected: test_output
+</code></pre></p>
+</section><section>
+<h2>End of Presentation</h2><p><strong>YAML</strong>: Simple, powerful, human-friendly</p><p><strong>Perfect for</strong>: Precedence rules in Divinum Officium</p><p><strong>Next</strong>: Apply this knowledge to our project!</p>
+</section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/highlight/highlight.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'slide',
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+        });
+    </script>
+</body>
+</html>

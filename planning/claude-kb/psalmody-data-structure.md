@@ -56,10 +56,38 @@ PSALM:VERS TEXT_ERSTER_HALBVERS * TEXT_ZWEITER_HALBVERS
 | Versreferenz | `109:2` | Psalm:Vers | Psalm 109, Vers 2 |
 | Halbvers-Suffix | `1a`, `1b` | Aufteilung langer Verse | `109:1a`, `109:1b` |
 | Mediatio | `*` | Hauptpause im Vers (Mitte) | `...meo: * Sede...` |
-| Flexa | `†` | Nebenpause bei drei Gliedern | `...impiórum, † et in via...` |
+| Versunterteilung | `‡` (U+2021) | Zusätzliche Verseinteilung (siehe 1.3.1) | `...inaquósa: ‡ sic in sancto...` |
+| Flexa (gerendert) | `†` (U+2020) | Sollte in Quelldateien nicht vorkommen (siehe 1.3.1) | |
 | Akzente | `á é í ó ú ǽ` | Betonungszeichen für den Vortrag | `Dóminus`, `tuórum` |
 | Kreuzzeichen | `+` | Kreuzzeichen bei Benedictus/Magnificat | `Benedíctus + Dóminus` |
 | Sektionsmarker | `(Aleph)` | Hebräische Buchstaben in Psalm 118 | `118:1 (Aleph) Beáti...` |
+
+#### 1.3.1 Versunterteilung: ‡ vs. † (Doppelkreuz vs. Kreuz)
+
+In den Quelldateien kommen zwei ähnliche Kreuzzeichen vor, deren Unterschied
+in der technischen Dokumentation erklärt wird (siehe `Help/technical.html`):
+
+> *The ‡ symbol is used in the files to demark a verse division which is
+> printed as a flexa, i.e., † in the Antiphonale Romanum, Liber Usualis,
+> and Breviarum Monasticum but a mediant, i.e. \*, in the Breviarum Romanum.*
+
+**Bedeutung**: Es handelt sich um **eine einzige Verseinteilung**, die je
+nach liturgischem Buch verschieden dargestellt wird:
+
+| Kontext | Darstellung von `‡` |
+|---------|---------------------|
+| Antiphonale Romanum, Liber Usualis, Breviarium Monasticum | `†` (Flexa – kurze Absenkung im Gesang) |
+| Breviarium Romanum | `*` (Mediante – wie eine normale Vershälfte) |
+
+Das **kanonische Zeichen in den Quelldateien** ist `‡` (U+2021, Double Dagger).
+Die Perl-Engine (`horas.pl`, Funktion `getantcross`) setzt ebenfalls nur
+`\x{2021}` und wandelt es bei der Ausgabe je nach gewählter Darstellung um.
+
+Das Zeichen `†` (U+2020, Single Dagger) kommt dennoch in einigen Psalmdateien
+direkt vor. Laut Dokumentation sollte es dort nicht stehen – es handelt sich
+vermutlich um **Dateninkonsistenzen**, bei denen das Ausgabezeichen statt des
+Quellzeichens eingetragen wurde. Bei der TEI-Migration sollten beide Zeichen
+einheitlich als Versunterteilung behandelt und normalisiert werden.
 
 ### 1.4 Dateiformat der Cantica
 

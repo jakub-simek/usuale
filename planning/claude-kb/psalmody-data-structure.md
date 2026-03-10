@@ -89,6 +89,46 @@ vermutlich um **Dateninkonsistenzen**, bei denen das Ausgabezeichen statt des
 Quellzeichens eingetragen wurde. Bei der TEI-Migration sollten beide Zeichen
 einheitlich als Versunterteilung behandelt und normalisiert werden.
 
+#### 1.3.2 TEI-Repräsentation der Versstruktur
+
+Entscheidung: Verseinschnitte werden als `<caesura/>`-Milestone-Elemente mit
+`@type`-Attribut abgebildet (TEI-Modul `verse`). Keine `<seg>`-Unterteilung
+der Versglieder – der Text bleibt zusammenhängend in `<l>`.
+
+Drei Typen:
+
+| `@type` | Bedeutung | Quelle |
+|---------|-----------|--------|
+| `mediatio` | Hauptpause in der Versmitte (`*`) | Alle Verse |
+| `flexa` | Nebenpause bei dreigliedrigen Versen (`†`) | Feste Flexa |
+| `divisio` | Editionsabhängige Versunterteilung (`‡`) | Flexa oder Mediante je nach Ausgabe |
+
+Beispiel:
+
+```xml
+<!-- Zweigliedriger Vers -->
+<l n="109:2">Virgam virtútis tuæ emíttet Dóminus ex Sion:
+  <caesura type="mediatio"/>
+  domináre in médio inimicórum tuórum.</l>
+
+<!-- Dreigliedriger Vers (feste Flexa) -->
+<l n="62:7">Si memor fui tui super stratum meum,
+  <caesura type="flexa"/>
+  in matutínis meditábor in te:
+  <caesura type="mediatio"/>
+  quia fuísti adjútor meus.</l>
+
+<!-- Editionsabhängige Versunterteilung -->
+<l n="62:3">In terra desérta, et ínvia, et inaquósa:
+  <caesura type="divisio"/>
+  sic in sancto appárui tibi,
+  <caesura type="mediatio"/>
+  ut vidérem virtútem tuam, et glóriam tuam.</l>
+```
+
+Die Darstellungsentscheidung (Flexa vs. Mediante für `divisio`) gehört in die
+YAML-Regeln bzw. ein Stylesheet, nicht ins TEI.
+
 ### 1.4 Dateiformat der Cantica
 
 Identisch zu den Psalmen, aber mit einer Titelzeile in Klammern:

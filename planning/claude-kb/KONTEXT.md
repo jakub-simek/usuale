@@ -67,6 +67,11 @@ Empfehlung: **Fork des Original-Repositorys** anlegen, weil:
 |-------|--------|
 | `psalmody-data-structure.md` | Detailanalyse der Psalmodie: Psalmen, Cantica, Antiphonen, Zuordnungstabellen, Referenzsystem, Rubrikenvarianten. Grundlage fuer TEI-Migration. (2026-03-09) |
 
+### Notensatz (Gregorio)
+| Datei | Inhalt |
+|-------|--------|
+| `gregorio-patch-analysis.md` | Detailvergleich des NR-Patches (NABC-Klammern, St.-Galler-Neumen) mit Upstream Gregorio v6.2.0-beta1. Codepoint-Konfliktanalyse der gregall-Schrift, Merge-Anleitung fuer Lua-Datei und Font. (2026-03-13) |
+
 ### Dokumentation
 | Datei | Inhalt |
 |-------|--------|

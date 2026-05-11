@@ -39,6 +39,7 @@ Empfehlung: **Fork des Original-Repositorys** anlegen, weil:
 | Datei | Inhalt |
 |-------|--------|
 | `tei-data-model.md` | Vollstaendige TEI P5 Spezifikation fuer liturgische Texte (Antiphonen, Psalmen, Lesungen, Responsorien). XML-Schema (RelaxNG), Migrations-Mapping |
+| `antiphon-tei-data-model.md` | Spezifisches TEI-Modell fuer eine Antiphon pro Datei: Variantenapparat, Quellenzitate, externe IDs, Handschriftenzonen, GABC, liturgische Relationen. (2026-05-09) |
 | `precedence-data-model.md` | SQL-Datenbankschema fuer Praezedenzregeln (erstes Konzept, spaeter durch JSON/YAML ersetzt) |
 
 ### Migrationsplanung
@@ -92,7 +93,7 @@ Empfehlung: **Fork des Original-Repositorys** anlegen, weil:
 
 1. **YAML-Praezedenzregeln**: Vollstaendiges YAML-Schema erstellen (bisher nur Beispiele)
 2. ~~**Fork anlegen**~~: Erledigt – Repository `usuale` auf GitLab angelegt
-3. **TEI-Schema fuer Psalmodie**: Konkretes TEI-Format fuer Psalmen/Antiphonen festlegen
+3. **TEI-Schema fuer Psalmodie**: Konkretes TEI-Format fuer Psalmen/Antiphonen festlegen; Antiphon-Einzeldateien sind in `antiphon-tei-data-model.md` entworfen
 4. **Prototyp**: Erste TEI-Konvertierung eines Beispieltages
 4. **Python-Rule-Engine**: Prototyp fuer YAML-basierte Praezedenzberechnung
 5. **Flask-App**: Grundgeruest der Webanwendung

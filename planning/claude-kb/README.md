@@ -23,21 +23,27 @@ This directory contains comprehensive documentation and proposals for the Divinu
    - XPath query examples
    - **Audience**: Technical team, TEI specialists
 
-3. **[precedence-data-model.md](precedence-data-model.md)**
+3. **[antiphon-tei-data-model.md](antiphon-tei-data-model.md)**
+   - TEI model for one-antiphon-per-file encoding
+   - Critical text, source quotations, external identifiers, manuscript zones
+   - GABC notation and liturgical relation model
+   - **Audience**: TEI specialists, chant editors, migration implementers
+
+4. **[precedence-data-model.md](precedence-data-model.md)**
    - SQL database schema for precedence rules
    - Rule engine architecture
    - Version-specific strategies
    - Transfer resolution mechanisms
    - **Audience**: Backend developers, database designers
 
-4. **[json-vs-sql-analysis.md](json-vs-sql-analysis.md)**
+5. **[json-vs-sql-analysis.md](json-vs-sql-analysis.md)**
    - Comprehensive comparison of JSON vs SQL approaches
    - JSON directory structure proposal
    - Python implementation examples
    - Hybrid approach (JSON + SQLite cache)
    - **Audience**: Technical decision-makers
 
-5. **[migration-proposal.md](migration-proposal.md)**
+6. **[migration-proposal.md](migration-proposal.md)**
    - Complete 18-month migration plan
    - Architecture (TEI + JSON + SQLite + Python/Flask)
    - Phased implementation strategy
@@ -45,7 +51,7 @@ This directory contains comprehensive documentation and proposals for the Divinu
    - Resource requirements and timeline
    - **Audience**: Project stakeholders, decision-makers
 
-6. **[mass-migration-addendum.md](mass-migration-addendum.md)**
+7. **[mass-migration-addendum.md](mass-migration-addendum.md)**
    - Extension of migration proposal to include Mass (Missa)
    - TEI structure for Mass propers
    - Updated timeline (21-24 months)
@@ -54,33 +60,33 @@ This directory contains comprehensive documentation and proposals for the Divinu
 
 ### Presentation Materials
 
-7. **[tei-presentation.md](tei-presentation.md)**
+8. **[tei-presentation.md](tei-presentation.md)**
    - Markdown source for TEI proposal presentation
    - 60+ slides covering all aspects
    - Can be edited and customized
    - **Format**: Markdown with YAML frontmatter
 
-8. **[tei-presentation.html](tei-presentation.html)** ⭐
+9. **[tei-presentation.html](tei-presentation.html)** ⭐
    - **Interactive HTML presentation using reveal.js**
    - Fully standalone (no internet required after download)
    - Navigate with arrow keys or click
    - **How to use**: Open in any web browser
    - **URL**: `file:///path/to/tei-presentation.html`
 
-9. **[json-precedence-presentation.md](json-precedence-presentation.md)**
+10. **[json-precedence-presentation.md](json-precedence-presentation.md)**
    - Markdown source for JSON precedence solution presentation
    - 80+ slides covering JSON architecture in detail
    - Deep dive into JSON-based rule system
    - **Format**: Markdown with YAML frontmatter
 
-10. **[json-precedence-presentation.html](json-precedence-presentation.html)** ⭐
+11. **[json-precedence-presentation.html](json-precedence-presentation.html)** ⭐
     - **Interactive HTML presentation using reveal.js**
     - Comprehensive coverage of JSON precedence approach
     - Code examples, rule definitions, migration strategy
     - **How to use**: Open in any web browser
     - **URL**: `file:///path/to/json-precedence-presentation.html`
 
-11. **[convert-presentation.py](convert-presentation.py)**
+12. **[convert-presentation.py](convert-presentation.py)**
     - Python script to convert Markdown to HTML presentation
     - Uses reveal.js for slide rendering
     - Accepts command-line arguments for flexible conversion

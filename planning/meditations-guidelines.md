@@ -45,6 +45,25 @@
 ---
 
 ## 3. Structure of the Meditation
+- Each meditation must include:
+  - a title
+  - a `Textus fundamentalis` section with the liturgical text and reference
+- After the `Textus fundamentalis`, the meditation should normally follow a recognizable movement:
+  - spiritual exposition of the chosen text
+  - biblical and liturgical amplification
+  - patristic and medieval resonance
+  - spiritual application
+  - short conclusion
+- These movements may appear as visible Markdown headings or be woven more fluidly into the meditation.
+- The headings are guides to the meditation's movement, not fixed containers for particular source types.
+- Recommended heading vocabulary:
+  - `## Textus fundamentalis`
+  - `## Expositio spiritualis`
+  - `## Amplificatio biblica` or `## Amplificatio biblica et liturgica`
+  - `## Resonantiae patristicae et mediaevales`
+  - `## Applicatio spiritualis`
+  - `## Conclusio`
+- Required sources such as the Catechismus Romanus and St. Alphonsus should be integrated where they best serve the meditation, not mechanically placed in a final section.
 
 ### a) Title (Inscriptio)
 - Format: *Meditatio de Introitu / Graduali / Evangelio etc.*

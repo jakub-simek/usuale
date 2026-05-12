@@ -18,7 +18,7 @@ Tridentinische Rubriken (Breviarium Romanum, vor 1955). Stundengebet und Messe.
 
 ```
 usuale/
-├── vendor/                      # Git-Submodule (Quellprojekte)
+├── sources/                     # Git-Submodule (Quellen und Quellprojekte)
 │   └── divinum-officium/        # Originaldaten (Perl/CGI + Textdateien)
 ├── data/                        # Migrierte Daten
 │   ├── psalterium/              # Psalmen und Cantica (TEI XML)
@@ -38,10 +38,10 @@ Das Originalprojekt ist als Git-Submodul eingebunden:
 git submodule update --init --recursive
 
 # Submodul auf neuesten Stand bringen
-cd vendor/divinum-officium
+cd sources/divinum-officium
 git pull origin master
 cd ../..
-git add vendor/divinum-officium
+git add sources/divinum-officium
 git commit -m "Update divinum-officium submodule"
 ```
 

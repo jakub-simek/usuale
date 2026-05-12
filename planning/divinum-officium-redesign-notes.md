@@ -93,6 +93,21 @@ occurrence
 = das konkrete Auftreten dieser Feier an einem wirklichen Datum in einem Jahr
 ```
 
+Als lateinischer Terminus fuer `celebration` empfiehlt sich `celebratio`.
+Der Begriff ist kirchlich verstaendlich und neutral genug fuer Sonntage,
+Feste, Feriae, Vigilien, Oktavtage, Rogationen und Kommemorationen. Er ist
+besser geeignet als:
+
+- `festum`, weil das fuer Feriae, Vigilien und Rogationen zu eng ist
+- `sollemnitas`, weil es zu hochrangig klingt
+- `dies liturgicus`, weil es zu stark den Kalendertag betont
+- `officium`, weil es mit Brevier/Office und DO-Dateien verwechselt wuerde
+- `memoria`, weil es besonders fuer Heiligenfeiern zu eng ist
+
+In lateinisch benannten Datenfeldern koennte die Entitaet also `celebratio`
+heissen, waehrend `calendar_assignment` etwa als `assignatio_calendarii`
+modelliert werden kann.
+
 Beispiel fuer ein Heiligenfest:
 
 ```yaml
@@ -145,17 +160,133 @@ liturgical_form:
   id: missa:tempora:pasc5-0
   celebration_id: tempora:pasc5-0
   form: missa
-  source_path: vendor/divinum-officium/web/www/missa/Latin/Tempora/Pasc5-0.txt
+  source_path: sources/divinum-officium/web/www/missa/Latin/Tempora/Pasc5-0.txt
 
 liturgical_form:
   id: officium:tempora:pasc5-0
   celebration_id: tempora:pasc5-0
   form: officium
-  source_path: vendor/divinum-officium/web/www/horas/Latin/Tempora/Pasc5-0.txt
+  source_path: sources/divinum-officium/web/www/horas/Latin/Tempora/Pasc5-0.txt
 ```
 
 So kann eine Meditation ueber den Introitus zugleich den Kontext von Epistel,
 Evangelium und Officium beruecksichtigen.
+
+## Celebration-Register in TEI
+
+Die normalisierten `celebrations` koennen als TEI-basiertes Sachregister nach
+dem Registerschema von heiEDITIONS modelliert werden. Die `celebratio` ist in
+diesem Register nicht das konkrete Auftreten an einem Datum, sondern die
+liturgische Sache selbst: z. B. `Dominica V Post Pascha`, `In Rogationibus` oder
+`S. Benedicti Abbatis`.
+
+Die Grundform ist:
+
+```xml
+<text ana="hc:IndexOfSubjects">
+  <body>
+    <list>
+      <item xml:id="celebratio-temporale-dominica-5-post-pascha">
+        <label xml:lang="la" ana="hc:PreferredAppellation">Dominica V Post Pascha</label>
+        <label xml:lang="de" ana="hc:PreferredAppellation">Fuenfter Sonntag nach Ostern</label>
+        <idno ana="hc:PrivateIdentifier">temporale:dominica-5-post-pascha</idno>
+        <note xml:lang="la">
+          <p>Celebratio temporalis temporis paschalis.</p>
+        </note>
+        <listRef>
+          <desc>Fontes Divinum Officium</desc>
+          <ref target="../sources/divinum-officium/web/www/missa/Latin/Tempora/Pasc5-0.txt">Missa</ref>
+          <ref target="../sources/divinum-officium/web/www/horas/Latin/Tempora/Pasc5-0.txt">Officium</ref>
+        </listRef>
+      </item>
+    </list>
+  </body>
+</text>
+```
+
+Dabei sind einige Schema-Eigenheiten zu beachten:
+
+- Das Register ist ein Sachregister: `text/@ana` steht auf
+  `hc:IndexOfSubjects`.
+- Die einzelnen Feiern stehen als `<item>` in einer einfachen `<list>`.
+- Jedes `<item>` braucht ein stabiles `xml:id`.
+- `<idno>` verwendet nach dem heiEDITIONS-Schema `@ana`, nicht ein freies
+  `@type`.
+- Fuer interne IDs ist `ana="hc:PrivateIdentifier"` geeignet.
+- Pro `<item>` sollte nicht mehrfach derselbe Identifier-Typ verwendet werden;
+  weitere Herkunftsangaben gehoeren deshalb eher in `<listRef>` oder `<note>`.
+- DO-Dateien und DO-Keys bleiben als Quellen- und Konkordanzangaben erhalten,
+  werden aber nicht zur eigentlichen Identitaet der `celebratio`.
+
+## Konstruktion der Register-IDs
+
+Die `xml:id`-Werte der `<item>`-Elemente sollen stabiler sein als die
+bestehenden DO-Dateinamen. Sie sollen die liturgische Identitaet bezeichnen,
+nicht primaer Datum, Dateipfad oder konkreten Kalenderstand.
+
+Empfohlene Grundform:
+
+```text
+celebratio-<bereich>-<sachslug>[-<qualifikator>]
+```
+
+Moegliche Bereiche:
+
+```text
+temporale     beweglicher Jahreskreis
+sanctorale    Heiligen- und Herren-/Marienfeste mit Kalenderdatum
+commune       Commune-Formulare
+votiva        Votivmessen und Votivoffizien
+defuncti      Totenliturgie
+rituale       prozessionale, sakramentale oder rituelle Feiern
+appendix      Anhaenge, Litaneien, Sondertexte
+```
+
+Normalisierungsregeln:
+
+- nur Kleinbuchstaben
+- ASCII-Schreibung ohne Akzente, Ligaturen oder Sonderzeichen
+- Bindestriche als Worttrenner
+- keine Leerzeichen
+- kein Doppelpunkt im `xml:id`
+- nicht mit einer Zahl beginnen
+- Kalenderdaten nur verwenden, wenn das Datum selbst sachlich wesentlich ist
+
+Beispiele:
+
+```xml
+<item xml:id="celebratio-temporale-dominica-5-post-pascha">
+```
+
+```xml
+<item xml:id="celebratio-temporale-rogationes-minores">
+```
+
+```xml
+<item xml:id="celebratio-sanctorale-benedictus-abbas-transitus">
+```
+
+```xml
+<item xml:id="celebratio-sanctorale-benedictus-abbas-translatio">
+```
+
+```xml
+<item xml:id="celebratio-commune-confessoris-pontificis">
+```
+
+```xml
+<item xml:id="celebratio-votiva-sacratissimi-cordis-iesu">
+```
+
+Die interne fachliche ID kann daneben als `idno` stehen:
+
+```xml
+<idno ana="hc:PrivateIdentifier">temporale:dominica-5-post-pascha</idno>
+```
+
+Diese ID darf Doppelpunkt-Syntax verwenden, weil sie nicht `xml:id` ist. Sie
+kann fuer API, Datenbank oder Konkordanzen handlicher sein, waehrend `xml:id`
+fuer TEI-Verweise stabil bleibt.
 
 ## Textmodell
 
@@ -313,6 +444,8 @@ person / mystery / event
 
 `celebration` sollte neutral benannt werden, nicht `feast`, weil das Modell
 auch Sonntage, Feriae, Vigilien, Oktavtage und Kommemorationen aufnehmen muss.
+Der entsprechende lateinische Fachbegriff im eigenen Modell soll `celebratio`
+sein.
 
 ## Leitentscheidung
 

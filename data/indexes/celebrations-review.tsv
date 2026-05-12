@@ -1,0 +1,682 @@
+kind	form	directory	key	path	redirect_ref
+unmatched_source	horas	Appendix	Ante et Post Divinum Officium	sources/divinum-officium/web/www/horas/Latin/Appendix/Ante et Post Divinum Officium.txt	
+unmatched_source	horas	Appendix	Benedictio mensae	sources/divinum-officium/web/www/horas/Latin/Appendix/Benedictio mensae.txt	
+unmatched_source	horas	Appendix	Index	sources/divinum-officium/web/www/horas/Latin/Appendix/Index.txt	
+unmatched_source	horas	Appendix	Itinerarium	sources/divinum-officium/web/www/horas/Latin/Appendix/Itinerarium.txt	
+unmatched_source	horas	Appendix	Litaniae	sources/divinum-officium/web/www/horas/Latin/Appendix/Litaniae.txt	
+unmatched_source	horas	Appendix	Ordo Commendationis Animae	sources/divinum-officium/web/www/horas/Latin/Appendix/Ordo Commendationis Animae.txt	
+unmatched_source	horas	Appendix	Psalmi graduales	sources/divinum-officium/web/www/horas/Latin/Appendix/Psalmi graduales.txt	
+unmatched_source	horas	Appendix	Septem psalmi paenitentiales	sources/divinum-officium/web/www/horas/Latin/Appendix/Septem psalmi paenitentiales.txt	
+unmatched_source	horas	Sancti	01-01	sources/divinum-officium/web/www/horas/Latin/Sancti/01-01.txt	
+unmatched_source	horas	Sancti	01-05	sources/divinum-officium/web/www/horas/Latin/Sancti/01-05.txt	
+unmatched_source	horas	Sancti	01-06	sources/divinum-officium/web/www/horas/Latin/Sancti/01-06.txt	
+unmatched_source	horas	Sancti	01-06n	sources/divinum-officium/web/www/horas/Latin/Sancti/01-06n.txt	
+unmatched_source	horas	Sancti	01-07	sources/divinum-officium/web/www/horas/Latin/Sancti/01-07.txt	
+unmatched_source	horas	Sancti	01-08	sources/divinum-officium/web/www/horas/Latin/Sancti/01-08.txt	
+unmatched_source	horas	Sancti	01-08g	sources/divinum-officium/web/www/horas/Latin/Sancti/01-08g.txt	Sancti/01-08
+unmatched_source	horas	Sancti	01-09	sources/divinum-officium/web/www/horas/Latin/Sancti/01-09.txt	
+unmatched_source	horas	Sancti	01-10	sources/divinum-officium/web/www/horas/Latin/Sancti/01-10.txt	
+unmatched_source	horas	Sancti	01-11	sources/divinum-officium/web/www/horas/Latin/Sancti/01-11.txt	
+unmatched_source	horas	Sancti	01-12	sources/divinum-officium/web/www/horas/Latin/Sancti/01-12.txt	
+unmatched_source	horas	Sancti	01-12t	sources/divinum-officium/web/www/horas/Latin/Sancti/01-12t.txt	
+unmatched_source	horas	Sancti	01-13	sources/divinum-officium/web/www/horas/Latin/Sancti/01-13.txt	
+unmatched_source	horas	Sancti	02-02-quadp	sources/divinum-officium/web/www/horas/Latin/Sancti/02-02-quadp.txt	Sancti/02-02
+unmatched_source	horas	Sancti	02-02	sources/divinum-officium/web/www/horas/Latin/Sancti/02-02.txt	
+unmatched_source	horas	Sancti	02-11	sources/divinum-officium/web/www/horas/Latin/Sancti/02-11.txt	
+unmatched_source	horas	Sancti	03-25	sources/divinum-officium/web/www/horas/Latin/Sancti/03-25.txt	
+unmatched_source	horas	Sancti	04-01C	sources/divinum-officium/web/www/horas/Latin/Sancti/04-01C.txt	
+unmatched_source	horas	Sancti	05-03	sources/divinum-officium/web/www/horas/Latin/Sancti/05-03.txt	
+unmatched_source	horas	Sancti	05-03t	sources/divinum-officium/web/www/horas/Latin/Sancti/05-03t.txt	Sancti/05-03
+unmatched_source	horas	Sancti	05-13n	sources/divinum-officium/web/www/horas/Latin/Sancti/05-13n.txt	
+unmatched_source	horas	Sancti	05-16n	sources/divinum-officium/web/www/horas/Latin/Sancti/05-16n.txt	
+unmatched_source	horas	Sancti	05-31	sources/divinum-officium/web/www/horas/Latin/Sancti/05-31.txt	
+unmatched_source	horas	Sancti	07-02	sources/divinum-officium/web/www/horas/Latin/Sancti/07-02.txt	
+unmatched_source	horas	Sancti	07-02o	sources/divinum-officium/web/www/horas/Latin/Sancti/07-02o.txt	Sancti/07-02
+unmatched_source	horas	Sancti	07-16	sources/divinum-officium/web/www/horas/Latin/Sancti/07-16.txt	
+unmatched_source	horas	Sancti	07-16sab	sources/divinum-officium/web/www/horas/Latin/Sancti/07-16sab.txt	
+unmatched_source	horas	Sancti	08-05	sources/divinum-officium/web/www/horas/Latin/Sancti/08-05.txt	
+unmatched_source	horas	Sancti	08-06	sources/divinum-officium/web/www/horas/Latin/Sancti/08-06.txt	
+unmatched_source	horas	Sancti	08-14	sources/divinum-officium/web/www/horas/Latin/Sancti/08-14.txt	
+unmatched_source	horas	Sancti	08-15	sources/divinum-officium/web/www/horas/Latin/Sancti/08-15.txt	
+unmatched_source	horas	Sancti	08-15t	sources/divinum-officium/web/www/horas/Latin/Sancti/08-15t.txt	
+unmatched_source	horas	Sancti	08-17bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/08-17bmv.txt	
+unmatched_source	horas	Sancti	08-20bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/08-20bmv.txt	
+unmatched_source	horas	Sancti	08-22	sources/divinum-officium/web/www/horas/Latin/Sancti/08-22.txt	
+unmatched_source	horas	Sancti	08-22t	sources/divinum-officium/web/www/horas/Latin/Sancti/08-22t.txt	
+unmatched_source	horas	Sancti	09-08	sources/divinum-officium/web/www/horas/Latin/Sancti/09-08.txt	
+unmatched_source	horas	Sancti	09-09bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/09-09bmv.txt	
+unmatched_source	horas	Sancti	09-09dom-oct	sources/divinum-officium/web/www/horas/Latin/Sancti/09-09dom-oct.txt	Sancti/09-12
+unmatched_source	horas	Sancti	09-10bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/09-10bmv.txt	
+unmatched_source	horas	Sancti	09-11bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/09-11bmv.txt	
+unmatched_source	horas	Sancti	09-12	sources/divinum-officium/web/www/horas/Latin/Sancti/09-12.txt	
+unmatched_source	horas	Sancti	09-12bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/09-12bmv.txt	
+unmatched_source	horas	Sancti	09-13bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/09-13bmv.txt	
+unmatched_source	horas	Sancti	09-14	sources/divinum-officium/web/www/horas/Latin/Sancti/09-14.txt	
+unmatched_source	horas	Sancti	09-14bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/09-14bmv.txt	
+unmatched_source	horas	Sancti	09-15	sources/divinum-officium/web/www/horas/Latin/Sancti/09-15.txt	
+unmatched_source	horas	Sancti	09-15t	sources/divinum-officium/web/www/horas/Latin/Sancti/09-15t.txt	
+unmatched_source	horas	Sancti	09-24	sources/divinum-officium/web/www/horas/Latin/Sancti/09-24.txt	
+unmatched_source	horas	Sancti	09-DT	sources/divinum-officium/web/www/horas/Latin/Sancti/09-DT.txt	Sancti/09-15
+unmatched_source	horas	Sancti	09-dom-oct	sources/divinum-officium/web/www/horas/Latin/Sancti/09-dom-oct.txt	Sancti/09-12
+unmatched_source	horas	Sancti	09-sab-oct	sources/divinum-officium/web/www/horas/Latin/Sancti/09-sab-oct.txt	
+unmatched_source	horas	Sancti	10-07	sources/divinum-officium/web/www/horas/Latin/Sancti/10-07.txt	
+unmatched_source	horas	Sancti	10-DP	sources/divinum-officium/web/www/horas/Latin/Sancti/10-DP.txt	Sancti/10-07
+unmatched_source	horas	Sancti	10-DU	sources/divinum-officium/web/www/horas/Latin/Sancti/10-DU.txt	
+unmatched_source	horas	Sancti	10-DUr	sources/divinum-officium/web/www/horas/Latin/Sancti/10-DUr.txt	Sancti/10-DU
+unmatched_source	horas	Sancti	11-02	sources/divinum-officium/web/www/horas/Latin/Sancti/11-02.txt	
+unmatched_source	horas	Sancti	11-03sec	sources/divinum-officium/web/www/horas/Latin/Sancti/11-03sec.txt	Sancti/11-02
+unmatched_source	horas	Sancti	11-09	sources/divinum-officium/web/www/horas/Latin/Sancti/11-09.txt	
+unmatched_source	horas	Sancti	11-18	sources/divinum-officium/web/www/horas/Latin/Sancti/11-18.txt	Sancti/11-18o
+unmatched_source	horas	Sancti	11-18o	sources/divinum-officium/web/www/horas/Latin/Sancti/11-18o.txt	
+unmatched_source	horas	Sancti	11-18r	sources/divinum-officium/web/www/horas/Latin/Sancti/11-18r.txt	
+unmatched_source	horas	Sancti	11-21	sources/divinum-officium/web/www/horas/Latin/Sancti/11-21.txt	
+unmatched_source	horas	Sancti	12-08	sources/divinum-officium/web/www/horas/Latin/Sancti/12-08.txt	
+unmatched_source	horas	Sancti	12-08o	sources/divinum-officium/web/www/horas/Latin/Sancti/12-08o.txt	
+unmatched_source	horas	Sancti	12-09-da	sources/divinum-officium/web/www/horas/Latin/Sancti/12-09-da.txt	Sancti/12-09bmv
+unmatched_source	horas	Sancti	12-09bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/12-09bmv.txt	
+unmatched_source	horas	Sancti	12-10bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/12-10bmv.txt	
+unmatched_source	horas	Sancti	12-11bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/12-11bmv.txt	
+unmatched_source	horas	Sancti	12-12a	sources/divinum-officium/web/www/horas/Latin/Sancti/12-12a.txt	
+unmatched_source	horas	Sancti	12-12bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/12-12bmv.txt	
+unmatched_source	horas	Sancti	12-12n	sources/divinum-officium/web/www/horas/Latin/Sancti/12-12n.txt	
+unmatched_source	horas	Sancti	12-13bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/12-13bmv.txt	
+unmatched_source	horas	Sancti	12-14bmv	sources/divinum-officium/web/www/horas/Latin/Sancti/12-14bmv.txt	
+unmatched_source	horas	Sancti	12-15	sources/divinum-officium/web/www/horas/Latin/Sancti/12-15.txt	
+unmatched_source	horas	Sancti	12-24	sources/divinum-officium/web/www/horas/Latin/Sancti/12-24.txt	
+unmatched_source	horas	Sancti	12-24o	sources/divinum-officium/web/www/horas/Latin/Sancti/12-24o.txt	Sancti/12-24
+unmatched_source	horas	Sancti	12-24s	sources/divinum-officium/web/www/horas/Latin/Sancti/12-24s.txt	Sancti/12-24
+unmatched_source	horas	Sancti	12-24so	sources/divinum-officium/web/www/horas/Latin/Sancti/12-24so.txt	Sancti/12-24
+unmatched_source	horas	Sancti	12-25	sources/divinum-officium/web/www/horas/Latin/Sancti/12-25.txt	
+unmatched_source	horas	SanctiCist	01-01	sources/divinum-officium/web/www/horas/Latin/SanctiCist/01-01.txt	Sancti/01-01
+unmatched_source	horas	SanctiCist	01-05	sources/divinum-officium/web/www/horas/Latin/SanctiCist/01-05.txt	Sancti/01-05
+unmatched_source	horas	SanctiCist	01-06	sources/divinum-officium/web/www/horas/Latin/SanctiCist/01-06.txt	Sancti/01-06
+unmatched_source	horas	SanctiCist	01-07	sources/divinum-officium/web/www/horas/Latin/SanctiCist/01-07.txt	Sancti/01-07
+unmatched_source	horas	SanctiCist	01-08	sources/divinum-officium/web/www/horas/Latin/SanctiCist/01-08.txt	Sancti/01-08
+unmatched_source	horas	SanctiCist	01-09	sources/divinum-officium/web/www/horas/Latin/SanctiCist/01-09.txt	Sancti/01-09
+unmatched_source	horas	SanctiCist	01-10	sources/divinum-officium/web/www/horas/Latin/SanctiCist/01-10.txt	Sancti/01-10
+unmatched_source	horas	SanctiCist	01-11	sources/divinum-officium/web/www/horas/Latin/SanctiCist/01-11.txt	Sancti/01-11
+unmatched_source	horas	SanctiCist	01-12	sources/divinum-officium/web/www/horas/Latin/SanctiCist/01-12.txt	Sancti/01-12
+unmatched_source	horas	SanctiCist	01-13	sources/divinum-officium/web/www/horas/Latin/SanctiCist/01-13.txt	Sancti/01-13
+unmatched_source	horas	SanctiCist	01-19C	sources/divinum-officium/web/www/horas/Latin/SanctiCist/01-19C.txt	
+unmatched_source	horas	SanctiCist	01-30C	sources/divinum-officium/web/www/horas/Latin/SanctiCist/01-30C.txt	
+unmatched_source	horas	SanctiCist	02-02	sources/divinum-officium/web/www/horas/Latin/SanctiCist/02-02.txt	Sancti/02-02
+unmatched_source	horas	SanctiCist	02-03C	sources/divinum-officium/web/www/horas/Latin/SanctiCist/02-03C.txt	
+unmatched_source	horas	SanctiCist	02-06C	sources/divinum-officium/web/www/horas/Latin/SanctiCist/02-06C.txt	
+unmatched_source	horas	SanctiCist	02-18C	sources/divinum-officium/web/www/horas/Latin/SanctiCist/02-18C.txt	
+unmatched_source	horas	SanctiCist	03-25	sources/divinum-officium/web/www/horas/Latin/SanctiCist/03-25.txt	Sancti/03-25
+unmatched_source	horas	SanctiCist	04-01C	sources/divinum-officium/web/www/horas/Latin/SanctiCist/04-01C.txt	
+unmatched_source	horas	SanctiCist	04-22C	sources/divinum-officium/web/www/horas/Latin/SanctiCist/04-22C.txt	
+unmatched_source	horas	SanctiCist	05-03	sources/divinum-officium/web/www/horas/Latin/SanctiCist/05-03.txt	SanctiM/05-03
+unmatched_source	horas	SanctiCist	06-01AV	sources/divinum-officium/web/www/horas/Latin/SanctiCist/06-01AV.txt	
+unmatched_source	horas	SanctiCist	07-02	sources/divinum-officium/web/www/horas/Latin/SanctiCist/07-02.txt	Sancti/07-02
+unmatched_source	horas	SanctiCist	08-22C	sources/divinum-officium/web/www/horas/Latin/SanctiCist/08-22C.txt	Sancti/08-22
+unmatched_source	horas	SanctiCist	09-08	sources/divinum-officium/web/www/horas/Latin/SanctiCist/09-08.txt	Sancti/09-08
+unmatched_source	horas	SanctiCist	12-07C	sources/divinum-officium/web/www/horas/Latin/SanctiCist/12-07C.txt	
+unmatched_source	horas	SanctiCist	12-24	sources/divinum-officium/web/www/horas/Latin/SanctiCist/12-24.txt	Sancti/12-24
+unmatched_source	horas	SanctiCist	12-25	sources/divinum-officium/web/www/horas/Latin/SanctiCist/12-25.txt	Sancti/12-25
+unmatched_source	horas	SanctiCist	12-29C	sources/divinum-officium/web/www/horas/Latin/SanctiCist/12-29C.txt	
+unmatched_source	horas	SanctiM	01-01	sources/divinum-officium/web/www/horas/Latin/SanctiM/01-01.txt	Sancti/01-01
+unmatched_source	horas	SanctiM	01-05	sources/divinum-officium/web/www/horas/Latin/SanctiM/01-05.txt	Sancti/01-05
+unmatched_source	horas	SanctiM	01-06	sources/divinum-officium/web/www/horas/Latin/SanctiM/01-06.txt	Sancti/01-06
+unmatched_source	horas	SanctiM	01-07	sources/divinum-officium/web/www/horas/Latin/SanctiM/01-07.txt	Sancti/01-07
+unmatched_source	horas	SanctiM	01-08	sources/divinum-officium/web/www/horas/Latin/SanctiM/01-08.txt	Sancti/01-08
+unmatched_source	horas	SanctiM	01-09	sources/divinum-officium/web/www/horas/Latin/SanctiM/01-09.txt	Sancti/01-09
+unmatched_source	horas	SanctiM	01-10	sources/divinum-officium/web/www/horas/Latin/SanctiM/01-10.txt	Sancti/01-10
+unmatched_source	horas	SanctiM	01-11	sources/divinum-officium/web/www/horas/Latin/SanctiM/01-11.txt	Sancti/01-11
+unmatched_source	horas	SanctiM	01-12	sources/divinum-officium/web/www/horas/Latin/SanctiM/01-12.txt	Sancti/01-12
+unmatched_source	horas	SanctiM	01-12t	sources/divinum-officium/web/www/horas/Latin/SanctiM/01-12t.txt	Sancti/01-12t
+unmatched_source	horas	SanctiM	01-13	sources/divinum-officium/web/www/horas/Latin/SanctiM/01-13.txt	Sancti/01-13
+unmatched_source	horas	SanctiM	01-31b	sources/divinum-officium/web/www/horas/Latin/SanctiM/01-31b.txt	
+unmatched_source	horas	SanctiM	02-02	sources/divinum-officium/web/www/horas/Latin/SanctiM/02-02.txt	Sancti/02-02
+unmatched_source	horas	SanctiM	02-08b	sources/divinum-officium/web/www/horas/Latin/SanctiM/02-08b.txt	
+unmatched_source	horas	SanctiM	02-11b	sources/divinum-officium/web/www/horas/Latin/SanctiM/02-11b.txt	Sancti/02-11
+unmatched_source	horas	SanctiM	02-12b	sources/divinum-officium/web/www/horas/Latin/SanctiM/02-12b.txt	
+unmatched_source	horas	SanctiM	02-18b	sources/divinum-officium/web/www/horas/Latin/SanctiM/02-18b.txt	
+unmatched_source	horas	SanctiM	03-08b	sources/divinum-officium/web/www/horas/Latin/SanctiM/03-08b.txt	
+unmatched_source	horas	SanctiM	03-25	sources/divinum-officium/web/www/horas/Latin/SanctiM/03-25.txt	Sancti/03-25
+unmatched_source	horas	SanctiM	04-28b	sources/divinum-officium/web/www/horas/Latin/SanctiM/04-28b.txt	
+unmatched_source	horas	SanctiM	05-03	sources/divinum-officium/web/www/horas/Latin/SanctiM/05-03.txt	Sancti/05-03
+unmatched_source	horas	SanctiM	05-03t	sources/divinum-officium/web/www/horas/Latin/SanctiM/05-03t.txt	SanctiM/05-03
+unmatched_source	horas	SanctiM	05-16b	sources/divinum-officium/web/www/horas/Latin/SanctiM/05-16b.txt	
+unmatched_source	horas	SanctiM	05-30b	sources/divinum-officium/web/www/horas/Latin/SanctiM/05-30b.txt	
+unmatched_source	horas	SanctiM	07-02	sources/divinum-officium/web/www/horas/Latin/SanctiM/07-02.txt	Sancti/07-02
+unmatched_source	horas	SanctiM	07-16	sources/divinum-officium/web/www/horas/Latin/SanctiM/07-16.txt	Sancti/07-16
+unmatched_source	horas	SanctiM	07-30b	sources/divinum-officium/web/www/horas/Latin/SanctiM/07-30b.txt	
+unmatched_source	horas	SanctiM	08-05	sources/divinum-officium/web/www/horas/Latin/SanctiM/08-05.txt	Sancti/08-05
+unmatched_source	horas	SanctiM	08-06	sources/divinum-officium/web/www/horas/Latin/SanctiM/08-06.txt	Sancti/08-06
+unmatched_source	horas	SanctiM	08-08b	sources/divinum-officium/web/www/horas/Latin/SanctiM/08-08b.txt	Sancti/08-08r
+unmatched_source	horas	SanctiM	08-14	sources/divinum-officium/web/www/horas/Latin/SanctiM/08-14.txt	Sancti/08-14
+unmatched_source	horas	SanctiM	08-15	sources/divinum-officium/web/www/horas/Latin/SanctiM/08-15.txt	SanctiM/08-15t
+unmatched_source	horas	SanctiM	08-15t	sources/divinum-officium/web/www/horas/Latin/SanctiM/08-15t.txt	Sancti/08-15t
+unmatched_source	horas	SanctiM	08-17bmv	sources/divinum-officium/web/www/horas/Latin/SanctiM/08-17bmv.txt	Sancti/08-17bmv
+unmatched_source	horas	SanctiM	08-22b	sources/divinum-officium/web/www/horas/Latin/SanctiM/08-22b.txt	Sancti/08-22
+unmatched_source	horas	SanctiM	09-08	sources/divinum-officium/web/www/horas/Latin/SanctiM/09-08.txt	Sancti/09-08
+unmatched_source	horas	SanctiM	09-09bmv	sources/divinum-officium/web/www/horas/Latin/SanctiM/09-09bmv.txt	Sancti/09-09bmv
+unmatched_source	horas	SanctiM	09-11bmv	sources/divinum-officium/web/www/horas/Latin/SanctiM/09-11bmv.txt	Sancti/09-11bmv
+unmatched_source	horas	SanctiM	09-12	sources/divinum-officium/web/www/horas/Latin/SanctiM/09-12.txt	Sancti/09-12
+unmatched_source	horas	SanctiM	09-12bmv	sources/divinum-officium/web/www/horas/Latin/SanctiM/09-12bmv.txt	Sancti/09-12bmv
+unmatched_source	horas	SanctiM	09-13bmv	sources/divinum-officium/web/www/horas/Latin/SanctiM/09-13bmv.txt	Sancti/09-13bmv
+unmatched_source	horas	SanctiM	09-14	sources/divinum-officium/web/www/horas/Latin/SanctiM/09-14.txt	Sancti/09-14
+unmatched_source	horas	SanctiM	09-15	sources/divinum-officium/web/www/horas/Latin/SanctiM/09-15.txt	Sancti/09-15
+unmatched_source	horas	SanctiM	09-15b	sources/divinum-officium/web/www/horas/Latin/SanctiM/09-15b.txt	Sancti/09-15
+unmatched_source	horas	SanctiM	09-15t	sources/divinum-officium/web/www/horas/Latin/SanctiM/09-15t.txt	SanctiM/09-08
+unmatched_source	horas	SanctiM	09-22b	sources/divinum-officium/web/www/horas/Latin/SanctiM/09-22b.txt	
+unmatched_source	horas	SanctiM	10-03b	sources/divinum-officium/web/www/horas/Latin/SanctiM/10-03b.txt	
+unmatched_source	horas	SanctiM	10-07	sources/divinum-officium/web/www/horas/Latin/SanctiM/10-07.txt	Sancti/10-07
+unmatched_source	horas	SanctiM	10-07b	sources/divinum-officium/web/www/horas/Latin/SanctiM/10-07b.txt	SanctiM/10-07
+unmatched_source	horas	SanctiM	10-08b	sources/divinum-officium/web/www/horas/Latin/SanctiM/10-08b.txt	
+unmatched_source	horas	SanctiM	10-13b	sources/divinum-officium/web/www/horas/Latin/SanctiM/10-13b.txt	
+unmatched_source	horas	SanctiM	10-23b	sources/divinum-officium/web/www/horas/Latin/SanctiM/10-23b.txt	
+unmatched_source	horas	SanctiM	10-DU	sources/divinum-officium/web/www/horas/Latin/SanctiM/10-DU.txt	Sancti/10-DU
+unmatched_source	horas	SanctiM	11-02	sources/divinum-officium/web/www/horas/Latin/SanctiM/11-02.txt	Sancti/11-02
+unmatched_source	horas	SanctiM	11-03sec	sources/divinum-officium/web/www/horas/Latin/SanctiM/11-03sec.txt	SanctiM/11-02
+unmatched_source	horas	SanctiM	11-09	sources/divinum-officium/web/www/horas/Latin/SanctiM/11-09.txt	Sancti/11-09
+unmatched_source	horas	SanctiM	11-14M	sources/divinum-officium/web/www/horas/Latin/SanctiM/11-14M.txt	SanctiM/11-02
+unmatched_source	horas	SanctiM	11-18r	sources/divinum-officium/web/www/horas/Latin/SanctiM/11-18r.txt	Sancti/11-18r
+unmatched_source	horas	SanctiM	11-21	sources/divinum-officium/web/www/horas/Latin/SanctiM/11-21.txt	Sancti/11-21
+unmatched_source	horas	SanctiM	12-08	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-08.txt	Sancti/12-08
+unmatched_source	horas	SanctiM	12-08o	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-08o.txt	Sancti/12-08o
+unmatched_source	horas	SanctiM	12-09bmv	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-09bmv.txt	Sancti/12-09bmv
+unmatched_source	horas	SanctiM	12-10bmv	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-10bmv.txt	Sancti/12-10bmv
+unmatched_source	horas	SanctiM	12-11bmv	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-11bmv.txt	Sancti/12-11bmv
+unmatched_source	horas	SanctiM	12-12b	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-12b.txt	Sancti/12-12n
+unmatched_source	horas	SanctiM	12-12bmv	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-12bmv.txt	Sancti/12-12bmv
+unmatched_source	horas	SanctiM	12-13	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-13.txt	
+unmatched_source	horas	SanctiM	12-13b	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-13b.txt	SanctiM/12-13
+unmatched_source	horas	SanctiM	12-14bmv	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-14bmv.txt	Sancti/12-14bmv
+unmatched_source	horas	SanctiM	12-15	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-15.txt	Sancti/12-15
+unmatched_source	horas	SanctiM	12-24	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-24.txt	Sancti/12-24
+unmatched_source	horas	SanctiM	12-24s	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-24s.txt	SanctiM/12-24
+unmatched_source	horas	SanctiM	12-25	sources/divinum-officium/web/www/horas/Latin/SanctiM/12-25.txt	Sancti/12-25
+unmatched_source	horas	SanctiOP	01-01	sources/divinum-officium/web/www/horas/Latin/SanctiOP/01-01.txt	Sancti/01-01
+unmatched_source	horas	SanctiOP	01-06	sources/divinum-officium/web/www/horas/Latin/SanctiOP/01-06.txt	Sancti/01-06
+unmatched_source	horas	SanctiOP	01-07	sources/divinum-officium/web/www/horas/Latin/SanctiOP/01-07.txt	Sancti/01-07
+unmatched_source	horas	SanctiOP	01-08	sources/divinum-officium/web/www/horas/Latin/SanctiOP/01-08.txt	Sancti/01-08
+unmatched_source	horas	SanctiOP	01-09	sources/divinum-officium/web/www/horas/Latin/SanctiOP/01-09.txt	Sancti/01-09
+unmatched_source	horas	SanctiOP	01-10	sources/divinum-officium/web/www/horas/Latin/SanctiOP/01-10.txt	Sancti/01-10
+unmatched_source	horas	SanctiOP	01-11	sources/divinum-officium/web/www/horas/Latin/SanctiOP/01-11.txt	Sancti/01-11
+unmatched_source	horas	SanctiOP	01-12	sources/divinum-officium/web/www/horas/Latin/SanctiOP/01-12.txt	Sancti/01-12
+unmatched_source	horas	SanctiOP	01-13	sources/divinum-officium/web/www/horas/Latin/SanctiOP/01-13.txt	Sancti/01-13
+unmatched_source	horas	SanctiOP	04-24OP	sources/divinum-officium/web/www/horas/Latin/SanctiOP/04-24OP.txt	
+unmatched_source	horas	SanctiOP	05-08OP	sources/divinum-officium/web/www/horas/Latin/SanctiOP/05-08OP.txt	
+unmatched_source	horas	SanctiOP	07-06OP	sources/divinum-officium/web/www/horas/Latin/SanctiOP/07-06OP.txt	
+unmatched_source	horas	SanctiOP	09-05OP	sources/divinum-officium/web/www/horas/Latin/SanctiOP/09-05OP.txt	
+unmatched_source	horas	SanctiOP	10-22OP	sources/divinum-officium/web/www/horas/Latin/SanctiOP/10-22OP.txt	
+unmatched_source	horas	SanctiOP	10-25OP	sources/divinum-officium/web/www/horas/Latin/SanctiOP/10-25OP.txt	
+unmatched_source	horas	SanctiOP	10-DUr	sources/divinum-officium/web/www/horas/Latin/SanctiOP/10-DUr.txt	Sancti/10-DUr
+unmatched_source	horas	SanctiOP	11-14M	sources/divinum-officium/web/www/horas/Latin/SanctiOP/11-14M.txt	SanctiM/11-14M
+unmatched_source	horas	SanctiOP	12-22OP	sources/divinum-officium/web/www/horas/Latin/SanctiOP/12-22OP.txt	
+unmatched_source	horas	SanctiOP	12-24	sources/divinum-officium/web/www/horas/Latin/SanctiOP/12-24.txt	Sancti/12-24
+unmatched_source	horas	SanctiOP	12-25	sources/divinum-officium/web/www/horas/Latin/SanctiOP/12-25.txt	Sancti/12-25
+unmatched_source	horas	Tempora	081-0	sources/divinum-officium/web/www/horas/Latin/Tempora/081-0.txt	
+unmatched_source	horas	Tempora	081-1	sources/divinum-officium/web/www/horas/Latin/Tempora/081-1.txt	
+unmatched_source	horas	Tempora	081-2	sources/divinum-officium/web/www/horas/Latin/Tempora/081-2.txt	
+unmatched_source	horas	Tempora	081-3	sources/divinum-officium/web/www/horas/Latin/Tempora/081-3.txt	
+unmatched_source	horas	Tempora	081-4	sources/divinum-officium/web/www/horas/Latin/Tempora/081-4.txt	
+unmatched_source	horas	Tempora	081-5	sources/divinum-officium/web/www/horas/Latin/Tempora/081-5.txt	
+unmatched_source	horas	Tempora	081-6	sources/divinum-officium/web/www/horas/Latin/Tempora/081-6.txt	
+unmatched_source	horas	Tempora	082-0	sources/divinum-officium/web/www/horas/Latin/Tempora/082-0.txt	
+unmatched_source	horas	Tempora	082-1	sources/divinum-officium/web/www/horas/Latin/Tempora/082-1.txt	
+unmatched_source	horas	Tempora	082-2	sources/divinum-officium/web/www/horas/Latin/Tempora/082-2.txt	
+unmatched_source	horas	Tempora	082-3	sources/divinum-officium/web/www/horas/Latin/Tempora/082-3.txt	
+unmatched_source	horas	Tempora	082-4	sources/divinum-officium/web/www/horas/Latin/Tempora/082-4.txt	
+unmatched_source	horas	Tempora	082-5	sources/divinum-officium/web/www/horas/Latin/Tempora/082-5.txt	
+unmatched_source	horas	Tempora	082-6	sources/divinum-officium/web/www/horas/Latin/Tempora/082-6.txt	
+unmatched_source	horas	Tempora	083-0	sources/divinum-officium/web/www/horas/Latin/Tempora/083-0.txt	
+unmatched_source	horas	Tempora	083-1	sources/divinum-officium/web/www/horas/Latin/Tempora/083-1.txt	
+unmatched_source	horas	Tempora	083-2	sources/divinum-officium/web/www/horas/Latin/Tempora/083-2.txt	
+unmatched_source	horas	Tempora	083-3	sources/divinum-officium/web/www/horas/Latin/Tempora/083-3.txt	
+unmatched_source	horas	Tempora	083-4	sources/divinum-officium/web/www/horas/Latin/Tempora/083-4.txt	
+unmatched_source	horas	Tempora	083-5	sources/divinum-officium/web/www/horas/Latin/Tempora/083-5.txt	
+unmatched_source	horas	Tempora	083-6	sources/divinum-officium/web/www/horas/Latin/Tempora/083-6.txt	
+unmatched_source	horas	Tempora	084-0	sources/divinum-officium/web/www/horas/Latin/Tempora/084-0.txt	
+unmatched_source	horas	Tempora	084-1	sources/divinum-officium/web/www/horas/Latin/Tempora/084-1.txt	
+unmatched_source	horas	Tempora	084-2	sources/divinum-officium/web/www/horas/Latin/Tempora/084-2.txt	
+unmatched_source	horas	Tempora	084-3	sources/divinum-officium/web/www/horas/Latin/Tempora/084-3.txt	
+unmatched_source	horas	Tempora	084-4	sources/divinum-officium/web/www/horas/Latin/Tempora/084-4.txt	
+unmatched_source	horas	Tempora	084-5	sources/divinum-officium/web/www/horas/Latin/Tempora/084-5.txt	
+unmatched_source	horas	Tempora	084-6	sources/divinum-officium/web/www/horas/Latin/Tempora/084-6.txt	
+unmatched_source	horas	Tempora	085-0	sources/divinum-officium/web/www/horas/Latin/Tempora/085-0.txt	
+unmatched_source	horas	Tempora	085-1	sources/divinum-officium/web/www/horas/Latin/Tempora/085-1.txt	
+unmatched_source	horas	Tempora	085-2	sources/divinum-officium/web/www/horas/Latin/Tempora/085-2.txt	
+unmatched_source	horas	Tempora	085-3	sources/divinum-officium/web/www/horas/Latin/Tempora/085-3.txt	
+unmatched_source	horas	Tempora	085-4	sources/divinum-officium/web/www/horas/Latin/Tempora/085-4.txt	
+unmatched_source	horas	Tempora	085-5	sources/divinum-officium/web/www/horas/Latin/Tempora/085-5.txt	
+unmatched_source	horas	Tempora	085-6	sources/divinum-officium/web/www/horas/Latin/Tempora/085-6.txt	
+unmatched_source	horas	Tempora	091-0	sources/divinum-officium/web/www/horas/Latin/Tempora/091-0.txt	
+unmatched_source	horas	Tempora	091-1	sources/divinum-officium/web/www/horas/Latin/Tempora/091-1.txt	
+unmatched_source	horas	Tempora	091-2	sources/divinum-officium/web/www/horas/Latin/Tempora/091-2.txt	
+unmatched_source	horas	Tempora	091-3	sources/divinum-officium/web/www/horas/Latin/Tempora/091-3.txt	
+unmatched_source	horas	Tempora	091-4	sources/divinum-officium/web/www/horas/Latin/Tempora/091-4.txt	
+unmatched_source	horas	Tempora	091-5	sources/divinum-officium/web/www/horas/Latin/Tempora/091-5.txt	
+unmatched_source	horas	Tempora	091-6	sources/divinum-officium/web/www/horas/Latin/Tempora/091-6.txt	
+unmatched_source	horas	Tempora	092-0	sources/divinum-officium/web/www/horas/Latin/Tempora/092-0.txt	
+unmatched_source	horas	Tempora	092-1	sources/divinum-officium/web/www/horas/Latin/Tempora/092-1.txt	
+unmatched_source	horas	Tempora	092-2	sources/divinum-officium/web/www/horas/Latin/Tempora/092-2.txt	
+unmatched_source	horas	Tempora	092-3	sources/divinum-officium/web/www/horas/Latin/Tempora/092-3.txt	
+unmatched_source	horas	Tempora	092-4	sources/divinum-officium/web/www/horas/Latin/Tempora/092-4.txt	
+unmatched_source	horas	Tempora	092-5	sources/divinum-officium/web/www/horas/Latin/Tempora/092-5.txt	
+unmatched_source	horas	Tempora	092-6	sources/divinum-officium/web/www/horas/Latin/Tempora/092-6.txt	
+unmatched_source	horas	Tempora	093-0	sources/divinum-officium/web/www/horas/Latin/Tempora/093-0.txt	
+unmatched_source	horas	Tempora	093-1	sources/divinum-officium/web/www/horas/Latin/Tempora/093-1.txt	
+unmatched_source	horas	Tempora	093-2	sources/divinum-officium/web/www/horas/Latin/Tempora/093-2.txt	
+unmatched_source	horas	Tempora	093-4	sources/divinum-officium/web/www/horas/Latin/Tempora/093-4.txt	
+unmatched_source	horas	Tempora	094-0	sources/divinum-officium/web/www/horas/Latin/Tempora/094-0.txt	
+unmatched_source	horas	Tempora	094-1	sources/divinum-officium/web/www/horas/Latin/Tempora/094-1.txt	
+unmatched_source	horas	Tempora	094-2	sources/divinum-officium/web/www/horas/Latin/Tempora/094-2.txt	
+unmatched_source	horas	Tempora	094-3	sources/divinum-officium/web/www/horas/Latin/Tempora/094-3.txt	
+unmatched_source	horas	Tempora	094-4	sources/divinum-officium/web/www/horas/Latin/Tempora/094-4.txt	
+unmatched_source	horas	Tempora	094-5	sources/divinum-officium/web/www/horas/Latin/Tempora/094-5.txt	
+unmatched_source	horas	Tempora	094-6	sources/divinum-officium/web/www/horas/Latin/Tempora/094-6.txt	
+unmatched_source	horas	Tempora	095-0	sources/divinum-officium/web/www/horas/Latin/Tempora/095-0.txt	
+unmatched_source	horas	Tempora	095-1	sources/divinum-officium/web/www/horas/Latin/Tempora/095-1.txt	
+unmatched_source	horas	Tempora	095-2	sources/divinum-officium/web/www/horas/Latin/Tempora/095-2.txt	
+unmatched_source	horas	Tempora	095-3	sources/divinum-officium/web/www/horas/Latin/Tempora/095-3.txt	
+unmatched_source	horas	Tempora	095-4	sources/divinum-officium/web/www/horas/Latin/Tempora/095-4.txt	
+unmatched_source	horas	Tempora	095-5	sources/divinum-officium/web/www/horas/Latin/Tempora/095-5.txt	
+unmatched_source	horas	Tempora	095-6	sources/divinum-officium/web/www/horas/Latin/Tempora/095-6.txt	
+unmatched_source	horas	Tempora	101-0	sources/divinum-officium/web/www/horas/Latin/Tempora/101-0.txt	
+unmatched_source	horas	Tempora	101-1	sources/divinum-officium/web/www/horas/Latin/Tempora/101-1.txt	
+unmatched_source	horas	Tempora	101-2	sources/divinum-officium/web/www/horas/Latin/Tempora/101-2.txt	
+unmatched_source	horas	Tempora	101-3	sources/divinum-officium/web/www/horas/Latin/Tempora/101-3.txt	
+unmatched_source	horas	Tempora	101-4	sources/divinum-officium/web/www/horas/Latin/Tempora/101-4.txt	
+unmatched_source	horas	Tempora	101-5	sources/divinum-officium/web/www/horas/Latin/Tempora/101-5.txt	
+unmatched_source	horas	Tempora	101-6	sources/divinum-officium/web/www/horas/Latin/Tempora/101-6.txt	
+unmatched_source	horas	Tempora	102-0	sources/divinum-officium/web/www/horas/Latin/Tempora/102-0.txt	
+unmatched_source	horas	Tempora	102-1	sources/divinum-officium/web/www/horas/Latin/Tempora/102-1.txt	
+unmatched_source	horas	Tempora	102-2	sources/divinum-officium/web/www/horas/Latin/Tempora/102-2.txt	
+unmatched_source	horas	Tempora	102-3	sources/divinum-officium/web/www/horas/Latin/Tempora/102-3.txt	
+unmatched_source	horas	Tempora	102-4	sources/divinum-officium/web/www/horas/Latin/Tempora/102-4.txt	
+unmatched_source	horas	Tempora	102-5	sources/divinum-officium/web/www/horas/Latin/Tempora/102-5.txt	
+unmatched_source	horas	Tempora	102-6	sources/divinum-officium/web/www/horas/Latin/Tempora/102-6.txt	
+unmatched_source	horas	Tempora	103-0	sources/divinum-officium/web/www/horas/Latin/Tempora/103-0.txt	
+unmatched_source	horas	Tempora	103-1	sources/divinum-officium/web/www/horas/Latin/Tempora/103-1.txt	
+unmatched_source	horas	Tempora	103-2	sources/divinum-officium/web/www/horas/Latin/Tempora/103-2.txt	
+unmatched_source	horas	Tempora	103-3	sources/divinum-officium/web/www/horas/Latin/Tempora/103-3.txt	
+unmatched_source	horas	Tempora	103-4	sources/divinum-officium/web/www/horas/Latin/Tempora/103-4.txt	
+unmatched_source	horas	Tempora	103-5	sources/divinum-officium/web/www/horas/Latin/Tempora/103-5.txt	
+unmatched_source	horas	Tempora	103-6	sources/divinum-officium/web/www/horas/Latin/Tempora/103-6.txt	
+unmatched_source	horas	Tempora	104-0	sources/divinum-officium/web/www/horas/Latin/Tempora/104-0.txt	
+unmatched_source	horas	Tempora	104-1	sources/divinum-officium/web/www/horas/Latin/Tempora/104-1.txt	
+unmatched_source	horas	Tempora	104-2	sources/divinum-officium/web/www/horas/Latin/Tempora/104-2.txt	
+unmatched_source	horas	Tempora	104-3	sources/divinum-officium/web/www/horas/Latin/Tempora/104-3.txt	
+unmatched_source	horas	Tempora	104-4	sources/divinum-officium/web/www/horas/Latin/Tempora/104-4.txt	
+unmatched_source	horas	Tempora	104-5	sources/divinum-officium/web/www/horas/Latin/Tempora/104-5.txt	
+unmatched_source	horas	Tempora	104-6	sources/divinum-officium/web/www/horas/Latin/Tempora/104-6.txt	
+unmatched_source	horas	Tempora	105-0	sources/divinum-officium/web/www/horas/Latin/Tempora/105-0.txt	
+unmatched_source	horas	Tempora	105-1	sources/divinum-officium/web/www/horas/Latin/Tempora/105-1.txt	
+unmatched_source	horas	Tempora	105-2	sources/divinum-officium/web/www/horas/Latin/Tempora/105-2.txt	
+unmatched_source	horas	Tempora	105-3	sources/divinum-officium/web/www/horas/Latin/Tempora/105-3.txt	
+unmatched_source	horas	Tempora	105-4	sources/divinum-officium/web/www/horas/Latin/Tempora/105-4.txt	
+unmatched_source	horas	Tempora	105-5	sources/divinum-officium/web/www/horas/Latin/Tempora/105-5.txt	
+unmatched_source	horas	Tempora	105-6	sources/divinum-officium/web/www/horas/Latin/Tempora/105-6.txt	
+unmatched_source	horas	Tempora	111-0	sources/divinum-officium/web/www/horas/Latin/Tempora/111-0.txt	
+unmatched_source	horas	Tempora	111-1	sources/divinum-officium/web/www/horas/Latin/Tempora/111-1.txt	
+unmatched_source	horas	Tempora	111-2	sources/divinum-officium/web/www/horas/Latin/Tempora/111-2.txt	
+unmatched_source	horas	Tempora	111-3	sources/divinum-officium/web/www/horas/Latin/Tempora/111-3.txt	
+unmatched_source	horas	Tempora	111-4	sources/divinum-officium/web/www/horas/Latin/Tempora/111-4.txt	
+unmatched_source	horas	Tempora	111-5	sources/divinum-officium/web/www/horas/Latin/Tempora/111-5.txt	
+unmatched_source	horas	Tempora	111-6	sources/divinum-officium/web/www/horas/Latin/Tempora/111-6.txt	
+unmatched_source	horas	Tempora	112-0	sources/divinum-officium/web/www/horas/Latin/Tempora/112-0.txt	
+unmatched_source	horas	Tempora	112-1	sources/divinum-officium/web/www/horas/Latin/Tempora/112-1.txt	
+unmatched_source	horas	Tempora	112-2	sources/divinum-officium/web/www/horas/Latin/Tempora/112-2.txt	
+unmatched_source	horas	Tempora	112-3	sources/divinum-officium/web/www/horas/Latin/Tempora/112-3.txt	
+unmatched_source	horas	Tempora	112-4	sources/divinum-officium/web/www/horas/Latin/Tempora/112-4.txt	
+unmatched_source	horas	Tempora	112-5	sources/divinum-officium/web/www/horas/Latin/Tempora/112-5.txt	
+unmatched_source	horas	Tempora	112-6	sources/divinum-officium/web/www/horas/Latin/Tempora/112-6.txt	
+unmatched_source	horas	Tempora	113-0	sources/divinum-officium/web/www/horas/Latin/Tempora/113-0.txt	
+unmatched_source	horas	Tempora	113-1	sources/divinum-officium/web/www/horas/Latin/Tempora/113-1.txt	
+unmatched_source	horas	Tempora	113-2	sources/divinum-officium/web/www/horas/Latin/Tempora/113-2.txt	
+unmatched_source	horas	Tempora	113-3	sources/divinum-officium/web/www/horas/Latin/Tempora/113-3.txt	
+unmatched_source	horas	Tempora	113-4	sources/divinum-officium/web/www/horas/Latin/Tempora/113-4.txt	
+unmatched_source	horas	Tempora	113-5	sources/divinum-officium/web/www/horas/Latin/Tempora/113-5.txt	
+unmatched_source	horas	Tempora	113-6	sources/divinum-officium/web/www/horas/Latin/Tempora/113-6.txt	
+unmatched_source	horas	Tempora	114-0	sources/divinum-officium/web/www/horas/Latin/Tempora/114-0.txt	
+unmatched_source	horas	Tempora	114-1	sources/divinum-officium/web/www/horas/Latin/Tempora/114-1.txt	
+unmatched_source	horas	Tempora	114-2	sources/divinum-officium/web/www/horas/Latin/Tempora/114-2.txt	
+unmatched_source	horas	Tempora	114-3	sources/divinum-officium/web/www/horas/Latin/Tempora/114-3.txt	
+unmatched_source	horas	Tempora	114-4	sources/divinum-officium/web/www/horas/Latin/Tempora/114-4.txt	
+unmatched_source	horas	Tempora	114-5	sources/divinum-officium/web/www/horas/Latin/Tempora/114-5.txt	
+unmatched_source	horas	Tempora	114-6	sources/divinum-officium/web/www/horas/Latin/Tempora/114-6.txt	
+unmatched_source	horas	Tempora	115-0	sources/divinum-officium/web/www/horas/Latin/Tempora/115-0.txt	
+unmatched_source	horas	Tempora	115-1	sources/divinum-officium/web/www/horas/Latin/Tempora/115-1.txt	
+unmatched_source	horas	Tempora	115-2	sources/divinum-officium/web/www/horas/Latin/Tempora/115-2.txt	
+unmatched_source	horas	Tempora	115-3	sources/divinum-officium/web/www/horas/Latin/Tempora/115-3.txt	
+unmatched_source	horas	Tempora	115-4	sources/divinum-officium/web/www/horas/Latin/Tempora/115-4.txt	
+unmatched_source	horas	Tempora	115-5	sources/divinum-officium/web/www/horas/Latin/Tempora/115-5.txt	
+unmatched_source	horas	Tempora	115-6	sources/divinum-officium/web/www/horas/Latin/Tempora/115-6.txt	
+unmatched_source	horas	Tempora	XPRex	sources/divinum-officium/web/www/horas/Latin/Tempora/XPRex.txt	Sancti/10-DU
+unmatched_source	horas	TemporaCist	Epi1-1	sources/divinum-officium/web/www/horas/Latin/TemporaCist/Epi1-1.txt	
+unmatched_source	horas	TemporaCist	Epi1-2	sources/divinum-officium/web/www/horas/Latin/TemporaCist/Epi1-2.txt	TemporaCist/Epi1-1
+unmatched_source	horas	TemporaCist	Epi1-3	sources/divinum-officium/web/www/horas/Latin/TemporaCist/Epi1-3.txt	TemporaCist/Epi1-1
+unmatched_source	horas	TemporaCist	Epi1-4	sources/divinum-officium/web/www/horas/Latin/TemporaCist/Epi1-4.txt	TemporaCist/Epi1-1
+unmatched_source	horas	TemporaCist	Epi1-5	sources/divinum-officium/web/www/horas/Latin/TemporaCist/Epi1-5.txt	TemporaCist/Epi1-1
+unmatched_source	horas	TemporaCist	Epi1-6	sources/divinum-officium/web/www/horas/Latin/TemporaCist/Epi1-6.txt	TemporaCist/Epi1-1
+unmatched_source	horas	TemporaM	081-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/081-0.txt	Tempora/081-0
+unmatched_source	horas	TemporaM	082-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/082-0.txt	Tempora/082-0
+unmatched_source	horas	TemporaM	083-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/083-0.txt	Tempora/083-0
+unmatched_source	horas	TemporaM	084-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/084-0.txt	Tempora/084-0
+unmatched_source	horas	TemporaM	085-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/085-0.txt	Tempora/085-0
+unmatched_source	horas	TemporaM	091-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/091-0.txt	Tempora/091-0
+unmatched_source	horas	TemporaM	092-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/092-0.txt	Tempora/092-0
+unmatched_source	horas	TemporaM	093-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/093-0.txt	Tempora/093-0
+unmatched_source	horas	TemporaM	094-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/094-0.txt	Tempora/094-0
+unmatched_source	horas	TemporaM	095-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/095-0.txt	Tempora/095-0
+unmatched_source	horas	TemporaM	101-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/101-0.txt	Tempora/101-0
+unmatched_source	horas	TemporaM	102-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/102-0.txt	Tempora/102-0
+unmatched_source	horas	TemporaM	103-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/103-0.txt	Tempora/103-0
+unmatched_source	horas	TemporaM	104-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/104-0.txt	Tempora/104-0
+unmatched_source	horas	TemporaM	105-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/105-0.txt	Tempora/105-0
+unmatched_source	horas	TemporaM	111-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/111-0.txt	Tempora/111-0
+unmatched_source	horas	TemporaM	111-1	sources/divinum-officium/web/www/horas/Latin/TemporaM/111-1.txt	Tempora/111-1
+unmatched_source	horas	TemporaM	111-2	sources/divinum-officium/web/www/horas/Latin/TemporaM/111-2.txt	Tempora/111-2
+unmatched_source	horas	TemporaM	111-3	sources/divinum-officium/web/www/horas/Latin/TemporaM/111-3.txt	Tempora/111-3
+unmatched_source	horas	TemporaM	111-4	sources/divinum-officium/web/www/horas/Latin/TemporaM/111-4.txt	Tempora/111-4
+unmatched_source	horas	TemporaM	111-5	sources/divinum-officium/web/www/horas/Latin/TemporaM/111-5.txt	Tempora/111-5
+unmatched_source	horas	TemporaM	111-6	sources/divinum-officium/web/www/horas/Latin/TemporaM/111-6.txt	Tempora/111-6
+unmatched_source	horas	TemporaM	112-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/112-0.txt	Tempora/112-0
+unmatched_source	horas	TemporaM	112-1	sources/divinum-officium/web/www/horas/Latin/TemporaM/112-1.txt	Tempora/112-1
+unmatched_source	horas	TemporaM	112-2	sources/divinum-officium/web/www/horas/Latin/TemporaM/112-2.txt	Tempora/112-2
+unmatched_source	horas	TemporaM	112-3	sources/divinum-officium/web/www/horas/Latin/TemporaM/112-3.txt	Tempora/112-3
+unmatched_source	horas	TemporaM	112-4	sources/divinum-officium/web/www/horas/Latin/TemporaM/112-4.txt	Tempora/112-4
+unmatched_source	horas	TemporaM	112-5	sources/divinum-officium/web/www/horas/Latin/TemporaM/112-5.txt	Tempora/112-5
+unmatched_source	horas	TemporaM	112-6	sources/divinum-officium/web/www/horas/Latin/TemporaM/112-6.txt	Tempora/112-6
+unmatched_source	horas	TemporaM	113-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/113-0.txt	Tempora/113-0
+unmatched_source	horas	TemporaM	113-1	sources/divinum-officium/web/www/horas/Latin/TemporaM/113-1.txt	Tempora/113-1
+unmatched_source	horas	TemporaM	113-2	sources/divinum-officium/web/www/horas/Latin/TemporaM/113-2.txt	Tempora/113-2
+unmatched_source	horas	TemporaM	113-3	sources/divinum-officium/web/www/horas/Latin/TemporaM/113-3.txt	Tempora/113-3
+unmatched_source	horas	TemporaM	113-4	sources/divinum-officium/web/www/horas/Latin/TemporaM/113-4.txt	Tempora/113-4
+unmatched_source	horas	TemporaM	113-5	sources/divinum-officium/web/www/horas/Latin/TemporaM/113-5.txt	Tempora/113-5
+unmatched_source	horas	TemporaM	113-6	sources/divinum-officium/web/www/horas/Latin/TemporaM/113-6.txt	Tempora/113-6
+unmatched_source	horas	TemporaM	114-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/114-0.txt	Tempora/114-0
+unmatched_source	horas	TemporaM	114-1	sources/divinum-officium/web/www/horas/Latin/TemporaM/114-1.txt	Tempora/114-1
+unmatched_source	horas	TemporaM	114-2	sources/divinum-officium/web/www/horas/Latin/TemporaM/114-2.txt	Tempora/114-2
+unmatched_source	horas	TemporaM	114-3	sources/divinum-officium/web/www/horas/Latin/TemporaM/114-3.txt	Tempora/114-3
+unmatched_source	horas	TemporaM	114-4	sources/divinum-officium/web/www/horas/Latin/TemporaM/114-4.txt	Tempora/114-4
+unmatched_source	horas	TemporaM	114-5	sources/divinum-officium/web/www/horas/Latin/TemporaM/114-5.txt	Tempora/114-5
+unmatched_source	horas	TemporaM	114-6	sources/divinum-officium/web/www/horas/Latin/TemporaM/114-6.txt	Tempora/114-6
+unmatched_source	horas	TemporaM	115-0	sources/divinum-officium/web/www/horas/Latin/TemporaM/115-0.txt	Tempora/115-0
+unmatched_source	horas	TemporaM	115-1	sources/divinum-officium/web/www/horas/Latin/TemporaM/115-1.txt	Tempora/115-1
+unmatched_source	horas	TemporaM	115-2	sources/divinum-officium/web/www/horas/Latin/TemporaM/115-2.txt	Tempora/115-2
+unmatched_source	horas	TemporaM	115-3	sources/divinum-officium/web/www/horas/Latin/TemporaM/115-3.txt	Tempora/115-3
+unmatched_source	horas	TemporaM	115-4	sources/divinum-officium/web/www/horas/Latin/TemporaM/115-4.txt	Tempora/115-4
+unmatched_source	horas	TemporaM	115-5	sources/divinum-officium/web/www/horas/Latin/TemporaM/115-5.txt	Tempora/115-5
+unmatched_source	horas	TemporaM	115-6	sources/divinum-officium/web/www/horas/Latin/TemporaM/115-6.txt	Tempora/115-6
+unmatched_source	horas	TemporaM	Pent02-6b	sources/divinum-officium/web/www/horas/Latin/TemporaM/Pent02-6b.txt	
+unmatched_source	horas	TemporaOP	081-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/081-0.txt	Tempora/081-0
+unmatched_source	horas	TemporaOP	081-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/081-1.txt	
+unmatched_source	horas	TemporaOP	081-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/081-2.txt	
+unmatched_source	horas	TemporaOP	081-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/081-3.txt	
+unmatched_source	horas	TemporaOP	081-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/081-4.txt	
+unmatched_source	horas	TemporaOP	081-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/081-5.txt	
+unmatched_source	horas	TemporaOP	081-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/081-6.txt	
+unmatched_source	horas	TemporaOP	082-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/082-0.txt	Tempora/082-0
+unmatched_source	horas	TemporaOP	082-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/082-1.txt	
+unmatched_source	horas	TemporaOP	082-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/082-2.txt	
+unmatched_source	horas	TemporaOP	082-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/082-3.txt	
+unmatched_source	horas	TemporaOP	082-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/082-4.txt	
+unmatched_source	horas	TemporaOP	082-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/082-5.txt	
+unmatched_source	horas	TemporaOP	082-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/082-6.txt	
+unmatched_source	horas	TemporaOP	083-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/083-0.txt	Tempora/083-0
+unmatched_source	horas	TemporaOP	083-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/083-1.txt	
+unmatched_source	horas	TemporaOP	083-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/083-2.txt	
+unmatched_source	horas	TemporaOP	083-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/083-3.txt	
+unmatched_source	horas	TemporaOP	083-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/083-4.txt	
+unmatched_source	horas	TemporaOP	083-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/083-5.txt	
+unmatched_source	horas	TemporaOP	083-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/083-6.txt	
+unmatched_source	horas	TemporaOP	084-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/084-0.txt	Tempora/084-0
+unmatched_source	horas	TemporaOP	084-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/084-1.txt	
+unmatched_source	horas	TemporaOP	084-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/084-2.txt	
+unmatched_source	horas	TemporaOP	084-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/084-3.txt	Tempora/084-3
+unmatched_source	horas	TemporaOP	084-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/084-4.txt	
+unmatched_source	horas	TemporaOP	084-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/084-5.txt	
+unmatched_source	horas	TemporaOP	084-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/084-6.txt	Tempora/084-6
+unmatched_source	horas	TemporaOP	085-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/085-0.txt	Tempora/085-0
+unmatched_source	horas	TemporaOP	085-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/085-1.txt	Tempora/085-1
+unmatched_source	horas	TemporaOP	085-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/085-2.txt	Tempora/085-2
+unmatched_source	horas	TemporaOP	085-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/085-3.txt	Tempora/085-3
+unmatched_source	horas	TemporaOP	085-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/085-4.txt	Tempora/085-4
+unmatched_source	horas	TemporaOP	085-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/085-5.txt	Tempora/085-5
+unmatched_source	horas	TemporaOP	085-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/085-6.txt	Tempora/085-6
+unmatched_source	horas	TemporaOP	091-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/091-0.txt	Tempora/091-0
+unmatched_source	horas	TemporaOP	091-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/091-1.txt	Tempora/091-1
+unmatched_source	horas	TemporaOP	091-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/091-2.txt	Tempora/091-2
+unmatched_source	horas	TemporaOP	091-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/091-3.txt	Tempora/091-3
+unmatched_source	horas	TemporaOP	091-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/091-4.txt	Tempora/091-4
+unmatched_source	horas	TemporaOP	091-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/091-5.txt	Tempora/091-5
+unmatched_source	horas	TemporaOP	091-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/091-6.txt	Tempora/091-6
+unmatched_source	horas	TemporaOP	092-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/092-0.txt	Tempora/092-0
+unmatched_source	horas	TemporaOP	092-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/092-1.txt	Tempora/092-1
+unmatched_source	horas	TemporaOP	092-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/092-2.txt	Tempora/092-2
+unmatched_source	horas	TemporaOP	092-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/092-3.txt	Tempora/092-3
+unmatched_source	horas	TemporaOP	092-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/092-4.txt	Tempora/092-4
+unmatched_source	horas	TemporaOP	092-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/092-5.txt	Tempora/092-5
+unmatched_source	horas	TemporaOP	092-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/092-6.txt	Tempora/092-6
+unmatched_source	horas	TemporaOP	093-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/093-0.txt	Tempora/093-0
+unmatched_source	horas	TemporaOP	093-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/093-1.txt	Tempora/093-1
+unmatched_source	horas	TemporaOP	093-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/093-2.txt	
+unmatched_source	horas	TemporaOP	093-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/093-4.txt	Tempora/093-4
+unmatched_source	horas	TemporaOP	094-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/094-0.txt	Tempora/094-0
+unmatched_source	horas	TemporaOP	094-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/094-1.txt	Tempora/094-1
+unmatched_source	horas	TemporaOP	094-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/094-2.txt	Tempora/094-2
+unmatched_source	horas	TemporaOP	094-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/094-3.txt	Tempora/094-3
+unmatched_source	horas	TemporaOP	094-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/094-4.txt	Tempora/094-4
+unmatched_source	horas	TemporaOP	094-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/094-5.txt	Tempora/094-5
+unmatched_source	horas	TemporaOP	094-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/094-6.txt	Tempora/094-6
+unmatched_source	horas	TemporaOP	095-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/095-0.txt	Tempora/095-0
+unmatched_source	horas	TemporaOP	095-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/095-1.txt	Tempora/095-1
+unmatched_source	horas	TemporaOP	095-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/095-2.txt	Tempora/095-2
+unmatched_source	horas	TemporaOP	095-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/095-3.txt	Tempora/095-3
+unmatched_source	horas	TemporaOP	095-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/095-4.txt	Tempora/095-4
+unmatched_source	horas	TemporaOP	095-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/095-5.txt	Tempora/095-5
+unmatched_source	horas	TemporaOP	095-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/095-6.txt	Tempora/095-6
+unmatched_source	horas	TemporaOP	101-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/101-0.txt	Tempora/101-0
+unmatched_source	horas	TemporaOP	101-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/101-1.txt	Tempora/101-1
+unmatched_source	horas	TemporaOP	101-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/101-2.txt	Tempora/101-2
+unmatched_source	horas	TemporaOP	101-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/101-3.txt	Tempora/101-3
+unmatched_source	horas	TemporaOP	101-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/101-4.txt	Tempora/101-4
+unmatched_source	horas	TemporaOP	101-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/101-5.txt	Tempora/101-5
+unmatched_source	horas	TemporaOP	101-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/101-6.txt	Tempora/101-6
+unmatched_source	horas	TemporaOP	102-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/102-0.txt	Tempora/102-0
+unmatched_source	horas	TemporaOP	102-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/102-1.txt	Tempora/102-1
+unmatched_source	horas	TemporaOP	102-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/102-2.txt	Tempora/102-2
+unmatched_source	horas	TemporaOP	102-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/102-3.txt	Tempora/102-3
+unmatched_source	horas	TemporaOP	102-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/102-4.txt	Tempora/102-4
+unmatched_source	horas	TemporaOP	102-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/102-5.txt	Tempora/102-5
+unmatched_source	horas	TemporaOP	102-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/102-6.txt	Tempora/102-6
+unmatched_source	horas	TemporaOP	103-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/103-0.txt	Tempora/103-0
+unmatched_source	horas	TemporaOP	103-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/103-1.txt	Tempora/103-1
+unmatched_source	horas	TemporaOP	103-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/103-2.txt	Tempora/103-2
+unmatched_source	horas	TemporaOP	103-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/103-3.txt	Tempora/103-3
+unmatched_source	horas	TemporaOP	103-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/103-4.txt	Tempora/103-4
+unmatched_source	horas	TemporaOP	103-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/103-5.txt	Tempora/103-5
+unmatched_source	horas	TemporaOP	103-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/103-6.txt	Tempora/103-6
+unmatched_source	horas	TemporaOP	104-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/104-0.txt	Tempora/104-0
+unmatched_source	horas	TemporaOP	104-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/104-1.txt	Tempora/104-1
+unmatched_source	horas	TemporaOP	104-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/104-2.txt	Tempora/104-2
+unmatched_source	horas	TemporaOP	104-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/104-3.txt	Tempora/104-3
+unmatched_source	horas	TemporaOP	104-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/104-4.txt	Tempora/104-4
+unmatched_source	horas	TemporaOP	104-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/104-5.txt	Tempora/104-5
+unmatched_source	horas	TemporaOP	104-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/104-6.txt	Tempora/104-6
+unmatched_source	horas	TemporaOP	105-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/105-0.txt	Tempora/105-0
+unmatched_source	horas	TemporaOP	105-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/105-1.txt	Tempora/105-1
+unmatched_source	horas	TemporaOP	105-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/105-2.txt	Tempora/105-2
+unmatched_source	horas	TemporaOP	105-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/105-3.txt	Tempora/105-3
+unmatched_source	horas	TemporaOP	105-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/105-4.txt	Tempora/105-4
+unmatched_source	horas	TemporaOP	105-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/105-5.txt	Tempora/105-5
+unmatched_source	horas	TemporaOP	105-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/105-6.txt	Tempora/105-6
+unmatched_source	horas	TemporaOP	111-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/111-0.txt	Tempora/111-0
+unmatched_source	horas	TemporaOP	111-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/111-1.txt	Tempora/111-1
+unmatched_source	horas	TemporaOP	111-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/111-2.txt	Tempora/111-2
+unmatched_source	horas	TemporaOP	111-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/111-3.txt	Tempora/111-3
+unmatched_source	horas	TemporaOP	111-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/111-4.txt	Tempora/111-4
+unmatched_source	horas	TemporaOP	111-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/111-5.txt	Tempora/111-5
+unmatched_source	horas	TemporaOP	111-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/111-6.txt	Tempora/111-6
+unmatched_source	horas	TemporaOP	113-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/113-0.txt	Tempora/113-0
+unmatched_source	horas	TemporaOP	113-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/113-1.txt	Tempora/113-1
+unmatched_source	horas	TemporaOP	113-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/113-2.txt	Tempora/113-2
+unmatched_source	horas	TemporaOP	113-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/113-3.txt	Tempora/113-3
+unmatched_source	horas	TemporaOP	113-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/113-4.txt	Tempora/113-4
+unmatched_source	horas	TemporaOP	113-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/113-5.txt	Tempora/113-5
+unmatched_source	horas	TemporaOP	113-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/113-6.txt	Tempora/113-6
+unmatched_source	horas	TemporaOP	114-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/114-0.txt	Tempora/114-0
+unmatched_source	horas	TemporaOP	114-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/114-1.txt	Tempora/114-1
+unmatched_source	horas	TemporaOP	114-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/114-2.txt	Tempora/114-2
+unmatched_source	horas	TemporaOP	114-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/114-3.txt	Tempora/114-3
+unmatched_source	horas	TemporaOP	114-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/114-4.txt	Tempora/114-4
+unmatched_source	horas	TemporaOP	114-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/114-5.txt	Tempora/114-5
+unmatched_source	horas	TemporaOP	114-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/114-6.txt	Tempora/114-6
+unmatched_source	horas	TemporaOP	115-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/115-0.txt	Tempora/115-0
+unmatched_source	horas	TemporaOP	115-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/115-1.txt	Tempora/115-1
+unmatched_source	horas	TemporaOP	115-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/115-2.txt	Tempora/115-2
+unmatched_source	horas	TemporaOP	115-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/115-3.txt	Tempora/115-3
+unmatched_source	horas	TemporaOP	115-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/115-4.txt	Tempora/115-4
+unmatched_source	horas	TemporaOP	115-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/115-5.txt	Tempora/115-5
+unmatched_source	horas	TemporaOP	115-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/115-6.txt	Tempora/115-6
+unmatched_source	horas	TemporaOP	Adv4-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Adv4-6.txt	
+unmatched_source	horas	TemporaOP	Epi4-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Epi4-6.txt	Tempora/Epi4
+unmatched_source	horas	TemporaOP	Pasc0-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc0-1.txt	
+unmatched_source	horas	TemporaOP	Pasc0-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc0-2.txt	TemporaOP/Pasc0-1
+unmatched_source	horas	TemporaOP	Pasc0-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc0-3.txt	TemporaOP/Pasc0-1
+unmatched_source	horas	TemporaOP	Pasc0-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc0-4.txt	TemporaOP/Pasc0-1
+unmatched_source	horas	TemporaOP	Pasc0-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc0-5.txt	TemporaOP/Pasc0-1
+unmatched_source	horas	TemporaOP	Pasc0-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc0-6.txt	TemporaOP/Pasc0-1
+unmatched_source	horas	TemporaOP	Pasc1-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc1-0.txt	
+unmatched_source	horas	TemporaOP	Pasc1-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc1-1.txt	
+unmatched_source	horas	TemporaOP	Pasc1-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc1-2.txt	
+unmatched_source	horas	TemporaOP	Pasc1-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc1-3.txt	
+unmatched_source	horas	TemporaOP	Pasc1-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc1-4.txt	TemporaOP/Pasc1-1
+unmatched_source	horas	TemporaOP	Pasc1-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc1-5.txt	TemporaOP/Pasc1-2
+unmatched_source	horas	TemporaOP	Pasc1-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc1-6.txt	TemporaOP/Pasc1-3
+unmatched_source	horas	TemporaOP	Pasc2-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc2-0.txt	
+unmatched_source	horas	TemporaOP	Pasc2-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc2-1.txt	TemporaOP/Pasc1-1
+unmatched_source	horas	TemporaOP	Pasc2-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc2-2.txt	TemporaOP/Pasc1-2
+unmatched_source	horas	TemporaOP	Pasc2-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc2-3.txt	TemporaOP/Pasc1-3
+unmatched_source	horas	TemporaOP	Pasc2-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc2-4.txt	TemporaOP/Pasc1-1
+unmatched_source	horas	TemporaOP	Pasc2-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc2-5.txt	TemporaOP/Pasc1-2
+unmatched_source	horas	TemporaOP	Pasc2-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc2-6.txt	TemporaOP/Pasc1-3
+unmatched_source	horas	TemporaOP	Pasc3-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc3-0.txt	
+unmatched_source	horas	TemporaOP	Pasc3-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc3-1.txt	
+unmatched_source	horas	TemporaOP	Pasc3-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc3-2.txt	
+unmatched_source	horas	TemporaOP	Pasc3-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc3-3.txt	
+unmatched_source	horas	TemporaOP	Pasc3-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc3-4.txt	
+unmatched_source	horas	TemporaOP	Pasc3-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc3-5.txt	
+unmatched_source	horas	TemporaOP	Pasc3-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc3-6.txt	
+unmatched_source	horas	TemporaOP	Pasc4-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc4-0.txt	
+unmatched_source	horas	TemporaOP	Pasc4-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc4-1.txt	
+unmatched_source	horas	TemporaOP	Pasc4-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc4-2.txt	
+unmatched_source	horas	TemporaOP	Pasc4-3	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc4-3.txt	
+unmatched_source	horas	TemporaOP	Pasc4-4	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc4-4.txt	
+unmatched_source	horas	TemporaOP	Pasc4-5	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc4-5.txt	
+unmatched_source	horas	TemporaOP	Pasc4-6	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc4-6.txt	
+unmatched_source	horas	TemporaOP	Pasc5-0	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc5-0.txt	
+unmatched_source	horas	TemporaOP	Pasc5-1	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc5-1.txt	
+unmatched_source	horas	TemporaOP	Pasc5-2	sources/divinum-officium/web/www/horas/Latin/TemporaOP/Pasc5-2.txt	
+unmatched_source	missa	Commune	Propaganda	sources/divinum-officium/web/www/missa/Latin/Commune/Propaganda.txt	
+unmatched_source	missa	Sancti	01-01	sources/divinum-officium/web/www/missa/Latin/Sancti/01-01.txt	
+unmatched_source	missa	Sancti	01-03n	sources/divinum-officium/web/www/missa/Latin/Sancti/01-03n.txt	
+unmatched_source	missa	Sancti	01-05	sources/divinum-officium/web/www/missa/Latin/Sancti/01-05.txt	
+unmatched_source	missa	Sancti	01-06	sources/divinum-officium/web/www/missa/Latin/Sancti/01-06.txt	
+unmatched_source	missa	Sancti	01-06n	sources/divinum-officium/web/www/missa/Latin/Sancti/01-06n.txt	
+unmatched_source	missa	Sancti	01-07	sources/divinum-officium/web/www/missa/Latin/Sancti/01-07.txt	
+unmatched_source	missa	Sancti	01-08	sources/divinum-officium/web/www/missa/Latin/Sancti/01-08.txt	
+unmatched_source	missa	Sancti	01-09	sources/divinum-officium/web/www/missa/Latin/Sancti/01-09.txt	
+unmatched_source	missa	Sancti	01-10	sources/divinum-officium/web/www/missa/Latin/Sancti/01-10.txt	
+unmatched_source	missa	Sancti	01-11	sources/divinum-officium/web/www/missa/Latin/Sancti/01-11.txt	
+unmatched_source	missa	Sancti	01-12	sources/divinum-officium/web/www/missa/Latin/Sancti/01-12.txt	
+unmatched_source	missa	Sancti	01-13	sources/divinum-officium/web/www/missa/Latin/Sancti/01-13.txt	
+unmatched_source	missa	Sancti	02-02-quadp	sources/divinum-officium/web/www/missa/Latin/Sancti/02-02-quadp.txt	Sancti/02-02
+unmatched_source	missa	Sancti	02-02	sources/divinum-officium/web/www/missa/Latin/Sancti/02-02.txt	
+unmatched_source	missa	Sancti	02-11	sources/divinum-officium/web/www/missa/Latin/Sancti/02-11.txt	
+unmatched_source	missa	Sancti	03-25	sources/divinum-officium/web/www/missa/Latin/Sancti/03-25.txt	
+unmatched_source	missa	Sancti	04-23pl	sources/divinum-officium/web/www/missa/Latin/Sancti/04-23pl.txt	
+unmatched_source	missa	Sancti	04-25c	sources/divinum-officium/web/www/missa/Latin/Sancti/04-25c.txt	
+unmatched_source	missa	Sancti	05-03	sources/divinum-officium/web/www/missa/Latin/Sancti/05-03.txt	
+unmatched_source	missa	Sancti	05-03pl	sources/divinum-officium/web/www/missa/Latin/Sancti/05-03pl.txt	
+unmatched_source	missa	Sancti	05-03t	sources/divinum-officium/web/www/missa/Latin/Sancti/05-03t.txt	
+unmatched_source	missa	Sancti	05-08pl	sources/divinum-officium/web/www/missa/Latin/Sancti/05-08pl.txt	
+unmatched_source	missa	Sancti	05-13n	sources/divinum-officium/web/www/missa/Latin/Sancti/05-13n.txt	
+unmatched_source	missa	Sancti	05-16n	sources/divinum-officium/web/www/missa/Latin/Sancti/05-16n.txt	
+unmatched_source	missa	Sancti	05-16pl	sources/divinum-officium/web/www/missa/Latin/Sancti/05-16pl.txt	
+unmatched_source	missa	Sancti	05-31	sources/divinum-officium/web/www/missa/Latin/Sancti/05-31.txt	
+unmatched_source	missa	Sancti	06-10pl	sources/divinum-officium/web/www/missa/Latin/Sancti/06-10pl.txt	
+unmatched_source	missa	Sancti	07-01a	sources/divinum-officium/web/www/missa/Latin/Sancti/07-01a.txt	
+unmatched_source	missa	Sancti	07-02	sources/divinum-officium/web/www/missa/Latin/Sancti/07-02.txt	
+unmatched_source	missa	Sancti	07-02o	sources/divinum-officium/web/www/missa/Latin/Sancti/07-02o.txt	Sancti/07-02
+unmatched_source	missa	Sancti	07-03r	sources/divinum-officium/web/www/missa/Latin/Sancti/07-03r.txt	
+unmatched_source	missa	Sancti	07-13pl	sources/divinum-officium/web/www/missa/Latin/Sancti/07-13pl.txt	
+unmatched_source	missa	Sancti	07-15pl	sources/divinum-officium/web/www/missa/Latin/Sancti/07-15pl.txt	
+unmatched_source	missa	Sancti	07-16	sources/divinum-officium/web/www/missa/Latin/Sancti/07-16.txt	
+unmatched_source	missa	Sancti	07-18pl	sources/divinum-officium/web/www/missa/Latin/Sancti/07-18pl.txt	Commune/C5-1
+unmatched_source	missa	Sancti	08-05	sources/divinum-officium/web/www/missa/Latin/Sancti/08-05.txt	
+unmatched_source	missa	Sancti	08-06	sources/divinum-officium/web/www/missa/Latin/Sancti/08-06.txt	
+unmatched_source	missa	Sancti	08-14	sources/divinum-officium/web/www/missa/Latin/Sancti/08-14.txt	
+unmatched_source	missa	Sancti	08-14n	sources/divinum-officium/web/www/missa/Latin/Sancti/08-14n.txt	
+unmatched_source	missa	Sancti	08-15	sources/divinum-officium/web/www/missa/Latin/Sancti/08-15.txt	
+unmatched_source	missa	Sancti	08-15t	sources/divinum-officium/web/www/missa/Latin/Sancti/08-15t.txt	
+unmatched_source	missa	Sancti	08-17bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/08-17bmv.txt	
+unmatched_source	missa	Sancti	08-20bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/08-20bmv.txt	
+unmatched_source	missa	Sancti	08-22	sources/divinum-officium/web/www/missa/Latin/Sancti/08-22.txt	
+unmatched_source	missa	Sancti	08-22t	sources/divinum-officium/web/www/missa/Latin/Sancti/08-22t.txt	
+unmatched_source	missa	Sancti	08-26pl	sources/divinum-officium/web/www/missa/Latin/Sancti/08-26pl.txt	
+unmatched_source	missa	Sancti	09-07pl	sources/divinum-officium/web/www/missa/Latin/Sancti/09-07pl.txt	Commune/C2a-1
+unmatched_source	missa	Sancti	09-08	sources/divinum-officium/web/www/missa/Latin/Sancti/09-08.txt	
+unmatched_source	missa	Sancti	09-09bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/09-09bmv.txt	
+unmatched_source	missa	Sancti	09-09dom-oct	sources/divinum-officium/web/www/missa/Latin/Sancti/09-09dom-oct.txt	Sancti/09-12
+unmatched_source	missa	Sancti	09-10bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/09-10bmv.txt	
+unmatched_source	missa	Sancti	09-11bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/09-11bmv.txt	
+unmatched_source	missa	Sancti	09-12	sources/divinum-officium/web/www/missa/Latin/Sancti/09-12.txt	
+unmatched_source	missa	Sancti	09-12bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/09-12bmv.txt	
+unmatched_source	missa	Sancti	09-13bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/09-13bmv.txt	
+unmatched_source	missa	Sancti	09-14	sources/divinum-officium/web/www/missa/Latin/Sancti/09-14.txt	
+unmatched_source	missa	Sancti	09-14bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/09-14bmv.txt	
+unmatched_source	missa	Sancti	09-15	sources/divinum-officium/web/www/missa/Latin/Sancti/09-15.txt	
+unmatched_source	missa	Sancti	09-15t	sources/divinum-officium/web/www/missa/Latin/Sancti/09-15t.txt	
+unmatched_source	missa	Sancti	09-24	sources/divinum-officium/web/www/missa/Latin/Sancti/09-24.txt	
+unmatched_source	missa	Sancti	09-25pl	sources/divinum-officium/web/www/missa/Latin/Sancti/09-25pl.txt	Commune/C5-1
+unmatched_source	missa	Sancti	09-DT	sources/divinum-officium/web/www/missa/Latin/Sancti/09-DT.txt	Sancti/09-15
+unmatched_source	missa	Sancti	09-dom-oct	sources/divinum-officium/web/www/missa/Latin/Sancti/09-dom-oct.txt	Sancti/09-12
+unmatched_source	missa	Sancti	09-sab-oct	sources/divinum-officium/web/www/missa/Latin/Sancti/09-sab-oct.txt	Sancti/09-08
+unmatched_source	missa	Sancti	10-01pl	sources/divinum-officium/web/www/missa/Latin/Sancti/10-01pl.txt	Commune/C5-1
+unmatched_source	missa	Sancti	10-07	sources/divinum-officium/web/www/missa/Latin/Sancti/10-07.txt	
+unmatched_source	missa	Sancti	10-10pl	sources/divinum-officium/web/www/missa/Latin/Sancti/10-10pl.txt	
+unmatched_source	missa	Sancti	10-21pl	sources/divinum-officium/web/www/missa/Latin/Sancti/10-21pl.txt	
+unmatched_source	missa	Sancti	10-DU	sources/divinum-officium/web/www/missa/Latin/Sancti/10-DU.txt	
+unmatched_source	missa	Sancti	10-DUr	sources/divinum-officium/web/www/missa/Latin/Sancti/10-DUr.txt	Sancti/10-DU
+unmatched_source	missa	Sancti	11-02	sources/divinum-officium/web/www/missa/Latin/Sancti/11-02.txt	
+unmatched_source	missa	Sancti	11-02m1	sources/divinum-officium/web/www/missa/Latin/Sancti/11-02m1.txt	
+unmatched_source	missa	Sancti	11-02m2	sources/divinum-officium/web/www/missa/Latin/Sancti/11-02m2.txt	
+unmatched_source	missa	Sancti	11-02m3	sources/divinum-officium/web/www/missa/Latin/Sancti/11-02m3.txt	
+unmatched_source	missa	Sancti	11-02t	sources/divinum-officium/web/www/missa/Latin/Sancti/11-02t.txt	
+unmatched_source	missa	Sancti	11-03sec	sources/divinum-officium/web/www/missa/Latin/Sancti/11-03sec.txt	Sancti/11-02
+unmatched_source	missa	Sancti	11-03secm1	sources/divinum-officium/web/www/missa/Latin/Sancti/11-03secm1.txt	Sancti/11-02m1
+unmatched_source	missa	Sancti	11-03secm2	sources/divinum-officium/web/www/missa/Latin/Sancti/11-03secm2.txt	Sancti/11-02m2
+unmatched_source	missa	Sancti	11-03secm3	sources/divinum-officium/web/www/missa/Latin/Sancti/11-03secm3.txt	Sancti/11-02m3
+unmatched_source	missa	Sancti	11-04r	sources/divinum-officium/web/www/missa/Latin/Sancti/11-04r.txt	
+unmatched_source	missa	Sancti	11-09	sources/divinum-officium/web/www/missa/Latin/Sancti/11-09.txt	
+unmatched_source	missa	Sancti	11-12pl	sources/divinum-officium/web/www/missa/Latin/Sancti/11-12pl.txt	
+unmatched_source	missa	Sancti	11-13pl	sources/divinum-officium/web/www/missa/Latin/Sancti/11-13pl.txt	
+unmatched_source	missa	Sancti	11-17pl	sources/divinum-officium/web/www/missa/Latin/Sancti/11-17pl.txt	
+unmatched_source	missa	Sancti	11-18	sources/divinum-officium/web/www/missa/Latin/Sancti/11-18.txt	
+unmatched_source	missa	Sancti	11-18o	sources/divinum-officium/web/www/missa/Latin/Sancti/11-18o.txt	
+unmatched_source	missa	Sancti	11-18r	sources/divinum-officium/web/www/missa/Latin/Sancti/11-18r.txt	
+unmatched_source	missa	Sancti	11-21	sources/divinum-officium/web/www/missa/Latin/Sancti/11-21.txt	
+unmatched_source	missa	Sancti	12-08	sources/divinum-officium/web/www/missa/Latin/Sancti/12-08.txt	
+unmatched_source	missa	Sancti	12-08o	sources/divinum-officium/web/www/missa/Latin/Sancti/12-08o.txt	
+unmatched_source	missa	Sancti	12-09bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/12-09bmv.txt	
+unmatched_source	missa	Sancti	12-10bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/12-10bmv.txt	
+unmatched_source	missa	Sancti	12-11bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/12-11bmv.txt	
+unmatched_source	missa	Sancti	12-12a	sources/divinum-officium/web/www/missa/Latin/Sancti/12-12a.txt	
+unmatched_source	missa	Sancti	12-12bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/12-12bmv.txt	
+unmatched_source	missa	Sancti	12-12n	sources/divinum-officium/web/www/missa/Latin/Sancti/12-12n.txt	
+unmatched_source	missa	Sancti	12-13bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/12-13bmv.txt	
+unmatched_source	missa	Sancti	12-14bmv	sources/divinum-officium/web/www/missa/Latin/Sancti/12-14bmv.txt	
+unmatched_source	missa	Sancti	12-15	sources/divinum-officium/web/www/missa/Latin/Sancti/12-15.txt	
+unmatched_source	missa	Sancti	12-24	sources/divinum-officium/web/www/missa/Latin/Sancti/12-24.txt	
+unmatched_source	missa	Sancti	12-24o	sources/divinum-officium/web/www/missa/Latin/Sancti/12-24o.txt	Sancti/12-24
+unmatched_source	missa	Sancti	12-24s	sources/divinum-officium/web/www/missa/Latin/Sancti/12-24s.txt	
+unmatched_source	missa	Sancti	12-24so	sources/divinum-officium/web/www/missa/Latin/Sancti/12-24so.txt	Sancti/12-24s
+unmatched_source	missa	Sancti	12-25	sources/divinum-officium/web/www/missa/Latin/Sancti/12-25.txt	
+unmatched_source	missa	Sancti	12-25m1	sources/divinum-officium/web/www/missa/Latin/Sancti/12-25m1.txt	
+unmatched_source	missa	Sancti	12-25m3	sources/divinum-officium/web/www/missa/Latin/Sancti/12-25m3.txt	
+unmatched_source	missa	Tempora	104-0	sources/divinum-officium/web/www/missa/Latin/Tempora/104-0.txt	

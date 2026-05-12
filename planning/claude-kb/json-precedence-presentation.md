@@ -1,7 +1,7 @@
 ---
 title: JSON-Based Precedence Rules
 subtitle: A Modern Approach for Divinum Officium
-author: Divinum Officium Project
+author: Usuale archival planning
 date: December 28, 2025
 theme: serif
 ---

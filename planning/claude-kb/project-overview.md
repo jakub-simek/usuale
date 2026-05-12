@@ -704,7 +704,7 @@ Use provided `.perltidyrc` for code formatting:
 ### Version Control
 
 #### Git Workflow
-1. Fork repository on GitHub
+1. Create a working branch in the relevant repository
 2. Create feature branch
 3. Make changes
 4. Test thoroughly

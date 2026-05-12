@@ -159,7 +159,7 @@ Every TEI document has this basic structure:
         <orgName>Roman Catholic Church</orgName>
       </author>
 
-      <editor role="encoder">Divinum Officium Project</editor>
+      <editor role="encoder">Usuale archival planning</editor>
 
       <respStmt>
         <resp>TEI encoding</resp>
@@ -178,7 +178,7 @@ Every TEI document has this basic structure:
     </editionStmt>
 
     <publicationStmt>
-      <publisher>Divinum Officium Project</publisher>
+      <publisher>Usuale archival planning</publisher>
       <pubPlace>Online</pubPlace>
       <availability status="free">
         <licence target="https://opensource.org/licenses/MIT">

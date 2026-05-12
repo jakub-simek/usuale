@@ -1,12 +1,16 @@
-# Projektkontext: Divinum Officium Migration
+# Historischer Projektkontext
 
-Dieses Dokument fasst den gesamten Kontext unserer bisherigen Zusammenarbeit zusammen.
-Es dient als Briefing fuer die Weiterarbeit auf einem anderen Rechner.
+Dieses Dokument ist ein aelterer Arbeitsstand aus der fruehen Projektphase. Es
+beschreibt noch eine Migrationsperspektive auf Divinum Officium und ist nicht
+mehr als aktuelle Projektdefinition zu verstehen. Der aktuelle Stand versteht
+`usuale` als eigenstaendiges Projekt, das Divinum Officium als Quellbestand
+auswertet, aber nicht als abgeleitetes Repository oder blosse Modernisierung
+von Divinum Officium.
 
-## Projektziel
+## Frueheres Projektziel
 
-Migration des bestehenden Divinum Officium Projekts (Perl/CGI + Textdateien) zu einer
-modernen Architektur:
+Auswertung und teilweise Migration von Daten aus Divinum Officium
+(Perl/CGI + Textdateien) in eine moderne Architektur:
 - **Textdaten**: TEI XML (Text Encoding Initiative)
 - **Praezedenzregeln**: YAML-Dateien (statt SQL oder JSON)
 - **Webanwendung**: Python + Flask
@@ -18,14 +22,12 @@ Der Nutzer moechte **nicht** alle Rubrik-Versionen migrieren. Konkret:
 - **Nicht benoetigt**: Neuerungen nach 1955 (1955er Reform, 1960er Codex Rubricarum)
 - **Offen**: Ob Zisterzienser-/Dominikaner-Varianten benoetigt werden
 
-## Entscheidung: Fork vs. Neues Repository
+## Entscheidung: Eigenstaendiges Repository
 
-Empfehlung: **Fork des Original-Repositorys** anlegen, weil:
-- Tausende sorgfaeltig erfasste Texte als Ausgangsbasis vorhanden
-- Git-History und Herkunft der Daten bleiben dokumentiert
-- Selektive Migration nur der relevanten Teile (pre-1955)
-- Community-Verbindung bleibt erhalten
-- Alternative waere ein Import-Skript, das nur relevante Texte extrahiert
+Die fruehere Ueberlegung, das Projekt technisch aus dem Divinum-Officium-
+Repository abzuleiten, ist ueberholt. Das Projekt soll als eigenstaendiges
+Repository gefuehrt werden. Die Daten aus Divinum Officium bleiben als externer
+Quellbestand in `sources/divinum-officium` dokumentiert.
 
 ## Erarbeitete Dokumente
 
@@ -92,14 +94,15 @@ Empfehlung: **Fork des Original-Repositorys** anlegen, weil:
 ## Offene Punkte / Naechste Schritte
 
 1. **YAML-Praezedenzregeln**: Vollstaendiges YAML-Schema erstellen (bisher nur Beispiele)
-2. ~~**Fork anlegen**~~: Erledigt – Repository `usuale` auf GitLab angelegt
+2. **Quellbestaende anbinden**: Divinum Officium liegt als Submodule unter
+   `sources/divinum-officium`
 3. **TEI-Schema fuer Psalmodie**: Konkretes TEI-Format fuer Psalmen/Antiphonen festlegen; Antiphon-Einzeldateien sind in `antiphon-tei-data-model.md` entworfen
 4. **Prototyp**: Erste TEI-Konvertierung eines Beispieltages
 4. **Python-Rule-Engine**: Prototyp fuer YAML-basierte Praezedenzberechnung
 5. **Flask-App**: Grundgeruest der Webanwendung
 6. **Import-Skript**: Automatische Extraktion der pre-1955 Texte aus dem Original
 
-## Technische Details des Originalprojekts
+## Technische Details des DO-Quellbestands
 
 ### Verzeichnisstruktur (Original)
 ```

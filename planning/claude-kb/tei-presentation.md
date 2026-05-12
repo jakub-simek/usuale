@@ -1,12 +1,12 @@
 ---
-title: TEI Data Model for Divinum Officium
+title: Archival TEI Data Model Proposal
 subtitle: Modernizing Liturgical Text Encoding
-author: Divinum Officium Project
+author: Usuale archival planning
 date: December 28, 2025
 theme: serif
 ---
 
-# TEI Data Model for Divinum Officium
+# Archival TEI Data Model Proposal
 
 **Modernizing Liturgical Text Encoding**
 
@@ -31,7 +31,7 @@ A Proposal for Migration to TEI XML
 
 ---
 
-## The Divinum Officium Project
+## Divinum Officium As Source Corpus
 
 **Mission**: Provide traditional Roman Catholic liturgy online
 
@@ -316,7 +316,7 @@ Ant. O admirábile commércium: Creátor géneris humáni
     </titleStmt>
 
     <publicationStmt>
-      <publisher>Divinum Officium Project</publisher>
+      <publisher>Usuale archival planning</publisher>
       <availability>
         <licence target="https://opensource.org/licenses/MIT">
           MIT License

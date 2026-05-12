@@ -1,8 +1,10 @@
-# Divinum Officium Migration Proposal
+# Archival Migration Proposal
 
 ## Executive Summary
 
-This document proposes a comprehensive modernization of the Divinum Officium project, migrating from the current Perl/text file architecture to a modern Python/Flask web application with TEI-encoded liturgical texts and JSON-based rule definitions.
+This archival document comes from an earlier planning phase and proposes a
+modernization of the Divinum Officium code and data architecture. It is retained
+as working history, not as the current identity or scope definition of `usuale`.
 
 **Status**: Proposal for Discussion
 **Author**: Project Analysis by Claude AI
@@ -124,7 +126,7 @@ The project has an opportunity to:
         <title type="vernacular" xml:lang="en">The Nativity of Our Lord</title>
       </titleStmt>
       <publicationStmt>
-        <publisher>Divinum Officium Project</publisher>
+        <publisher>Usuale archival planning</publisher>
         <availability>
           <licence target="https://opensource.org/licenses/MIT">MIT License</licence>
         </availability>

@@ -9,7 +9,7 @@ verteilt, die durch ein Referenzsystem miteinander verbunden sind.
 Dieses Dokument beschreibt den Ist-Zustand als Grundlage für die TEI-Migration.
 
 **Erstellt**: 2026-03-09
-**Basiert auf**: Analyse des Repositorys `usuale` (Fork von DivinumOfficium)
+**Basiert auf**: Analyse des DO-Quellbestands in `sources/divinum-officium`
 
 ---
 

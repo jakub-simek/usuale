@@ -1,6 +1,10 @@
-# Divinum Officium - Claude Knowledge Base
+# Archival Claude Knowledge Base
 
-This directory contains comprehensive documentation and proposals for the Divinum Officium project modernization.
+This directory contains archival planning documents from an earlier phase in
+which `usuale` was still described primarily as a modernization of Divinum
+Officium. These documents are retained as working history only. They do not
+define the current project identity: `usuale` is an independent project that
+uses Divinum Officium as one external source corpus.
 
 ## Contents
 
@@ -266,7 +270,7 @@ Based on comprehensive analysis:
 
 ## License
 
-This documentation is part of the Divinum Officium project and is available under the MIT License.
+This archival documentation belongs to the `usuale` planning history and is available under the MIT License.
 
 ---
 

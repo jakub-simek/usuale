@@ -10,7 +10,7 @@ theme: "serif"
 
 **YAML Ain't Markup Language**
 
-Understanding YAML for the Divinum Officium Project
+Understanding YAML for liturgical data modeling
 
 ---
 

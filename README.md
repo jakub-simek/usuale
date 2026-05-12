@@ -53,6 +53,25 @@ git add sources/divinum-officium
 git commit -m "Update divinum-officium submodule"
 ```
 
+## Generated Indexes
+
+The TEI register of liturgical celebrations is generated from the Divinum
+Officium source corpus:
+
+```bash
+tools/extract_celebrations.py
+```
+
+This writes:
+
+- `data/indexes/celebrations.xml`: the heiEDITIONS-compatible TEI subject index
+- `data/indexes/celebrations-review.tsv`: sources that could not yet be mapped
+  automatically to a celebration
+
+The review TSV is an editorial control file. An entry there is not necessarily
+an error; many rows are source fragments, appendices, or redirect files that
+require later modeling decisions.
+
 ## License
 
 MIT License. External source corpora retain their own provenance and licensing.

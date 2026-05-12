@@ -392,12 +392,32 @@ Dadurch ist moeglich:
 Aus DO laesst sich eine erste Liste von `celebrations` extrahieren, aber nicht
 als endgueltige Wahrheit, sondern als importierter Katalog.
 
-Statische Extraktion:
+Die derzeitige Extraktion wird durch `tools/extract_celebrations.py`
+durchgefuehrt. Das Skript erzeugt deterministisch:
+
+```text
+data/indexes/celebrations.xml
+data/indexes/celebrations-review.tsv
+```
+
+`celebrations.xml` ist das eigentliche TEI-Sachregister nach dem
+heiEDITIONS-Schema. `celebrations-review.tsv` ist eine editorische Pruefliste
+fuer Quellen, die noch nicht automatisch einer `celebratio` zugeordnet werden
+konnten.
+
+### Quellenumfang
+
+Die Extraktion beruecksichtigt derzeit die lateinischen Mess- und
+Officiumsdateien aus:
 
 - `missa/Latin/Tempora/*.txt`
 - `horas/Latin/Tempora/*.txt`
 - `missa/Latin/Sancti/*.txt`
 - `horas/Latin/Sancti/*.txt`
+- `missa/Latin/Commune/*.txt`
+- `horas/Latin/Commune/*.txt`
+- die entsprechenden `Cist`-, `M`- und `OP`-Varianten, soweit sie in den
+  Quellverzeichnissen vorhanden sind
 
 Zu lesen waeren besonders:
 
@@ -405,6 +425,30 @@ Zu lesen waeren besonders:
 - `[Rank]`
 - `[Rule]`
 - Querverweise mit `@...`
+
+Tatsaechlich verwendet das Skript fuer die erste Bildung einer `celebratio`
+primaer den Titel aus `[Officium]`. Dateien ohne eigenen Officium-Titel werden
+nicht automatisch als eigene Feier behandelt.
+
+### Gruppierung
+
+Die Grundentscheidung lautet: Eine `celebratio` entsteht nicht pro DO-Datei,
+sondern pro liturgischer Sache.
+
+Bei `Tempora`-Dateien wird zuerst nach dem DO-Key gruppiert. Varianten wie
+`Pasc5-0t`, `Pasc5-1r` oder andere rubrikale Fassungen werden, soweit die
+Heuristik sie erkennt, als Quellen derselben Feier angehaengt. Messe und
+Officium mit demselben normalisierten Temporal-Key werden unter derselben
+`celebratio` zusammengefuehrt.
+
+Bei `Sancti`- und `Commune`-Dateien wird staerker nach dem normalisierten
+Officium-Titel gruppiert, weil der Dateiname im Sanctorale oft primaer ein
+Kalenderdatum bezeichnet und keine stabile sachliche Identitaet ist.
+
+Querverweis-Dateien werden rekursiv aufgeloest. Wenn sie auf eine bereits
+erkannte Feier zeigen, werden sie als weitere Quelle in `listRef` derselben
+`celebratio` aufgenommen. Wenn sie nicht aufgeloest werden koennen, erscheinen
+sie in der Review-TSV.
 
 Dabei muessen Varianten klassifiziert werden:
 
@@ -414,6 +458,58 @@ Pasc5-0t   Variante oder versionsspezifische Ersatzdatei
 Pasc5-1    Feria
 Pasc5-1r   rubrikale/reformbezogene Variante
 ```
+
+### Erzeugte TEI-Datei
+
+Jede automatisch erzeugte Feier wird als `<item>` in
+`data/indexes/celebrations.xml` geschrieben:
+
+```xml
+<item xml:id="celebratio-temporale-dominica-5-post-pascha">
+  <label xml:lang="la" ana="hc:PreferredAppellation">Dominica V Post Pascha</label>
+  <idno ana="hc:PrivateIdentifier">temporale:dominica-5-post-pascha</idno>
+  <listRef>
+    <desc>Fontes Divinum Officium</desc>
+    <ref target="../../sources/divinum-officium/web/www/missa/Latin/Tempora/Pasc5-0.txt">missa/Latin/Tempora/Pasc5-0.txt</ref>
+  </listRef>
+</item>
+```
+
+Die Eintraege enthalten bewusst keine `<note>`-Elemente. Die Herkunft wird
+ueber `<listRef>` dokumentiert. Die erzeugte Datei wird gegen das
+heiEDITIONS-RNG validiert.
+
+### Review-TSV
+
+`data/indexes/celebrations-review.tsv` enthaelt alle Quellen, die das Skript
+nicht sicher in das Register aufnehmen konnte. Das Format ist tab-separiert:
+
+```text
+kind    form    directory    key    path    redirect_ref
+```
+
+Die Spalten bedeuten:
+
+- `kind`: derzeit `unmatched_source`; die Quelle wurde nicht automatisch einer
+  `celebratio` zugeordnet
+- `form`: `missa` oder `horas`
+- `directory`: DO-Unterverzeichnis, z. B. `Tempora`, `Sancti`, `Commune`,
+  `Appendix`
+- `key`: Dateikey ohne `.txt`
+- `path`: relativer Pfad der Quelle im Repository
+- `redirect_ref`: erkannter DO-Querverweis, falls die Datei mit einem
+  `@...`-Verweis beginnt
+
+Ein Eintrag in der Review-TSV ist nicht automatisch ein Fehler. Viele Dateien
+sind Textbausteine, Appendices, reine Querverweise, rubrikale Varianten oder
+Quellen, fuer die erst entschieden werden muss, ob sie als eigene
+`celebratio`, als `text_unit`, als `usage`, als `source_witness` oder als
+anderer Datentyp modelliert werden sollen.
+
+Die Review-TSV dient deshalb als Arbeitsliste fuer spaetere editorische
+Normalisierung. Wenn eine Quelle eindeutig zuordenbar ist, kann die Heuristik
+des Importers verbessert oder eine manuelle Override-Regel im Skript ergaenzt
+werden.
 
 Neben dem statischen Katalog braucht es einen dynamischen Kalenderindex, der
 fuer ein konkretes Jahr, eine Rubrikversion und ggf. einen lokalen Kalender

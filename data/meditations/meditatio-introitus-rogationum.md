@@ -1,3 +1,15 @@
+---
+id: meditatio-introitus-rogationum
+title: "Meditatio de Introitu Missae in Rogationibus"
+celebration: celebratio-temporale-feria-secunda-in-rogationibus
+celebration_ref: ../indexes/celebrations.xml#celebratio-temporale-feria-secunda-in-rogationibus
+liturgical_form: missa
+primary_section: Introitus
+primary_source: ../../sources/divinum-officium/web/www/missa/Latin/Tempora/Pasc5-1.txt#Introitus
+primary_incipit: "Exaudivit de templo sancto suo"
+status: draft
+---
+
 # Meditatio de Introitu Missae in Rogationibus
 
 ## Textus fundamentalis

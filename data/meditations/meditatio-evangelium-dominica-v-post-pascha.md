@@ -1,3 +1,15 @@
+---
+id: meditatio-evangelium-dominica-v-post-pascha
+title: "Meditatio de Evangelio Dominicae V post Pascha"
+celebration: celebratio-temporale-dominica-5-post-pascha
+celebration_ref: ../indexes/celebrations.xml#celebratio-temporale-dominica-5-post-pascha
+liturgical_form: missa
+primary_section: Evangelium
+primary_source: ../../sources/divinum-officium/web/www/missa/Latin/Tempora/Pasc5-0.txt#Evangelium
+primary_incipit: "In illo tempore: Dixit Iesus discipulis suis"
+status: draft
+---
+
 # Meditatio de Evangelio Dominicae V post Pascha
 
 ## Textus fundamentalis

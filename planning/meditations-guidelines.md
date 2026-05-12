@@ -185,6 +185,52 @@
 
 ---
 
+## 5. Technical Metadata
+- Stored meditation files belong in `data/meditations/`.
+- Each meditation file must begin with a YAML front matter block.
+- The front matter links the meditation to:
+  - the relevant `celebratio` in `data/indexes/celebrations.xml`
+  - the liturgical form (`missa` or `officium`)
+  - the primary liturgical section on which the meditation is based
+  - the source witness or, later, the normalized `usage` / `text_unit`
+- Required front matter fields for the current Markdown format:
+
+```yaml
+---
+id: meditatio-vocem-iucunditatis
+title: "Meditatio de Introitu Dominicae V post Pascha"
+celebration: celebratio-temporale-dominica-5-post-pascha
+celebration_ref: ../indexes/celebrations.xml#celebratio-temporale-dominica-5-post-pascha
+liturgical_form: missa
+primary_section: Introitus
+primary_source: ../../sources/divinum-officium/web/www/missa/Latin/Tempora/Pasc5-0.txt#Introitus
+primary_incipit: "Vocem iucunditatis"
+status: draft
+---
+```
+
+- Field meanings:
+  - `id`: stable meditation identifier, normally matching the filename without `.md`
+  - `title`: the displayed title of the meditation
+  - `celebration`: `xml:id` of the relevant `<item>` in `data/indexes/celebrations.xml`
+  - `celebration_ref`: relative link from the meditation file to the celebration entry
+  - `liturgical_form`: usually `missa` or `officium`
+  - `primary_section`: the actual source section name, e.g. `Introitus`, `Lectio`, `Evangelium`, `Communio`
+  - `primary_source`: relative link to the current source witness and section anchor
+  - `primary_incipit`: short human-readable incipit of the primary liturgical text
+  - `status`: editorial status, e.g. `draft`, `reviewed`, `final`
+- Use the actual DO section name in `primary_section` when a DO source is cited. For example, a Mass Epistle is currently linked as `Lectio`, because that is the source section in the DO file.
+- `primary_source` is provisional. Once normalized `usage` and `text_unit` records exist, add fields such as:
+
+```yaml
+primary_usage: usage-missa-temporale-pasc5-0-introitus
+primary_text: textus-introitus-vocem-iucunditatis
+```
+
+- Do not replace `celebration` with a date or DO filename. The meditation should point to the normalized liturgical celebration, while source files remain evidence for the current text witness.
+
+---
+
 ## 6. Stylistic Principles
 - Repetition of key words (e.g., *jubilum – alleluia – laus*)
 - Gradual intensification:

@@ -1,3 +1,15 @@
+---
+id: meditatio-epistola-dominica-v-post-pascha
+title: "Meditatio de Epistola Dominicae V post Pascha"
+celebration: celebratio-temporale-dominica-5-post-pascha
+celebration_ref: ../indexes/celebrations.xml#celebratio-temporale-dominica-5-post-pascha
+liturgical_form: missa
+primary_section: Lectio
+primary_source: ../../sources/divinum-officium/web/www/missa/Latin/Tempora/Pasc5-0.txt#Lectio
+primary_incipit: "Carissimi: Estote factores verbi"
+status: draft
+---
+
 # Meditatio de Epistola Dominicae V post Pascha
 
 ## Textus fundamentalis

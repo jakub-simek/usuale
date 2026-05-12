@@ -1,3 +1,15 @@
+---
+id: meditatio-vocem-iucunditatis
+title: "Meditatio de Introitu Dominicae V post Pascha"
+celebration: celebratio-temporale-dominica-5-post-pascha
+celebration_ref: ../indexes/celebrations.xml#celebratio-temporale-dominica-5-post-pascha
+liturgical_form: missa
+primary_section: Introitus
+primary_source: ../../sources/divinum-officium/web/www/missa/Latin/Tempora/Pasc5-0.txt#Introitus
+primary_incipit: "Vocem iucunditatis"
+status: draft
+---
+
 # Meditatio de Introitu Dominicae V post Pascha
 
 ## Textus fundamentalis

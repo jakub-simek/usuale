@@ -17,7 +17,8 @@
 - Use a consistent ecclesiastical orthography throughout:
   - no accent marks (e.g., *Jubilate*, not *Jubiláte*)
   - consistent use of *i/j* and *u/v*
-  - consistent spelling of liturgical forms such as *alleluia/alleluja*
+  - use *alleluia* as the standard spelling in the meditation text and in normalized liturgical quotations, not *alleluja*
+  - preserve another spelling only when deliberately reproducing a source diplomatically
   - use plain *ae* and *oe* as the normal working orthography
   - ligatures *æ* and *œ* may be used in a final typeset version if applied consistently
   - do not mix ligature and non-ligature forms within the same Latin text unless preserving the original orthography of a direct quotation
@@ -27,6 +28,7 @@
   - shaped primarily by biblical, liturgical, and patristic diction
   - allowing measured Baroque amplification where it deepens devotion without obscuring clarity
   - addressing the soul of the reader directly and rhetorically, not a public audience
+  - the normal rhetorical mode is self-address to the soul, e.g. *anima mea*; avoid shifting into direct address of an external reader unless deliberately required
   - encouraging interior assimilation of the liturgical mystery
 - Avoid:
   - modern colloquialisms
@@ -40,6 +42,7 @@
   - case government and prepositional usage
   - tense, mood, voice, and imperative forms
   - consistency of singular/plural address, especially when speaking to the soul
+  - consistency of self-address, avoiding unmarked shifts between *anima mea*, *anima tua*, *nos*, and direct reader address
   - idiomatic ecclesiastical Latin rather than calques from modern languages
 
 ---
@@ -73,6 +76,7 @@
 - Quote the entire liturgical text (e.g., Introit) or the part of it upon which the meditation is based
 - Include biblical reference
 - Identify the liturgical day and the immediate Mass context of the text.
+- When the text is biblical, identify not only the biblical locus but also its liturgical use whenever this clarifies the meditation's context.
 
 ### c) Expositio spiritualis
 - Develop key words (e.g., *jubilate, nomen, gloria*)
@@ -161,6 +165,9 @@
 - Biblical and liturgical references:
   - use standard abbreviated references where appropriate
   - cite the liturgical source when the text is taken from the Mass or Office
+  - when quoting Scripture, add the relevant liturgical use as well as the biblical reference whenever there is a meaningful liturgical connection, e.g. *(Ps 17,7; Introitus Missae in Rogationibus)*
+  - this may include other liturgical uses of the same biblical text, not only the immediate source, when the additional use illuminates the meditation
+  - Divinum Officium data may be searched to identify such liturgical uses; verify that the cited use is real and contextually relevant before including it
 - Patristic and medieval references:
   - give author, work, and precise internal division where possible
   - PL / PG references may be added as supplementary references, but should not replace work and section references

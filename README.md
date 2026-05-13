@@ -32,6 +32,7 @@ usuale/
 │   ├── offices/                 # Offices and Masses (TEI XML)
 │   └── rules/                   # Precedence rules (YAML)
 ├── tools/                       # Conversion and helper scripts
+├── skills/                      # Codex/ChatGPT skills for repo-specific work
 ├── app/                         # Python/Flask web application
 └── planning/                    # Planning documents and analyses
 ```
@@ -71,6 +72,33 @@ This writes:
 The review TSV is an editorial control file. An entry there is not necessarily
 an error; many rows are source fragments, appendices, or redirect files that
 require later modeling decisions.
+
+## Repo Skills
+
+Repo-specific Codex/ChatGPT skills live in `skills/`. The current meditation
+workflow is captured in:
+
+```text
+skills/latin-liturgical-meditations/SKILL.md
+```
+
+When starting a chat task about writing, revising, reviewing, or adding metadata
+to a meditation, refer to the skill by name:
+
+```text
+Use latin-liturgical-meditations and write a meditation on the Introit ...
+```
+
+Other useful prompts:
+
+```text
+Use latin-liturgical-meditations and add the YAML front matter.
+Use latin-liturgical-meditations and run a final review against the guidelines.
+Use latin-liturgical-meditations and check the citations and cf. references.
+```
+
+The skill is only an operational entry point. The authoritative rules remain in
+`planning/meditations-guidelines.md`.
 
 ## License
 

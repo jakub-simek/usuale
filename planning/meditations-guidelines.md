@@ -173,10 +173,12 @@
   - PL / PG references may be added as supplementary references, but should not replace work and section references
 - Scholastic references:
   - use standard scholastic form, e.g. *Summa Theologiae* II-II, q. 23, a. 1, ad 2
+  - quotations from Thomas Aquinas should preferably be checked against Corpus Thomisticum: https://www.corpusthomisticum.org/
 - Catechismus Romanus:
   - cite by *Pars* and *caput*, adding a more precise division when available
 - St. Alphonsus:
   - cite by work and chapter or section
+  - quotations from St. Alphonsus should preferably be checked against the IntraText Digital Library author page: https://www.intratext.com/Catalogo/Autori/AUT231.HTM
   - direct quotations must be given in the original language and original orthography
   - Italian direct quotations must remain in Italian and preserve their original spelling, accents, punctuation, capitalization, and typographic apostrophes
   - typographic apostrophes should be used in Italian quotations even when a digital source uses straight apostrophes or otherwise incorrect apostrophe characters

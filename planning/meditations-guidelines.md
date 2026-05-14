@@ -35,6 +35,7 @@
   - neologisms unless unavoidable
   - overly abstract academic terminology
   - sentimental or psychological phrasing foreign to traditional ascetical language
+  - inflationary use of *aperire* for general meanings such as "develop", "explain", "unfold", or "introduce"; use *aperire* only when the narrower sense "to open" is intended
 - **No quotation marks** anywhere in the Latin text; use **italics** for direct quotations.
 - The Latin must be checked for grammatical correctness, idiomatic ecclesiastical usage, and stylistic consistency.
 - A final linguistic correction pass is mandatory, checking especially:
@@ -87,13 +88,14 @@
   - Psalms
   - Pauline epistles
   - Gospels
-- Attend to the liturgical context of the day:
+- Attend to the liturgical context of the day in both Mass and Office:
   - Epistle
   - Gospel
-  - Collect, Secret, Postcommunion where relevant
+  - Collect, Secret, Postcommunion, and other Mass orations where relevant
   - other Proper chants (Gradual, Alleluia, Offertory, Communion)
-- The meditation must keep its chosen liturgical text clearly at the center; the wider Mass context serves to illuminate this text, not to replace it or become a parallel theme.
-- References to the Epistle, Gospel, or other Proper texts should be organically integrated, not appended as external commentary.
+  - Office antiphons, responsories, hymns, readings, and other relevant elements where they clarify the mystery of the day
+- The meditation must keep its chosen liturgical text clearly at the center; the wider liturgical context serves to illuminate this text, not to replace it or become a parallel theme.
+- References to the Epistle, Gospel, Proper chants, Mass orations, or Office texts should be organically integrated, not appended as external commentary.
 - If another meditation already exists for the same liturgical day:
   - read and take it into account before composing the new meditation
   - avoid unnecessary repetition of the same arguments, images, quotations, and source references
@@ -168,6 +170,7 @@
   - used when the meditation summarizes an argument, draws a thematic connection, or refers to a source whose exact wording has not been checked sufficiently for direct quotation
 - Biblical and liturgical references:
   - use standard abbreviated references where appropriate
+  - Psalm references must always follow the Vulgate numbering used by the traditional Roman liturgy
   - cite the liturgical source when the text is taken from the Mass or Office
   - when quoting Scripture, add the relevant liturgical use as well as the biblical reference whenever there is a meaningful liturgical connection, e.g. *(Ps 17,7; Introitus Missae in Rogationibus)*
   - this may include other liturgical uses of the same biblical text, not only the immediate source, when the additional use illuminates the meditation

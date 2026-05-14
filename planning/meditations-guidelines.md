@@ -111,6 +111,10 @@
 - Always include **precise references**:
   - work
   - section (e.g., *Enarrationes in Psalmos 32, sermo 1, §8*)
+- For Gospel meditations and Gospel-related passages, Thomas Aquinas's *Catena aurea* is a recommended source for patristic witnesses:
+  - use it especially when it organically gathers several Fathers around the liturgical Gospel
+  - cite the original Father when identifiable, with Thomas as the transmitting source, e.g. *apud Thomam Aquinatem, Catena aurea in Ioannem, cap. 16, lect. 5*
+  - do not let the Catena replace direct patristic works when the original text is readily available and contextually important
 
 ### f) Resonantiae mediaevales
 - Include medieval authors, such as:
@@ -174,6 +178,8 @@
 - Scholastic references:
   - use standard scholastic form, e.g. *Summa Theologiae* II-II, q. 23, a. 1, ad 2
   - quotations from Thomas Aquinas should preferably be checked against Corpus Thomisticum: https://www.corpusthomisticum.org/
+  - Thomas may also be used as a precise witness to patristic authorities he explicitly cites, e.g. *Ioannes Damascenus … apud Thomam Aquinatem, Summa Theologiae II-II, q. 83, a. 1, ad 2*
+  - when using the *Summa Theologiae*, prefer Thomas's own theological articulation where it serves the meditation; do not use the *Summa* merely as a convenient quarry for patristic quotations
 - Catechismus Romanus:
   - cite by *Pars* and *caput*, adding a more precise division when available
 - St. Alphonsus:

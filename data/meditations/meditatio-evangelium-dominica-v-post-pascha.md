@@ -46,4 +46,4 @@ Catechismus Romanus monet quod petitiones nostrae ad summum bonum ordinandae sun
 
 ## Conclusio
 
-Pete igitur, anima christiana, sed pete in nomine Christi. Crede quia Filius a Patre exivit et ad Patrem redit; ama eum, quia Pater amat amantes Filium; operare quod audisti, quia oratio vera in vita fructificat. Sic vox iucunditatis non languescet, sed ascendet ad Patrem; sic gaudium tuum, non carnale sed spirituale, non breve sed plenum, in Christo Iesu consummabitur.
+Pete igitur, anima christiana, sed pete in nomine Christi. Crede quia Filius a Patre exivit et ad Patrem redit; ama eum, quia Pater amat amantes Filium; operare quod audisti, quia oratio vera in opere fructum fert. Sic vox iucunditatis non languescet, sed ascendet ad Patrem; sic gaudium tuum, non carnale sed spirituale, non breve sed plenum, in Christo Iesu consummabitur.

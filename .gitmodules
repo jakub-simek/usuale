@@ -1,3 +1,7 @@
 [submodule "sources/divinum-officium"]
 	path = sources/divinum-officium
 	url = https://github.com/DivinumOfficium/divinum-officium.git
+[submodule "shared/latin-meditations-guidelines"]
+	path = shared/latin-meditations-guidelines
+	url = git@github.com:jakub-simek/latin-meditations-guidelines.git
+	branch = main

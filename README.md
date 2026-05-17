@@ -24,7 +24,9 @@ Tridentine rubrics (Breviarium Romanum, pre-1955), Divine Office, and Mass.
 
 ```
 usuale/
-├── sources/                     # Git submodules and external source corpora
+├── shared/                      # Shared guidelines and cross-project assets
+│   └── latin-meditations-guidelines/
+├── sources/                     # External source corpora
 │   └── divinum-officium/        # DO source corpus (Perl/CGI + text files)
 ├── data/                        # Normalized and migrated data
 │   ├── indexes/                 # TEI index files, including celebrations
@@ -39,12 +41,19 @@ usuale/
 
 ## Sources
 
-Divinum Officium is included as an external source corpus through a Git
-submodule:
+Divinum Officium and the shared Latin meditation guidelines are included through
+Git submodules:
 
 ```bash
 # Initialize submodules after cloning
 git submodule update --init --recursive
+
+# Update the shared meditation guidelines
+cd shared/latin-meditations-guidelines
+git pull origin main
+cd ../..
+git add shared/latin-meditations-guidelines
+git commit -m "Update shared meditation guidelines"
 
 # Update the DO source corpus
 cd sources/divinum-officium
@@ -76,10 +85,11 @@ require later modeling decisions.
 ## Repo Skills
 
 Repo-specific Codex/ChatGPT skills live in `skills/`. The current meditation
-workflow is captured in:
+workflow is a project adapter for the shared Latin meditation guidelines:
 
 ```text
 skills/latin-liturgical-meditations/SKILL.md
+shared/latin-meditations-guidelines/skills/latin-meditations-core/SKILL.md
 ```
 
 When starting a chat task about writing, revising, reviewing, or adding metadata
@@ -98,7 +108,12 @@ Use latin-liturgical-meditations and check the citations and cf. references.
 ```
 
 The skill is only an operational entry point. The authoritative rules remain in
-`planning/meditations-guidelines.md`.
+the shared submodule plus the local Usuale overlay:
+
+```text
+shared/latin-meditations-guidelines/guidelines/
+planning/meditations-guidelines.md
+```
 
 ## License
 

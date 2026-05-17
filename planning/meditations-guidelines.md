@@ -1,215 +1,105 @@
-# Meditationes per annum  
-## Guidelines for Traditional Catholic Latin Meditations Following the Liturgy 
+# Usuale Meditation Guidelines
 
----
+These are the project-specific rules for Usuale meditations. They supplement
+the shared Latin meditation guidelines in:
 
-## 1. General Orientation
-- Each meditation is **theological and contemplative**, not merely explanatory.
-- It is rooted in the **traditional Roman liturgy (usus antiquior)**.
-- Its purpose is the **interior assimilation of the liturgical text**, not only exegesis but spiritual interpretation.
-- The theology of the meditations is rooted in **traditional Catholic theology**, avoiding any modernistic tendencies.
-- The normal form is a **classical discursive liturgical meditation**, akin to traditional *lectio*, *consideratio*, or spiritual homily, rather than a strictly Ignatian exercise.
-- Ignatian elements such as *compositio loci*, application of the senses, ordered points, colloquies, election, or examination may be used only when they organically serve the liturgical text; they are not the governing structure of the series.
+```text
+shared/latin-meditations-guidelines/guidelines/
+```
 
----
+Read the shared guidelines first. These Usuale rules override or specialize
+them for liturgical meditations based on the traditional Roman liturgy and the
+current Divinum Officium source witnesses.
 
-## 2. Language
-- The meditation itself must be written in **Ecclesiastical Latin (Latinitas ecclesiastica)**.
-- Direct quotations may remain in the original language when required by the source rules, but the surrounding meditation must remain Latin.
-- Use a consistent ecclesiastical orthography throughout:
-  - no accent marks (e.g., *Jubilate*, not *Jubiláte*)
-  - consistent use of *i/j* and *u/v*
-  - use *alleluia* as the standard spelling in the meditation text and in normalized liturgical quotations, not *alleluja*
-  - preserve another spelling only when deliberately reproducing a source diplomatically
-  - use plain *ae* and *oe* as the normal working orthography
-  - ligatures *æ* and *œ* may be used in a final typeset version if applied consistently
-  - do not mix ligature and non-ligature forms within the same Latin text unless preserving the original orthography of a direct quotation
-- Style:
-  - elevated, calm, contemplative, and rhythmic
-  - periodic sentence structure, avoiding modern fragmentary brevity
-  - shaped primarily by biblical, liturgical, and patristic diction
-  - allowing measured Baroque amplification where it deepens devotion without obscuring clarity
-  - addressing the soul of the reader directly and rhetorically, not a public audience
-  - the normal rhetorical mode is self-address to the soul, e.g. *anima mea*; avoid shifting into direct address of an external reader unless deliberately required
-  - encouraging interior assimilation of the liturgical mystery
-- Avoid:
-  - modern colloquialisms
-  - neologisms unless unavoidable
-  - overly abstract academic terminology
-  - sentimental or psychological phrasing foreign to traditional ascetical language
-  - inflationary use of *aperire* for general meanings such as "develop", "explain", "unfold", or "introduce"; use *aperire* only when the narrower sense "to open" is intended
-- **No quotation marks** anywhere in the Latin text; use **italics** for direct quotations.
-- The Latin must be checked for grammatical correctness, idiomatic ecclesiastical usage, and stylistic consistency.
-- A final linguistic correction pass is mandatory, checking especially:
-  - agreement of subject, verb, adjective, pronoun, and apposition
-  - case government and prepositional usage
-  - tense, mood, voice, and imperative forms
-  - consistency of singular/plural address, especially when speaking to the soul
-  - consistency of self-address, avoiding unmarked shifts between *anima mea*, *anima tua*, *nos*, and direct reader address
-  - idiomatic ecclesiastical Latin rather than calques from modern languages
+## Scope
 
----
+- Usuale meditations are traditional Catholic Latin meditations following the
+  Roman liturgy in the usus antiquior.
+- The primary text is normally a Mass or Office section: for example Introitus,
+  Lectio, Evangelium, Offertorium, Communio, an Office antiphon, responsory,
+  hymn, or reading.
+- The chosen liturgical text remains the center. Other Mass or Office texts
+  illuminate it; they do not replace it or become a parallel theme.
+- Meditation files belong in `data/meditations/`.
 
-## 3. Structure of the Meditation
-- Each meditation must include:
-  - a title
-  - a `Textus fundamentalis` section with the liturgical text and reference
-- After the `Textus fundamentalis`, the meditation should normally follow a recognizable movement:
-  - spiritual exposition of the chosen text
-  - biblical and liturgical amplification
-  - patristic and medieval resonance
-  - spiritual application
-  - short conclusion
-- These movements may appear as visible Markdown headings or be woven more fluidly into the meditation.
-- The headings are guides to the meditation's movement, not fixed containers for particular source types.
-- Recommended heading vocabulary:
-  - `## Textus fundamentalis`
-  - `## Expositio spiritualis`
-  - `## Amplificatio biblica` or `## Amplificatio biblica et liturgica`
-  - `## Resonantiae patristicae et mediaevales`
-  - `## Applicatio spiritualis`
-  - `## Conclusio`
-- Required sources such as the Catechismus Romanus and St. Alphonsus should be integrated where they best serve the meditation, not mechanically placed in a final section.
+## Source Order
 
-### a) Title (Inscriptio)
-- Format: *Meditatio de Introitu / Graduali / Evangelio etc.*
-- Include the liturgical day
+Before writing or revising a meditation:
 
-### b) Textus fundamentalis
-- Quote the entire liturgical text (e.g., Introit) or the part of it upon which the meditation is based
-- Include biblical reference
-- Identify the liturgical day and the immediate Mass context of the text.
-- When the text is biblical, identify not only the biblical locus but also its liturgical use whenever this clarifies the meditation's context.
+1. Identify the primary liturgical text and its liturgical day.
+2. Read the relevant Divinum Officium source witness in `sources/divinum-officium/`.
+3. Find the matching `celebratio` in `data/indexes/celebrations.xml`.
+4. Check `data/meditations/` for existing meditations on the same celebration.
+5. Compose or revise according to the shared guidelines plus this Usuale overlay.
+6. Verify citations, direct quotations, `cf.` references, metadata, and Latin.
 
-### c) Expositio spiritualis
-- Develop key words (e.g., *jubilate, nomen, gloria*)
-- Focus on spiritual meaning, not philological analysis
+## Liturgical Context
 
-### d) Amplificatio biblica
-- Integrate additional Scripture:
-  - Psalms
-  - Pauline epistles
-  - Gospels
-- Attend to the liturgical context of the day in both Mass and Office:
-  - Epistle
-  - Gospel
-  - Collect, Secret, Postcommunion, and other Mass orations where relevant
-  - other Proper chants (Gradual, Alleluia, Offertory, Communion)
-  - Office antiphons, responsories, hymns, readings, and other relevant elements where they clarify the mystery of the day
-- The meditation must keep its chosen liturgical text clearly at the center; the wider liturgical context serves to illuminate this text, not to replace it or become a parallel theme.
-- References to the Epistle, Gospel, Proper chants, Mass orations, or Office texts should be organically integrated, not appended as external commentary.
-- If another meditation already exists for the same liturgical day:
-  - read and take it into account before composing the new meditation
-  - avoid unnecessary repetition of the same arguments, images, quotations, and source references
-  - allow deliberate thematic resonance where it strengthens the unity of the day
-  - ensure that the new meditation harmonizes with the existing one while remaining centered on its own liturgical text
+Attend to the immediate Mass or Office context when it clarifies the primary
+text:
 
-### e) Resonantiae patristicae
-- Include at least **3–5 patristic references**
-- Preferred authors:
-  - Augustine
-  - Gregory the Great
-  - Jerome
-  - Ambrose
-  - John Chrysostom
-- Always include **precise references**:
-  - work
-  - section (e.g., *Enarrationes in Psalmos 32, sermo 1, §8*)
-- For Gospel meditations and Gospel-related passages, Thomas Aquinas's *Catena aurea* is a recommended source for patristic witnesses:
-  - use it especially when it organically gathers several Fathers around the liturgical Gospel
-  - cite the original Father when identifiable, with Thomas as the transmitting source, e.g. *apud Thomam Aquinatem, Catena aurea in Ioannem, cap. 16, lect. 5*
-  - do not let the Catena replace direct patristic works when the original text is readily available and contextually important
+- Epistle and Gospel
+- Collect, Secret, Postcommunion, and other Mass orations
+- Gradual, Alleluia or Tract, Offertory, Communion
+- Office antiphons, responsories, hymns, readings, and capitula
 
-### f) Resonantiae mediaevales
-- Include medieval authors, such as:
-  - Bernard of Clairvaux
-  - Thomas Aquinas
-  - Hugh of St. Victor
-  - Bonaventure
-- Function:
-  - deepen the reflection (affective or speculative)
-  - connect liturgy and theology
+References to this wider context must be organic. Do not append liturgical
+parallels as external commentary, and do not allow the context to displace the
+primary text.
 
-### g) Applicatio spiritualis
-- Transition to interior appropriation:
-  - life as Laus Dei
-  - unity of life and faith
-- Tone: ascetical and moral
-- Include a Marian component according to the principle *de Maria numquam satis*:
-  - connect the liturgical mystery to the Blessed Virgin Mary where the text allows
-  - present Mary as exemplar of the Church, model of interior assimilation, and Mother of the faithful
-  - integrate the Marian element organically, not as a merely appended devotion
+If another meditation already exists for the same liturgical day:
 
-### h) Conclusio
-- Short exhortative ending
-- Return to the central liturgical theme (e.g., *Jubilate Deo, alleluja*)
+- read it before composing the new meditation
+- avoid repeating the same argument, image, quotation, or source chain unless
+  deliberate resonance is useful
+- harmonize with the existing meditation while keeping the new primary text
+  distinct
 
----
+## Local Citation Rules
 
-## 4. Citation Style
-- Distinguish clearly between:
-  - direct quotations
-  - paraphrases or indirect references
-  - general doctrinal or literary references
-- All direct quotations:
-  - italicized
-  - no quotation marks
-  - source reference placed in parentheses directly after the quotation
-  - when the source reference immediately follows the quotation, omit the final period inside the italic quotation and place the sentence period after the parenthetical reference
-  - omissions within quotations use the typographic ellipsis character with spaces on both sides: *verbum … verbum*
-  - never invented or merely reconstructed from memory
-  - verifiable in a reliable source; substantial fidelity to the source is required, but letter-by-letter exactness is not the primary criterion
-  - minor orthographic, typographical, or edition-based variants are acceptable when the quoted wording remains identifiable and faithful
-- Prefer short, well-chosen direct quotations over purely paraphrased references when:
-  - the wording is readily verifiable
-  - the quotation carries theological or stylistic weight
-  - the quotation can be organically integrated without interrupting the contemplative movement
-- Direct quotations should normally be brief and luminous, not long documentary blocks.
-- Paraphrases or indirect references:
-  - not italicized
-  - source reference introduced with *cf.*
-  - placed in parentheses within the sentence or at the end of the relevant paragraph
-  - used when the meditation summarizes an argument, draws a thematic connection, or refers to a source whose exact wording has not been checked sufficiently for direct quotation
-- Biblical and liturgical references:
-  - use standard abbreviated references where appropriate
-  - Psalm references must always follow the Vulgate numbering used by the traditional Roman liturgy
-  - cite the liturgical source when the text is taken from the Mass or Office
-  - in the `Textus fundamentalis`, give the full biblical and liturgical reference for the primary text, e.g. *(Act 1,1-11; Lectio Missae In Ascensione Domini)*
-  - later quotations from the same primary text should normally cite only the biblical locus, e.g. *(Act 1,7)*, unless the liturgical context would otherwise be unclear
-  - keep the full liturgical reference when quoting other Mass or Office texts that are not the primary meditation text
-  - when quoting Scripture, add the relevant liturgical use as well as the biblical reference whenever there is a meaningful liturgical connection, e.g. *(Ps 17,7; Introitus Missae in Rogationibus)*
-  - this may include other liturgical uses of the same biblical text, not only the immediate source, when the additional use illuminates the meditation
-  - Divinum Officium data may be searched to identify such liturgical uses; verify that the cited use is real and contextually relevant before including it
-- Patristic and medieval references:
-  - give author, work, and precise internal division where possible
-  - PL / PG references may be added as supplementary references, but should not replace work and section references
-- Scholastic references:
-  - use standard scholastic form, e.g. *Summa Theologiae* II-II, q. 23, a. 1, ad 2
-  - quotations from Thomas Aquinas should preferably be checked against Corpus Thomisticum: https://www.corpusthomisticum.org/
-  - Thomas may also be used as a precise witness to patristic authorities he explicitly cites, e.g. *Ioannes Damascenus … apud Thomam Aquinatem, Summa Theologiae II-II, q. 83, a. 1, ad 2*
-  - when using the *Summa Theologiae*, prefer Thomas's own theological articulation where it serves the meditation; do not use the *Summa* merely as a convenient quarry for patristic quotations
-- Catechismus Romanus:
-  - cite by *Pars* and *caput*, adding a more precise division when available
-- St. Alphonsus:
-  - cite by work and chapter or section
-  - quotations from St. Alphonsus should preferably be checked against the IntraText Digital Library author page: https://www.intratext.com/Catalogo/Autori/AUT231.HTM
-  - direct quotations must be given in the original language and original orthography
-  - Italian direct quotations must remain in Italian and preserve their original spelling, accents, punctuation, capitalization, and typographic apostrophes
-  - typographic apostrophes should be used in Italian quotations even when a digital source uses straight apostrophes or otherwise incorrect apostrophe characters
-- Source references should be typographically distinct from the quoted text and should not themselves be italicized unless they contain a title.
+- Psalm references follow the Vulgate numbering used by the traditional Roman
+  liturgy.
+- In the `Textus fundamentalis`, cite both the biblical locus and the liturgical
+  use when the text is biblical, e.g. `(Act 1,1-11; Lectio Missae In Ascensione
+  Domini)`.
+- Later quotations from the same primary text normally cite only the biblical
+  locus, e.g. `(Act 1,7)`, unless the liturgical context would otherwise be
+  unclear.
+- Keep the full liturgical reference when quoting another Mass or Office text
+  that is not the primary meditation text.
+- Divinum Officium data may be searched to identify other liturgical uses of a
+  biblical text. Include such uses only when real and contextually relevant.
 
+## Required Source Families
 
----
+Each Usuale meditation should normally include:
 
-## 5. Technical Metadata
-- Stored meditation files belong in `data/meditations/`.
-- Each meditation file must begin with a YAML front matter block.
-- The front matter links the meditation to:
-  - the relevant `celebratio` in `data/indexes/celebrations.xml`
-  - the liturgical form (`missa` or `officium`)
-  - the primary liturgical section on which the meditation is based
-  - the source witness or, later, the normalized `usage` / `text_unit`
-- Required front matter fields for the current Markdown format:
+- Scripture and the immediate liturgical text
+- 3-5 patristic references where the theme allows
+- medieval or scholastic deepening
+- at least one reference to the Catechismus Romanus
+- at least one reference to St. Alphonsus Maria de Liguori
+- an organic Marian component
+
+Preferred patristic authors include Augustine, Gregory the Great, Jerome,
+Ambrose, and John Chrysostom. For Gospel meditations, Thomas Aquinas's
+`Catena aurea` is a useful witness when it organically gathers patristic voices;
+cite the original Father when identifiable and Thomas as the transmitting
+source.
+
+For the Catechismus Romanus, use the structured TEI/XML version of the 1761
+Mainz edition available through UB Tuebingen OpenDigi as the normal working
+text. Direct quotations should still be checked against the page image or a
+reliable printed edition when feasible. Cite by Pars and caput, adding a more
+precise division when available.
+
+For St. Alphonsus, preserve the original language and orthography in direct
+quotations. Italian quotations remain in Italian and should use typographic
+apostrophes.
+
+## Metadata
+
+Every Usuale meditation begins with YAML front matter:
 
 ```yaml
 ---
@@ -225,155 +115,37 @@ status: draft
 ---
 ```
 
-- Field meanings:
-  - `id`: stable meditation identifier, normally matching the filename without `.md`
-  - `title`: the displayed title of the meditation
-  - `celebration`: `xml:id` of the relevant `<item>` in `data/indexes/celebrations.xml`
-  - `celebration_ref`: relative link from the meditation file to the celebration entry
-  - `liturgical_form`: usually `missa` or `officium`
-  - `primary_section`: the actual source section name, e.g. `Introitus`, `Lectio`, `Evangelium`, `Communio`
-  - `primary_source`: relative link to the current source witness and section anchor
-  - `primary_incipit`: short human-readable incipit of the primary liturgical text
-  - `status`: editorial status, e.g. `draft`, `reviewed`, `final`
-- Use the actual DO section name in `primary_section` when a DO source is cited. For example, a Mass Epistle is currently linked as `Lectio`, because that is the source section in the DO file.
-- `primary_source` is provisional. Once normalized `usage` and `text_unit` records exist, add fields such as:
+Field meanings:
 
-```yaml
-primary_usage: usage-missa-temporale-pasc5-0-introitus
-primary_text: textus-introitus-vocem-iucunditatis
-```
+- `id`: stable identifier, normally matching the filename without `.md`
+- `title`: displayed meditation title
+- `celebration`: `xml:id` of the relevant item in `data/indexes/celebrations.xml`
+- `celebration_ref`: relative link to that celebration entry
+- `liturgical_form`: usually `missa` or `officium`
+- `primary_section`: actual source section name, e.g. `Introitus`, `Lectio`,
+  `Evangelium`, `Communio`
+- `primary_source`: relative link to the current source witness and section
+  anchor
+- `primary_incipit`: short human-readable incipit
+- `status`: editorial status, e.g. `draft`, `reviewed`, `final`
 
-- Do not replace `celebration` with a date or DO filename. The meditation should point to the normalized liturgical celebration, while source files remain evidence for the current text witness.
+Use the actual Divinum Officium section name in `primary_section`. For example,
+a Mass Epistle is currently linked as `Lectio`, because that is the source
+section in the DO file.
 
----
+Do not replace `celebration` with a date or DO filename. The meditation points
+to the normalized liturgical celebration; source files remain evidence for the
+current witness.
 
-## 6. Stylistic Principles
-- Repetition of key words (e.g., *jubilum – alleluia – laus*)
-- Gradual intensification:
-  - creation → Church → soul
-- Antithesis:
-  - lament / song
-  - earth / heaven
-  - journey / homeland
-- Classical rhetorical formulas:
-  - *ergo, fratres carissimi*
-  - *non solum… sed etiam…*
+## Usuale Review Checklist
 
----
+Before finishing, verify:
 
-## 7. Length
-- Normal length: approx. **700–1000 words**
-- Shorter meditations: approx. **500–700 words**, when the liturgical text is narrow or the meditation is intentionally concise
-- Longer meditations: up to approx. **1200 words**, when source integration or theological development requires it
-- Balanced:
-  - contemplative rather than encyclopedic
-  - sufficiently spacious for organic integration of sources
-  - not a scholastic treatise
-
----
-
-## 8. What to Avoid
-- Modern colloquial language
-- Psychological or overly subjective tone
-- Purely academic analysis
-- Unverified or vague patristic references
-- Invented, unverifiable, or merely plausible quotations
-- Stylistic inconsistency
-
----
-
-## 9. Optional Extensions
-- Integration of other liturgical texts (Gradual, Offertory)
-- Typological interpretation (Old Testament → New Testament)
-- Subtle rhythmic phrasing for oral reading
-
----
-
-## 10. Required Authoritative References
-
-### a) St. Alphonsus Maria de Liguori
-- Each meditation must include **at least one reference**
-- Purpose:
-  - affective deepening
-  - moral application
-- Language rule:
-  - Direct quotations must be given in the original language and original orthography
-  - If the original text is Italian → **quote in Italian**, preserving the original spelling, accents, punctuation, capitalization, and typographic apostrophes
-  - Typographic apostrophes should be used even when the digital source uses straight apostrophes or otherwise incorrect apostrophe characters
-- Preferred works:
-  - *Pratica di amar Gesu Cristo*
-  - *Apparecchio alla morte*
-  - *Le glorie di Maria*
-
----
-
-### b) Catechismus Romanus (Roman Catechism)
-- Each meditation must include **at least one reference**
-- For references to the Catechismus Romanus, use the structured TEI/XML version of the 1761 Mainz edition available via UB Tübingen OpenDigi (https://opendigi.ub.uni-tuebingen.de/opendigi/Gc195) as the normal working text. Direct quotations must still be checked against the page image or a reliable printed edition before being presented as quotations; the required standard is verifiability and substantial fidelity, not critical letter-by-letter exactness.
-- Function:
-  - doctrinal grounding
-  - connection between liturgy and teaching
-- Citation:
-  - Latin
-  - indicate *Pars* and *caput*
-
----
-
-## 11. Theological Balance
-Each meditation should reflect a threefold authority:
-1. **Sacred Scripture**
-2. **Fathers and Doctors of the Church**
-3. **Magisterium (Catechism) + Ascetical Theology (Alphonsus)**
-
-Each meditation should also include a Marian dimension, in fidelity to the principle *de Maria numquam satis*.
-
----
-
-## 12. Internal Dramaturgy
-The meditation should follow a theological movement:
-- **Cosmos praising God**
-- **Church praising God**
-- **Soul praising God**
-→ culminating in:
-- Marian contemplation and imitation
-- love (Alphonsus)
-- doctrine (Catechism)
-
----
-
-## 13. Integration of Sources
-- Alphonsus:
-  - affective, concrete, experiential
-- Catechism:
-  - clear, doctrinal, normative
-- Both must be **organically integrated**, not appended
-- Patristic, medieval, catechetical, and ascetical sources should appear, where possible, through short direct quotations rather than only through paraphrase.
-- Use paraphrase with *cf.* when it better preserves the flow or when exact wording should not be presented as a quotation.
-- Direct quotations should function as authoritative voices within the meditation, not as decorative proof-texts.
-
----
-
-## 14. Quotation Formatting (Mandatory)
-- All direct quotations:
-  - *italicized*
-  - no quotation marks
-- Source references are placed in parentheses directly after the quotation.
-- If the quotation and its source reference together form one sentence, the final period is placed after the parenthetical reference, not inside the italic quotation.
-- Omissions within quotations use the typographic ellipsis character with spaces on both sides: *verbum … verbum*.
-- Paraphrases and indirect references use *cf.* in the source reference.
-- Prefer direct quotation to paraphrase when the source wording is verified and spiritually or theologically expressive.
-
----
-
-## 15. Hierarchy of Voices
-Quotations should reflect a theological order:
-- Scripture → integrated in the flow
-- Fathers → authoritative interpretation
-- Medieval authors → deepening
-- Catechism → doctrinal clarity
-- Alphonsus → affective culmination
-- Marian sources or Marian application → contemplative completion where appropriate
-
-All share the same italic format for visual unity.
-
----
+- the `celebration` ID exists in `data/indexes/celebrations.xml`
+- `primary_section` and `primary_source` match the Divinum Officium witness
+- the primary liturgical text remains central
+- Mass or Office context is organic and not a second theme
+- existing meditations for the same celebration have been considered
+- required Usuale source families are present and not forced
+- primary-text citations follow the concise repeat-reference rule
+- the final Latin pass required by the shared guidelines has been made

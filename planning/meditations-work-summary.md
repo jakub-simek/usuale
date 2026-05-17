@@ -21,6 +21,13 @@ das Thema ersetzen.
 Die Meditationen sollen theologisch, kontemplativ und ascetisch sein, nicht
 bloss erklaerend oder akademisch.
 
+Ihre Grundform ist eine klassisch diskursive liturgische Betrachtung, eher
+verwandt mit `lectio`, `consideratio` oder geistlicher Homilie als mit einer
+streng ignatianischen Uebung. Ignatianische Elemente wie `compositio loci`,
+Anwendung der Sinne, geordnete Betrachtungspunkte, Colloquia, Wahl oder Examen
+koennen verwendet werden, wenn sie dem liturgischen Text organisch dienen; sie
+bilden aber nicht die tragende Struktur der Reihe.
+
 ## Sprache
 
 Die Meditationen werden in Ecclesiastical Latin geschrieben. Der Stil soll
@@ -106,6 +113,12 @@ Direkte Zitate:
   erst hinter der Klammer
 - Auslassungen innerhalb von Zitaten werden mit der echten Ellipse `…`
   gesetzt, mit Leerzeichen davor und danach: `verbum … verbum`
+
+Beim `Textus fundamentalis` wird der primaere Text voll mit Bibelstelle und
+liturgischem Kontext angegeben, z.B. `(Act 1,1-11; Lectio Missae In Ascensione
+Domini)`. Spaetere Zitate aus demselben primaeren Text nennen normalerweise
+nur noch die genaue Bibelstelle, z.B. `(Act 1,7)`. Bei Zitaten aus anderen
+Mess- oder Officiumstexten bleibt der liturgische Kontext erhalten.
 
 Indirekte Referenzen und Paraphrasen:
 

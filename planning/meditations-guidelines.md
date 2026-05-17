@@ -8,6 +8,8 @@
 - It is rooted in the **traditional Roman liturgy (usus antiquior)**.
 - Its purpose is the **interior assimilation of the liturgical text**, not only exegesis but spiritual interpretation.
 - The theology of the meditations is rooted in **traditional Catholic theology**, avoiding any modernistic tendencies.
+- The normal form is a **classical discursive liturgical meditation**, akin to traditional *lectio*, *consideratio*, or spiritual homily, rather than a strictly Ignatian exercise.
+- Ignatian elements such as *compositio loci*, application of the senses, ordered points, colloquies, election, or examination may be used only when they organically serve the liturgical text; they are not the governing structure of the series.
 
 ---
 
@@ -172,6 +174,9 @@
   - use standard abbreviated references where appropriate
   - Psalm references must always follow the Vulgate numbering used by the traditional Roman liturgy
   - cite the liturgical source when the text is taken from the Mass or Office
+  - in the `Textus fundamentalis`, give the full biblical and liturgical reference for the primary text, e.g. *(Act 1,1-11; Lectio Missae In Ascensione Domini)*
+  - later quotations from the same primary text should normally cite only the biblical locus, e.g. *(Act 1,7)*, unless the liturgical context would otherwise be unclear
+  - keep the full liturgical reference when quoting other Mass or Office texts that are not the primary meditation text
   - when quoting Scripture, add the relevant liturgical use as well as the biblical reference whenever there is a meaningful liturgical connection, e.g. *(Ps 17,7; Introitus Missae in Rogationibus)*
   - this may include other liturgical uses of the same biblical text, not only the immediate source, when the additional use illuminates the meditation
   - Divinum Officium data may be searched to identify such liturgical uses; verify that the cited use is real and contextually relevant before including it

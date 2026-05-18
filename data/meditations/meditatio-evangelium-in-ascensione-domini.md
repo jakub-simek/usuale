@@ -44,4 +44,4 @@ Maria in hoc Evangelio tacite adest sicut forma Ecclesiae credentis. Ipsa non ha
 
 ## Conclusio
 
-Audi igitur, anima mea, et crede. Dominus increpat, sed non abiicit; ascendit, sed cooperatur; sedet ad dexteram Dei, sed sermonem confirmat in terra. Extinguatur lumen visibile, si vult liturgia; maneat lumen fidei. Procede sub rege ascendente, donec idem Dominus veniat quemadmodum visus est ire in caelum.
+Audi igitur, anima mea, et crede. Dominus increpat, sed non abiicit; ascendit, sed cooperatur; sedet ad dexteram Dei, sed sermonem confirmat in terra. Lumen visibile ritu Ecclesiae extinguitur; lumen fidei manet. Procede sub rege ascendente, donec idem Dominus veniat quemadmodum visus est ire in caelum.

@@ -33,7 +33,10 @@ directory:
 5. Write or revise the meditation according to the shared guidelines and Usuale overlay.
 6. Add or preserve YAML front matter with the required Usuale metadata.
 7. Verify citations, direct quotations, `cf.` references, and liturgical references.
-8. Make a final Latin correction pass, especially for agreement, government, mood, and consistency of address to the soul.
+8. Check whether the chosen Alphonsus quotation or locator has already become
+   repetitive in `../../data/meditations/`; choose another passage unless reuse
+   is deliberately required.
+9. Make a final Latin correction pass, especially for agreement, government, mood, and consistency of address to the soul.
 
 ## Markdown Location
 
@@ -63,5 +66,7 @@ Before finishing, verify:
 - Direct quotations are real, traceable, italicized, and cited immediately.
 - Paraphrases use `cf.`.
 - Alphonsus quotations preserve original language and orthography.
+- Alphonsus references have been checked against existing meditations so the
+  same quote or locator is not used as a stock conclusion.
 - The Marian component is integrated organically.
 - The Latin has received a final grammatical and stylistic pass.

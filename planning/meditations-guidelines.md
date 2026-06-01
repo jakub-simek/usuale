@@ -97,6 +97,15 @@ For St. Alphonsus, preserve the original language and orthography in direct
 quotations. Italian quotations remain in Italian and should use typographic
 apostrophes.
 
+Before adding an Alphonsus direct quotation or `cf.` reference, check existing
+meditations for reuse of the same work, locator, and distinctive wording. At a
+minimum search `data/meditations/` for `Alphonsus`, the proposed work title,
+the proposed chapter or section, and a short distinctive phrase from the
+quotation. Do not use the same Alphonsus quote or locator as a stock conclusion;
+prefer another passage or another Alphonsian work when the theme allows. Reuse
+is acceptable only when it is deliberately required by the meditation's
+liturgical and theological focus.
+
 ## Metadata
 
 Every Usuale meditation begins with YAML front matter:

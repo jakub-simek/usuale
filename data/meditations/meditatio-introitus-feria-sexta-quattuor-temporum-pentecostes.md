@@ -7,7 +7,9 @@ liturgical_form: missa
 primary_section: Introitus
 primary_source: ../../sources/divinum-officium/web/www/missa/Latin/Tempora/Pasc7-5.txt#Introitus
 primary_incipit: "Repleatur os meum laude tua"
-status: finished
+status: in_review
+editorial_notes:
+  - "Legacy status finished; complete the shared and local review checklists"
 ---
 
 # Meditatio de Introitu Feriae Sextae Quattuor Temporum Pentecostes

@@ -7,7 +7,9 @@ liturgical_form: missa
 primary_section: Introitus
 primary_source: ../../sources/divinum-officium/web/www/missa/Latin/Tempora/Pent01-0r.txt#Introitus
 primary_incipit: "Benedicta sit sancta Trinitas"
-status: finished
+status: in_review
+editorial_notes:
+  - "Legacy status finished; complete the shared and local review checklists"
 ---
 
 # Meditatio de Introitu Dominicae Sanctissimae Trinitatis

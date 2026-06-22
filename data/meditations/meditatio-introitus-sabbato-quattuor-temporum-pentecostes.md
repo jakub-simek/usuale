@@ -7,7 +7,9 @@ liturgical_form: missa
 primary_section: Introitus
 primary_source: ../../sources/divinum-officium/web/www/missa/Latin/Tempora/Pasc7-6.txt#Introitus
 primary_incipit: "Caritas Dei diffusa est in cordibus nostris"
-status: finished
+status: in_review
+editorial_notes:
+  - "Legacy status finished; complete the shared and local review checklists"
 ---
 
 # Meditatio de Introitu Sabbati Quattuor Temporum Pentecostes

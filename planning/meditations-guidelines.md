@@ -121,6 +121,12 @@ primary_section: Introitus
 primary_source: ../../sources/divinum-officium/web/www/missa/Latin/Tempora/Pasc5-0.txt#Introitus
 primary_incipit: "Vocem iucunditatis"
 status: draft
+# Required for reviewed and final:
+# reviewed_at: 2026-06-22
+# reviewed_by: editor-name
+# Optional while work remains:
+# editorial_notes:
+#   - "Verify a quotation against the original edition"
 ---
 ```
 
@@ -136,7 +142,35 @@ Field meanings:
 - `primary_source`: relative link to the current source witness and section
   anchor
 - `primary_incipit`: short human-readable incipit
-- `status`: editorial status, e.g. `draft`, `reviewed`, `final`
+- `status`: editorial status; one of `draft`, `in_review`, `reviewed`, `final`
+- `reviewed_at`: date of the completed review in `YYYY-MM-DD` form; required
+  for `reviewed` and `final`
+- `reviewed_by`: name or stable identifier of the editor; required for
+  `reviewed` and `final`
+- `editorial_notes`: optional YAML list of concrete unresolved editorial tasks;
+  it must be empty or absent for `reviewed` and `final`
+
+The editorial states have the following meanings:
+
+- `draft`: not yet checked systematically against the complete review checklist
+- `in_review`: systematic review has begun, but one or more checks remain open
+- `reviewed`: content, sources, citations, metadata, and Latin have passed the
+  shared and local review checklists
+- `final`: the reviewed text has been deliberately approved as the publishable
+  project version
+
+Do not promote a meditation merely because it reads smoothly or appears
+complete. `reviewed` records a completed checklist; `final` records an explicit
+editorial release decision.
+
+The front matter in each meditation is the source of truth. Do not maintain a
+separate manual status list. Use the generated overview and metadata check:
+
+```bash
+tools/meditation_status.py
+tools/meditation_status.py --status in_review
+tools/meditation_status.py --check
+```
 
 Use the actual Divinum Officium section name in `primary_section`. For example,
 a Mass Epistle is currently linked as `Lectio`, because that is the source
@@ -158,3 +192,6 @@ Before finishing, verify:
 - required Usuale source families are present and not forced
 - primary-text citations follow the concise repeat-reference rule
 - the final Latin pass required by the shared guidelines has been made
+- `reviewed_at` and `reviewed_by` are present before setting `reviewed` or
+  `final`
+- no unresolved `editorial_notes` remain before setting `reviewed` or `final`

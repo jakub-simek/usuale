@@ -107,6 +107,18 @@ Use latin-liturgical-meditations and run a final review against the guidelines.
 Use latin-liturgical-meditations and check the citations and cf. references.
 ```
 
+Meditation editorial status is stored in each file's YAML front matter. Show
+the current overview or validate the metadata with:
+
+```bash
+tools/meditation_status.py
+tools/meditation_status.py --check
+```
+
+The allowed workflow is `draft` → `in_review` → `reviewed` → `final`. See
+`planning/meditations-guidelines.md` for the exact meaning and required review
+metadata.
+
 The skill is only an operational entry point. The authoritative rules remain in
 the shared submodule plus the local Usuale overlay:
 

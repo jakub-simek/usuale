@@ -132,6 +132,17 @@ The allowed workflow is `draft` → `in_review` → `reviewed` → `final`. See
 `planning/meditations-guidelines.md` for the exact meaning and required review
 metadata.
 
+Remove apostrophe-encoded vertical episemata from one GABC file or recursively
+from a directory with:
+
+```bash
+tools/remove_gabc_ictus.py --check data/gabc/
+tools/remove_gabc_ictus.py data/gabc/
+```
+
+The tool changes only apostrophes inside notation groups after the GABC `%%`
+header separator. Apostrophes in headers and textual markup remain unchanged.
+
 The skill is only an operational entry point. The authoritative rules remain in
 the shared submodule plus the local Usuale overlay:
 

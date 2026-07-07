@@ -555,19 +555,18 @@ Ant. O admirábile commércium: Creátor géneris humáni
     ego hódie génui te.
   </p>
 
-  <!-- Musical notation -->
-  <notatedMusic xml:id="ant-gabc-1">
-    <ab type="gabc">
-      name: Dominus dixit;
-      mode: 8;
-      %%
-      (c4) Dó(f)mi(g)nus(h) di(g)xit(f)...
-    </ab>
+  <!-- Externally stored musical notation -->
+  <notatedMusic xml:id="ant-gabc-1"
+                type="gabc"
+                corresp="#ant-text-1">
+    <ptr type="notation-file"
+         target="../../gabc/antiphons/ant-dominus-dixit-ad-me.gabc"
+         mimeType="text/plain"/>
   </notatedMusic>
 </div>
 ```
 
-**Preserves both text and music**
+**TEI preserves the relationship; GABC remains independently usable**
 
 ---
 

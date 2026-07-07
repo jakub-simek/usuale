@@ -1302,23 +1302,18 @@ Or inline:
     ego hódie génui te.
   </p>
 
-  <!-- GABC notation -->
-  <notatedMusic xml:id="ant-gabc-1">
-    <ptr target="gabc:dominus-dixit"/>
+  <!-- Externally stored GABC notation -->
+  <notatedMusic xml:id="ant-gabc-1" type="gabc" corresp="#ant-text-1">
+    <ptr type="notation-file"
+         target="../../gabc/antiphons/ant-dominus-dixit-ad-me.gabc"
+         mimeType="text/plain"/>
     <desc>GABC notation for this antiphon</desc>
-
-    <!-- Or embed directly -->
-    <ab type="gabc">
-      name: Dominus dixit;
-      mode: 8;
-      %%
-      (c4) Dó(f)mi(g)nus(h) di(g)xit(f) ad(e) me:(d)
-      Fí(f)li(g)us(h) me(g)us(f) es(e) tu,(d)
-      e(f)go(g) hó(h)di(g)e(f) gé(e)nu(d)i(c) te.(d)
-    </ab>
   </notatedMusic>
 </div>
 ```
+
+GABC content is maintained in standalone files under `data/gabc/` and is not
+duplicated inside TEI.
 
 ### Commemorations
 

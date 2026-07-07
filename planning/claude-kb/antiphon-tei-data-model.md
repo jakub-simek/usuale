@@ -14,12 +14,18 @@ kommentierbares Editionsobjekt mit:
   Antiphonale Synopticum
 - Handschriften- und Druckzeugen
 - Links zu Digitalisaten und konkreten Bildausschnitten
-- GABC-Notenedition
+- extern gespeicherter GABC-Notenedition mit TEI-Pointer
 - liturgischen Verwendungen, ohne die Antiphon selbst mehrfach zu duplizieren
 
 Kernentscheidung: Die Antiphon-Datei enthaelt die Identitaet, den edierten Text,
-Quellen, Zeugnisse und Musik. Die konkrete Verwendung in einem Offizium
-referenziert diese Datei von aussen.
+Quellen, Zeugnisse und die Metadaten der Musik. Die GABC-Notation liegt in
+einer eigenen Datei und wird aus TEI mit `ptr` referenziert. Die konkrete
+Verwendung in einem Offizium referenziert die Antiphon-Datei von aussen.
+
+Die semantische Klassifikation von Antiphonen und ihren Bestandteilen wird
+nicht als lokale TEI-Taxonomie gepflegt, sondern soll auf Klassen einer
+separaten RDF/OWL-Ontologie verweisen. Die Architektur, URI-Strategie und das
+Hosting sind in `../ontology-and-tei.md` dokumentiert.
 
 ## Dateiebene und Identitaet
 
@@ -123,6 +129,37 @@ Empfohlene ID-Schichten:
 
 ## Header-Modell
 
+### Zentrale Bibliographie
+
+Alle Literaturangaben, digitalen Quellressourcen, Bibelstellen und
+Datenbankdatensaetze werden zentral in folgender TEI-Datei verwaltet:
+
+```text
+data/indexes/bibliography.xml
+```
+
+Diese Datei hat die Grundstruktur:
+
+```xml
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="bibliography">
+  <teiHeader>...</teiHeader>
+  <text>
+    <body>
+      <listBibl>
+        <bibl xml:id="bibl-example">...</bibl>
+      </listBibl>
+    </body>
+  </text>
+</TEI>
+```
+
+Andere TEI-Dateien duplizieren diese Angaben nicht. Sie referenzieren stabile
+`bibl/@xml:id`-Werte mit relativen URI-Fragmenten, zum Beispiel:
+
+```text
+../../indexes/bibliography.xml#bibl-liber-usualis-1961
+```
+
 ### `sourceDesc`: Zeugnisse, Quellen, externe Datenbanken
 
 `sourceDesc` trennt drei Dinge, die oft vermischt werden:
@@ -136,82 +173,62 @@ Empfohlene ID-Schichten:
 ```xml
 <sourceDesc>
   <listWit>
-    <witness xml:id="w-ar1960">
-      <bibl>
-        <title>Antiphonale Romanum</title>
-        <date when="1912">1912</date>
-      </bibl>
-    </witness>
-    <witness xml:id="w-lu1961">
-      <bibl>
-        <title>Liber Usualis</title>
-        <date when="1961">1961</date>
-      </bibl>
-    </witness>
-    <witness xml:id="w-ms-paris-lat-12044">
-      <msDesc>
-        <msIdentifier>
-          <settlement>Paris</settlement>
-          <repository>Bibliothèque nationale de France</repository>
-          <idno>lat. 12044</idno>
-        </msIdentifier>
-      </msDesc>
-    </witness>
+    <witness xml:id="w-ar1912"
+             corresp="../../indexes/bibliography.xml#bibl-antiphonale-romanum-1912"/>
+    <witness xml:id="w-lu1961"
+             corresp="../../indexes/bibliography.xml#bibl-liber-usualis-1961"/>
+    <witness xml:id="w-ms-paris-lat-12044"
+             corresp="../../indexes/bibliography.xml#bibl-ms-paris-lat-12044"/>
   </listWit>
-
-  <listBibl type="text-sources">
-    <bibl xml:id="src-ps-2-7" type="biblical">
-      <title>Psalmus 2</title>
-      <biblScope unit="verse">7</biblScope>
-      <ref target="urn:cts:latinLit:stoa0049.stoa001:2.7">Ps 2:7</ref>
-    </bibl>
-  </listBibl>
-
-  <listBibl type="external-identifiers">
-    <bibl xml:id="id-cantus" type="database">
-      <title>Cantus Index</title>
-      <idno type="cantus">001234</idno>
-      <ptr target="https://cantusindex.org/id/001234"/>
-    </bibl>
-    <bibl xml:id="id-cao" type="database">
-      <title>Corpus Antiphonalium Officii</title>
-      <idno type="cao">1234</idno>
-    </bibl>
-    <bibl xml:id="id-gregorien" type="database">
-      <title>gregorien.info</title>
-      <idno type="gregorien.info">ant/1234</idno>
-      <ptr target="https://gregorien.info/chant/id/1234/0/en"/>
-    </bibl>
-    <bibl xml:id="id-gregobase" type="database">
-      <title>Gregobase</title>
-      <idno type="gregobase">1234</idno>
-      <ptr target="https://gregobase.selapa.net/chant.php?id=1234"/>
-    </bibl>
-    <bibl xml:id="id-antiphonale-synopticum" type="database">
-      <title>Antiphonale Synopticum</title>
-      <idno type="antiphonale-synopticum">AS-1234</idno>
-    </bibl>
-  </listBibl>
+  <list type="bibliographic-references">
+    <head>Text source and concordances</head>
+    <item>
+      <ref type="text-source"
+           target="../../indexes/bibliography.xml#bibl-psalmus-2-7">Ps 2,7</ref>
+    </item>
+    <item>
+      <ref type="concordance"
+           target="../../indexes/bibliography.xml#bibl-cantus-001234">Cantus 001234</ref>
+    </item>
+    <item>
+      <ref type="concordance"
+           target="../../indexes/bibliography.xml#bibl-cao-1234">CAO 1234</ref>
+    </item>
+  </list>
 </sourceDesc>
 ```
+
+Lokale `witness/@xml:id`-Werte bleiben notwendig, damit `app`, `lem` und `rdg`
+kurze `@wit`-Verweise verwenden koennen. Die Beschreibung des Zeugen steht
+jedoch ausschliesslich im referenzierten zentralen `bibl`-Datensatz.
 
 ### `profileDesc`: Klassifikation
 
 `profileDesc` beschreibt, was die Antiphon ist: Gattung, liturgische Zeit,
 thematische Stichworte, ggf. Sprache und Entstehungskontext.
 
+Freie `keywords` koennen fuer Suchbegriffe erhalten bleiben. Der formale
+Texttyp wird dagegen am klassifizierten TEI-Element mit `@ana` auf eine
+OWL-Klasse angegeben. Bis der persistente Namensraum registriert ist, bleibt
+`ONTOLOGY_BASE_IRI` in diesem Beispiel ein Platzhalter:
+
 ```xml
 <profileDesc>
   <textClass>
-    <keywords scheme="#genre">
-      <term>antiphon</term>
-      <term>psalm-antiphon</term>
-    </keywords>
     <keywords scheme="#liturgical-season">
       <term>advent</term>
     </keywords>
   </textClass>
 </profileDesc>
+
+<text>
+  <body>
+    <div type="antiphon"
+         ana="ONTOLOGY_BASE_IRI#PsalmAntiphon">
+      ...
+    </div>
+  </body>
+</text>
 ```
 
 ### `standOff`: liturgische Beziehungen
@@ -327,17 +344,22 @@ angelegt werden.
 ```xml
 <div type="source-context" xml:id="ant-dominus-dixit-ad-me.sources">
   <head>Textquelle</head>
-  <bibl corresp="#src-ps-2-7">Psalmus 2:7</bibl>
+  <ref type="bibliographic"
+       target="../../indexes/bibliography.xml#bibl-psalmus-2-7">Psalmus 2:7</ref>
 
-  <quote xml:lang="la" source="#src-vulgata">
+  <quote xml:lang="la"
+         source="../../indexes/bibliography.xml#bibl-psalmus-2-7-vulgata">
     Dóminus dixit ad me: Fílius meus es tu; ego hódie génui te.
   </quote>
 
-  <quote xml:lang="grc" source="#src-lxx">
+  <quote xml:lang="grc"
+         source="../../indexes/bibliography.xml#bibl-psalmus-2-7-septuaginta">
     Κύριος εἶπεν πρός με· υἱός μου εἶ σύ, ἐγὼ σήμερον γεγέννηκά σε.
   </quote>
 
-  <quote xml:lang="he" source="#src-mt" rend="rtl">
+  <quote xml:lang="he"
+         source="../../indexes/bibliography.xml#bibl-psalmus-2-7-masoreticus"
+         rend="rtl">
     יהוה אמר אלי בני אתה אני היום ילדתיך
   </quote>
 
@@ -348,10 +370,10 @@ angelegt werden.
 </div>
 ```
 
-Bei patristischen Quellen kann dasselbe Muster verwendet werden:
+Bei patristischen Quellen wird der Datensatz ebenfalls zentral angelegt:
 
 ```xml
-<bibl xml:id="src-aug-sermo-185" type="patristic">
+<bibl xml:id="bibl-augustinus-sermo-185-3" type="patristic">
   <author>Augustinus</author>
   <title>Sermo 185</title>
   <biblScope unit="section">3</biblScope>
@@ -397,9 +419,16 @@ eine lokale Datei referenzieren.
 
 ## GABC-Modell
 
-GABC kann entweder eingebettet oder extern referenziert werden. Fuer eine
-wissenschaftliche Edition ist beides sinnvoll: eingebetteter kanonischer Stand
-plus optionaler Link auf die Quelldatei.
+GABC wird nicht in die TEI-Datei eingebettet. Die kanonische Notationsdatei
+liegt unter:
+
+```text
+data/gabc/antiphons/<stable-id>.gabc
+```
+
+TEI beschreibt die Notationsfassung und referenziert sie mit `ptr`. So bleibt
+die GABC-Datei unmittelbar mit Gregorio und anderen Notationswerkzeugen
+verwendbar, waehrend TEI Identitaet, Provenienz und Beziehungen verwaltet.
 
 ```xml
 <div type="notation" xml:id="ant-dominus-dixit-ad-me.music">
@@ -407,32 +436,39 @@ plus optionaler Link auf die Quelldatei.
                 type="gabc"
                 corresp="#ant-dominus-dixit-ad-me.text">
     <head>GABC edition</head>
-    <ptr type="source-file" target="../../gabc/ant-dominus-dixit-ad-me.gabc"/>
-    <ab type="gabc"><![CDATA[
-name:Dominus dixit ad me;
-office-part:an;
-mode:2;
-%%
-Dó(f)mi(g)nus(h) di(g)xit(f) *(,) ad(g) me:(h) Fí(h)li(g)us(f) me(g)us(h) es(g) tu,(f) (::)
-    ]]></ab>
+    <ptr type="notation-file"
+         target="../../gabc/antiphons/ant-dominus-dixit-ad-me.gabc"
+         mimeType="text/plain"/>
   </notatedMusic>
 </div>
 ```
 
-Wenn mehrere Melodietraditionen vorliegen:
+Wenn mehrere Melodietraditionen vorliegen, erhaelt jede Fassung eine eigene
+GABC-Datei und einen eigenen `notatedMusic`-Block:
 
 ```xml
-<notatedMusic xml:id="ant-dominus-dixit-ad-me.gabc.ar" type="gabc"
-              source="#w-ar1960"/>
-<notatedMusic xml:id="ant-dominus-dixit-ad-me.gabc.ms-paris" type="gabc"
+<notatedMusic xml:id="ant-dominus-dixit-ad-me.gabc.ar"
+              type="gabc"
+              source="#w-ar1960">
+  <ptr type="notation-file"
+       target="../../gabc/antiphons/ant-dominus-dixit-ad-me.ar.gabc"
+       mimeType="text/plain"/>
+</notatedMusic>
+<notatedMusic xml:id="ant-dominus-dixit-ad-me.gabc.ms-paris"
+              type="gabc"
               source="#w-ms-paris-lat-12044"
-              facs="#zone-paris-lat-12044-045r-ant"/>
+              facs="#zone-paris-lat-12044-045r-ant">
+  <ptr type="notation-file"
+       target="../../gabc/antiphons/ant-dominus-dixit-ad-me.ms-paris.gabc"
+       mimeType="text/plain"/>
+</notatedMusic>
 ```
 
 ## Externe Identifikatoren
 
-Externe IDs sollten nicht als freie Notizen verstreut werden. Empfohlen ist
-ein normierter Block im `sourceDesc`, ergaenzt durch `idno/@type`.
+Externe IDs sollten nicht als freie Notizen verstreut werden. Sie stehen in
+zentralen `bibl[@type='database']`-Datensaetzen in `bibliography.xml`; die
+Antiphon-Datei verweist aus `sourceDesc/listRef` auf diese Datensaetze.
 
 Empfohlene `@type`-Werte:
 
@@ -449,9 +485,11 @@ Empfohlene `@type`-Werte:
 Beispiel:
 
 ```xml
-<idno type="usuale">ant-dominus-dixit-ad-me</idno>
-<idno type="cantus">001234</idno>
-<idno type="cao">1234</idno>
+<bibl xml:id="bibl-cantus-001234" type="database">
+  <title>Cantus Index</title>
+  <idno type="cantus">001234</idno>
+  <ptr target="https://cantusindex.org/id/001234"/>
+</bibl>
 ```
 
 ## Beziehungen zu Psalmen und Offizien
@@ -521,41 +559,26 @@ Struktur robuster:
       </publicationStmt>
       <sourceDesc>
         <listWit>
-          <witness xml:id="w-ar1912">
-            <bibl>
-              <title>Antiphonale Romanum</title>
-              <date when="1912">1912</date>
-            </bibl>
-          </witness>
-          <witness xml:id="w-ms-paris-lat-12044">
-            <msDesc>
-              <msIdentifier>
-                <settlement>Paris</settlement>
-                <repository>Bibliothèque nationale de France</repository>
-                <idno>lat. 12044</idno>
-              </msIdentifier>
-            </msDesc>
-          </witness>
+          <witness xml:id="w-ar1912"
+                   corresp="../../indexes/bibliography.xml#bibl-antiphonale-romanum-1912"/>
+          <witness xml:id="w-ms-paris-lat-12044"
+                   corresp="../../indexes/bibliography.xml#bibl-ms-paris-lat-12044"/>
         </listWit>
-
-        <listBibl type="text-sources">
-          <bibl xml:id="src-ps-2-7" type="biblical">
-            <title>Psalmus 2</title>
-            <biblScope unit="verse">7</biblScope>
-          </bibl>
-        </listBibl>
-
-        <listBibl type="external-identifiers">
-          <bibl type="database">
-            <title>Cantus Index</title>
-            <idno type="cantus">001234</idno>
-            <ptr target="https://cantusindex.org/id/001234"/>
-          </bibl>
-          <bibl type="database">
-            <title>Corpus Antiphonalium Officii</title>
-            <idno type="cao">1234</idno>
-          </bibl>
-        </listBibl>
+        <list type="bibliographic-references">
+          <head>Text source and concordances</head>
+          <item>
+            <ref type="text-source"
+                 target="../../indexes/bibliography.xml#bibl-psalmus-2-7">Ps 2,7</ref>
+          </item>
+          <item>
+            <ref type="concordance"
+                 target="../../indexes/bibliography.xml#bibl-cantus-001234">Cantus 001234</ref>
+          </item>
+          <item>
+            <ref type="concordance"
+                 target="../../indexes/bibliography.xml#bibl-cao-1234">CAO 1234</ref>
+          </item>
+        </list>
       </sourceDesc>
     </fileDesc>
 
@@ -613,13 +636,17 @@ Struktur robuster:
 
         <div type="source-context" xml:id="ant-dominus-dixit-ad-me.sources">
           <head>Textquelle</head>
-          <quote xml:lang="la" source="#src-ps-2-7">
+          <quote xml:lang="la"
+                 source="../../indexes/bibliography.xml#bibl-psalmus-2-7-vulgata">
             Dóminus dixit ad me: Fílius meus es tu; ego hódie génui te.
           </quote>
-          <quote xml:lang="grc" source="#src-ps-2-7">
+          <quote xml:lang="grc"
+                 source="../../indexes/bibliography.xml#bibl-psalmus-2-7-septuaginta">
             Κύριος εἶπεν πρός με· υἱός μου εἶ σύ, ἐγὼ σήμερον γεγέννηκά σε.
           </quote>
-          <quote xml:lang="he" source="#src-ps-2-7" rend="rtl">
+          <quote xml:lang="he"
+                 source="../../indexes/bibliography.xml#bibl-psalmus-2-7-masoreticus"
+                 rend="rtl">
             יהוה אמר אלי בני אתה אני היום ילדתיך
           </quote>
         </div>
@@ -629,14 +656,9 @@ Struktur robuster:
                         type="gabc"
                         corresp="#ant-dominus-dixit-ad-me.text">
             <head>GABC edition</head>
-            <ptr type="source-file" target="../../gabc/ant-dominus-dixit-ad-me.gabc"/>
-            <ab type="gabc"><![CDATA[
-name:Dominus dixit ad me;
-office-part:an;
-mode:2;
-%%
-Dó(f)mi(g)nus(h) di(g)xit(f) *(,) ad(g) me:(h) Fí(h)li(g)us(f) me(g)us(h) es(g) tu,(f) (::)
-            ]]></ab>
+            <ptr type="notation-file"
+                 target="../../gabc/antiphons/ant-dominus-dixit-ad-me.gabc"
+                 mimeType="text/plain"/>
           </notatedMusic>
         </div>
       </div>
@@ -659,10 +681,19 @@ Mindestregeln:
 - Jede Antiphon-Datei hat genau ein `div[@type='antiphon']` im Body.
 - Das Wurzelelement hat ein stabiles `xml:id`.
 - `titleStmt/title[@type='incipit']` ist Pflicht.
+- Alle bibliographischen Datensaetze stehen in
+  `data/indexes/bibliography.xml` unter `text/body/listBibl`.
+- Antiphon-Dateien enthalten keine eigenen `bibl` oder `biblStruct`.
 - `sourceDesc/listWit` ist optional, aber wenn Variantenapparat vorhanden ist,
-  muessen alle `@wit`-Verweise auf existierende `witness/@xml:id` zeigen.
-- Externe IDs werden nur als `idno` mit kontrolliertem `@type` kodiert.
-- GABC steht in `notatedMusic[@type='gabc']`.
+  muessen alle `@wit`-Verweise auf existierende `witness/@xml:id` zeigen und
+  jedes `witness` muss mit `@corresp` auf einen zentralen `bibl`-Datensatz
+  verweisen.
+- Externe IDs werden nur als `idno` mit kontrolliertem `@type` in der zentralen
+  Bibliographie kodiert.
+- Jede GABC-Fassung wird durch `notatedMusic[@type='gabc']` beschrieben.
+- Jedes `notatedMusic[@type='gabc']` enthaelt genau einen
+  `ptr[@type='notation-file']` auf eine existierende `.gabc`-Datei.
+- GABC-Inhalt wird nicht als `ab`, CDATA oder Freitext in TEI dupliziert.
 - Der liturgische Asteriskus wird als `caesura[@type='asteriscus']`, nicht als
   rohes Sternchen im Haupttext, kodiert.
 - Bildausschnitte werden als `facsimile/surface/zone` modelliert und aus Text,
@@ -670,18 +701,20 @@ Mindestregeln:
 
 ## Empfehlungen
 
-1. **Antiphon als Werk-/Editionsobjekt behandeln**: Text, Quellen und Musik
-   gehoeren in die Antiphon-Datei; Kalender- und Rubrikenlogik gehoeren in
+1. **Antiphon als Werk-/Editionsobjekt behandeln**: Text, Quellen und
+   Musikmetadaten gehoeren in die Antiphon-Datei; die GABC-Notation liegt in
+   einer referenzierten `.gabc`-Datei. Kalender- und Rubrikenlogik gehoeren in
    Office-/YAML-Dateien.
 2. **Psalmzuordnung nicht in den Text einbetten**: Das alte `;;109` wird als
    Beziehung modelliert, nicht als Teil der Antiphon.
 3. **Quellenangabe zweistufig halten**: kurze `source-summary` fuer Anzeige,
    ausfuehrliche `source-context` fuer Forschung.
 4. **Datenbank-IDs normalisieren**: alle externen IDs ueber `idno/@type`, damit
-   spaeter Konkordanzen und Dublettenabgleich einfach bleiben.
-5. **GABC nah an der Antiphon speichern**: die kanonische GABC-Edition sollte
-   in der TEI-Datei enthalten sein; externe `.gabc`-Dateien koennen daraus
-   generiert oder zusaetzlich gepflegt werden.
+   spaeter Konkordanzen und Dublettenabgleich einfach bleiben; die Datensaetze
+   stehen zentral in `data/indexes/bibliography.xml`.
+5. **GABC aus TEI auslagern**: die kanonische GABC-Edition wird unter
+   `data/gabc/antiphons/` gepflegt und aus TEI ausschliesslich mit
+   `ptr[@type='notation-file']` referenziert.
 6. **Facsimile-Zonen frueh einplanen**: auch wenn noch keine Bildausschnitte
    vorhanden sind, sollte die Struktur dafuer von Anfang an im Schema erlaubt
    sein.

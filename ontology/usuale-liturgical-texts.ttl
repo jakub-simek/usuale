@@ -1,0 +1,276 @@
+@prefix usu: <https://w3id.org/usuale/ontology#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://w3id.org/usuale/ontology>
+    a owl:Ontology ;
+    dcterms:title "Usuale ontology of liturgical text types"@en ;
+    dcterms:title "Usuale-Ontologie liturgischer Texttypen"@de ;
+    dcterms:description
+        "An ontology of liturgical text types, text parts, and selected relationships used by the Usuale project."@en ;
+    dcterms:description
+        "Eine Ontologie liturgischer Texttypen, Textbestandteile und ausgewählter Beziehungen für das Usuale-Projekt."@de ;
+    dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    owl:versionInfo "0.1.0-draft" ;
+    rdfs:comment
+        "Draft ontology. The proposed w3id.org namespace has not yet been registered and must not yet be treated as a published persistent namespace."@en ;
+    rdfs:comment
+        "Ontologieentwurf. Der vorgeschlagene w3id.org-Namensraum ist noch nicht registriert und darf noch nicht als veröffentlichter persistenter Namensraum behandelt werden."@de .
+
+#################################################################
+# Liturgical text classes
+#################################################################
+
+usu:LiturgicalText
+    a owl:Class ;
+    rdfs:label "liturgical text"@en ;
+    rdfs:label "liturgischer Text"@de ;
+    rdfs:comment
+        "A text that is used as a textual unit in a liturgical context."@en ;
+    rdfs:comment
+        "Ein Text, der als textuelle Einheit in einem liturgischen Zusammenhang verwendet wird."@de .
+
+usu:Chant
+    a owl:Class ;
+    rdfs:subClassOf usu:LiturgicalText ;
+    rdfs:label "chant"@en ;
+    rdfs:label "Gesang"@de ;
+    rdfs:comment
+        "A liturgical text intended for sung performance."@en ;
+    rdfs:comment
+        "Ein liturgischer Text, der für den gesungenen Vortrag bestimmt ist."@de .
+
+usu:Antiphon
+    a owl:Class ;
+    rdfs:subClassOf usu:Chant ;
+    rdfs:label "antiphon"@en ;
+    rdfs:label "Antiphon"@de ;
+    rdfs:comment
+        "A liturgical chant functioning as an antiphon."@en ;
+    rdfs:comment
+        "Ein liturgischer Gesang mit der Funktion einer Antiphon."@de .
+
+usu:PsalmAntiphon
+    a owl:Class ;
+    rdfs:subClassOf usu:Antiphon ;
+    rdfs:label "psalm antiphon"@en ;
+    rdfs:label "Psalmantiphon"@de ;
+    rdfs:comment
+        "An antiphon associated with the performance of a psalm or canticle."@en ;
+    rdfs:comment
+        "Eine Antiphon, die dem Vortrag eines Psalms oder Canticums zugeordnet ist."@de .
+
+usu:Responsory
+    a owl:Class ;
+    rdfs:subClassOf usu:Chant ;
+    rdfs:label "responsory"@en ;
+    rdfs:label "Responsorium"@de ;
+    rdfs:comment
+        "A liturgical chant structured around a response and, typically, one or more verses."@en ;
+    rdfs:comment
+        "Ein liturgischer Gesang, der aus einem Responsum und typischerweise einem oder mehreren Versen besteht."@de .
+
+usu:GreatResponsory
+    a owl:Class ;
+    rdfs:subClassOf usu:Responsory ;
+    rdfs:label "great responsory"@en ;
+    rdfs:label "großes Responsorium"@de .
+
+usu:ShortResponsory
+    a owl:Class ;
+    rdfs:subClassOf usu:Responsory ;
+    rdfs:label "short responsory"@en ;
+    rdfs:label "Kurzresponsorium"@de .
+
+usu:Hymn
+    a owl:Class ;
+    rdfs:subClassOf usu:Chant ;
+    rdfs:label "hymn"@en ;
+    rdfs:label "Hymnus"@de .
+
+usu:Introit
+    a owl:Class ;
+    rdfs:subClassOf usu:Chant ;
+    rdfs:label "introit"@en ;
+    rdfs:label "Introitus"@de .
+
+usu:Gradual
+    a owl:Class ;
+    rdfs:subClassOf usu:Chant ;
+    rdfs:label "gradual"@en ;
+    rdfs:label "Graduale"@de .
+
+usu:Alleluia
+    a owl:Class ;
+    rdfs:subClassOf usu:Chant ;
+    rdfs:label "alleluia chant"@en ;
+    rdfs:label "Alleluia-Gesang"@de .
+
+usu:Tract
+    a owl:Class ;
+    rdfs:subClassOf usu:Chant ;
+    rdfs:label "tract"@en ;
+    rdfs:label "Tractus"@de .
+
+usu:Offertory
+    a owl:Class ;
+    rdfs:subClassOf usu:Chant ;
+    rdfs:label "offertory chant"@en ;
+    rdfs:label "Offertorium"@de .
+
+usu:Communion
+    a owl:Class ;
+    rdfs:subClassOf usu:Chant ;
+    rdfs:label "communion chant"@en ;
+    rdfs:label "Communio"@de .
+
+usu:Reading
+    a owl:Class ;
+    rdfs:subClassOf usu:LiturgicalText ;
+    rdfs:label "reading"@en ;
+    rdfs:label "Lesung"@de .
+
+usu:Epistle
+    a owl:Class ;
+    rdfs:subClassOf usu:Reading ;
+    rdfs:label "epistle"@en ;
+    rdfs:label "Epistel"@de .
+
+usu:Gospel
+    a owl:Class ;
+    rdfs:subClassOf usu:Reading ;
+    rdfs:label "gospel reading"@en ;
+    rdfs:label "Evangelium"@de .
+
+usu:PatristicReading
+    a owl:Class ;
+    rdfs:subClassOf usu:Reading ;
+    rdfs:label "patristic reading"@en ;
+    rdfs:label "patristische Lesung"@de .
+
+usu:Oration
+    a owl:Class ;
+    rdfs:subClassOf usu:LiturgicalText ;
+    rdfs:label "oration"@en ;
+    rdfs:label "Oration"@de .
+
+usu:Collect
+    a owl:Class ;
+    rdfs:subClassOf usu:Oration ;
+    rdfs:label "collect"@en ;
+    rdfs:label "Collecta"@de .
+
+usu:Secret
+    a owl:Class ;
+    rdfs:subClassOf usu:Oration ;
+    rdfs:label "secret"@en ;
+    rdfs:label "Secreta"@de .
+
+usu:Postcommunion
+    a owl:Class ;
+    rdfs:subClassOf usu:Oration ;
+    rdfs:label "postcommunion"@en ;
+    rdfs:label "Postcommunio"@de .
+
+usu:Psalm
+    a owl:Class ;
+    rdfs:subClassOf usu:LiturgicalText ;
+    rdfs:label "psalm"@en ;
+    rdfs:label "Psalm"@de .
+
+usu:Canticle
+    a owl:Class ;
+    rdfs:subClassOf usu:LiturgicalText ;
+    rdfs:label "canticle"@en ;
+    rdfs:label "Canticum"@de .
+
+#################################################################
+# Liturgical text-part classes
+#################################################################
+
+usu:LiturgicalTextPart
+    a owl:Class ;
+    rdfs:label "liturgical text part"@en ;
+    rdfs:label "liturgischer Textbestandteil"@de ;
+    rdfs:comment
+        "A distinguishable structural or functional part of a liturgical text."@en ;
+    rdfs:comment
+        "Ein unterscheidbarer struktureller oder funktionaler Bestandteil eines liturgischen Textes."@de .
+
+usu:Incipit
+    a owl:Class ;
+    rdfs:subClassOf usu:LiturgicalTextPart ;
+    rdfs:label "incipit"@en ;
+    rdfs:label "Incipit"@de .
+
+usu:Continuation
+    a owl:Class ;
+    rdfs:subClassOf usu:LiturgicalTextPart ;
+    rdfs:label "continuation"@en ;
+    rdfs:label "Fortsetzung"@de .
+
+usu:LiturgicalAsterisk
+    a owl:Class ;
+    rdfs:subClassOf usu:LiturgicalTextPart ;
+    rdfs:label "liturgical asterisk"@en ;
+    rdfs:label "liturgischer Asteriskus"@de ;
+    rdfs:comment
+        "A structural division within a liturgical text traditionally represented by an asterisk."@en ;
+    rdfs:comment
+        "Eine traditionell durch einen Asteriskus dargestellte Gliederungsstelle innerhalb eines liturgischen Textes."@de .
+
+usu:Response
+    a owl:Class ;
+    rdfs:subClassOf usu:LiturgicalTextPart ;
+    rdfs:label "response"@en ;
+    rdfs:label "Responsum"@de .
+
+usu:ResponsoryVerse
+    a owl:Class ;
+    rdfs:subClassOf usu:LiturgicalTextPart ;
+    rdfs:label "responsory verse"@en ;
+    rdfs:label "Responsoriumsvers"@de .
+
+usu:Repetition
+    a owl:Class ;
+    rdfs:subClassOf usu:LiturgicalTextPart ;
+    rdfs:label "repetition"@en ;
+    rdfs:label "Repetendum"@de .
+
+usu:Doxology
+    a owl:Class ;
+    rdfs:subClassOf usu:LiturgicalTextPart ;
+    rdfs:label "doxology"@en ;
+    rdfs:label "Doxologie"@de .
+
+#################################################################
+# Object properties
+#################################################################
+
+usu:hasPart
+    a owl:ObjectProperty ;
+    owl:inverseOf usu:isPartOf ;
+    rdfs:label "has part"@en ;
+    rdfs:label "hat Bestandteil"@de ;
+    rdfs:domain usu:LiturgicalText ;
+    rdfs:range usu:LiturgicalTextPart .
+
+usu:isPartOf
+    a owl:ObjectProperty ;
+    owl:inverseOf usu:hasPart ;
+    rdfs:label "is part of"@en ;
+    rdfs:label "ist Bestandteil von"@de ;
+    rdfs:domain usu:LiturgicalTextPart ;
+    rdfs:range usu:LiturgicalText .
+
+usu:sungWith
+    a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:label "sung with"@en ;
+    rdfs:label "wird gesungen mit"@de ;
+    rdfs:comment
+        "Relates liturgical texts that are associated with one another in sung performance, for example a psalm antiphon and its psalm."@en ;
+    rdfs:comment
+        "Verknüpft liturgische Texte, die im gesungenen Vollzug einander zugeordnet sind, etwa eine Psalmantiphon und ihren Psalm."@de ;
+    rdfs:domain usu:LiturgicalText ;
+    rdfs:range usu:LiturgicalText .

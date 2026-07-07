@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0"
+     xml:id="bibliography">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Bibliography</title>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>usuale project</publisher>
+        <availability status="free">
+          <licence target="https://opensource.org/licenses/MIT"/>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Central born-digital bibliography for Usuale TEI files.</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <listBibl>
+        <head>Bibliography</head>
+
+        <bibl xml:id="bibl-do-commune-c4-ant-vespera-1"
+              type="digital-source">
+          <title>Divinum Officium, Commune unius Confessoris Pontificis</title>
+          <idno type="divinum-officium">horas/Latin/Commune/C4.txt#Ant Vespera</idno>
+          <biblScope unit="section">Ant Vespera, antiphona 1</biblScope>
+          <ptr target="../../sources/divinum-officium/web/www/horas/Latin/Commune/C4.txt"/>
+        </bibl>
+
+        <bibl xml:id="bibl-liber-usualis-1961"
+              type="liturgical-book">
+          <title>Liber Usualis</title>
+          <publisher>Abbaye Saint-Pierre de Solesmes</publisher>
+          <date when="1961">1961</date>
+          <biblScope unit="page">1176</biblScope>
+        </bibl>
+
+        <bibl xml:id="bibl-liber-antiphonarius-1960"
+              type="liturgical-book">
+          <title>Liber antiphonarius</title>
+          <publisher>Abbaye Saint-Pierre de Solesmes</publisher>
+          <date when="1960">1960</date>
+          <biblScope unit="page">55</biblScope>
+        </bibl>
+
+        <bibl xml:id="bibl-antiphonale-monasticum-1934"
+              type="liturgical-book">
+          <title>Antiphonale Monasticum</title>
+          <publisher>Moines de Solesmes</publisher>
+          <date when="1934">1934</date>
+          <biblScope unit="page">657</biblScope>
+        </bibl>
+
+        <bibl xml:id="bibl-sirach-44-16-17"
+              type="biblical">
+          <title>Ecclesiasticus</title>
+          <biblScope unit="chapter">44</biblScope>
+          <biblScope unit="verse" from="16" to="17">16–17</biblScope>
+          <ref target="https://gregorien.info/bible/id/25/44/de">Sir 44,16–17</ref>
+        </bibl>
+
+        <bibl xml:id="bibl-cao-2544"
+              type="database">
+          <title>Corpus Antiphonalium Officii</title>
+          <idno type="cao">2544</idno>
+        </bibl>
+
+        <bibl xml:id="bibl-cantus-002544"
+              type="database">
+          <title>Cantus Index</title>
+          <idno type="cantus">002544</idno>
+          <ptr target="https://cantusindex.org/id/002544"/>
+        </bibl>
+
+        <bibl xml:id="bibl-antiphonale-synopticum-2544"
+              type="database">
+          <title>Antiphonale Synopticum</title>
+          <idno type="antiphonale-synopticum">2544</idno>
+          <ptr target="http://gregorianik.uni-regensburg.de/cdb/2544"/>
+        </bibl>
+
+        <bibl xml:id="bibl-gregobase-1914"
+              type="database">
+          <title>GregoBase</title>
+          <idno type="gregobase">1914</idno>
+          <ptr target="https://gregobase.selapa.net/chant.php?id=1914"/>
+        </bibl>
+
+        <bibl xml:id="bibl-gregorien-info-2705"
+              type="database">
+          <title>gregorien.info</title>
+          <idno type="gregorien.info">2705</idno>
+          <ptr target="https://gregorien.info/chant/id/2705/9/de"/>
+        </bibl>
+      </listBibl>
+    </body>
+  </text>
+</TEI>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0"
+     xml:id="ant-ecce-sacerdos-magnus"
+     xml:lang="la">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title type="incipit">Ecce sacérdos magnus</title>
+        <title type="uniform">Ecce sacerdos magnus qui in diebus suis placuit Deo</title>
+        <respStmt>
+          <resp>TEI encoding</resp>
+          <name>usuale project</name>
+        </respStmt>
+      </titleStmt>
+      <editionStmt>
+        <edition n="0.1">working TEI edition</edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>usuale project</publisher>
+        <availability status="free">
+          <licence target="https://opensource.org/licenses/MIT"/>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <listWit>
+          <witness xml:id="w-do-commune-c4"
+                   corresp="../../indexes/bibliography.xml#bibl-do-commune-c4-ant-vespera-1"/>
+          <witness xml:id="w-lu1961"
+                   corresp="../../indexes/bibliography.xml#bibl-liber-usualis-1961"/>
+          <witness xml:id="w-la1960"
+                   corresp="../../indexes/bibliography.xml#bibl-liber-antiphonarius-1960"/>
+          <witness xml:id="w-am1934"
+                   corresp="../../indexes/bibliography.xml#bibl-antiphonale-monasticum-1934"/>
+        </listWit>
+        <list type="bibliographic-references">
+          <head>Text source and concordances</head>
+          <item>
+            <ref type="text-source"
+                 target="../../indexes/bibliography.xml#bibl-sirach-44-16-17">Sir 44,16–17</ref>
+          </item>
+          <item>
+            <ref type="concordance"
+                 target="../../indexes/bibliography.xml#bibl-cao-2544">CAO 2544</ref>
+          </item>
+          <item>
+            <ref type="concordance"
+                 target="../../indexes/bibliography.xml#bibl-cantus-002544">Cantus 002544</ref>
+          </item>
+          <item>
+            <ref type="concordance"
+                 target="../../indexes/bibliography.xml#bibl-antiphonale-synopticum-2544">Antiphonale Synopticum 2544</ref>
+          </item>
+          <item>
+            <ref type="concordance"
+                 target="../../indexes/bibliography.xml#bibl-gregobase-1914">GregoBase 1914</ref>
+          </item>
+          <item>
+            <ref type="concordance"
+                 target="../../indexes/bibliography.xml#bibl-gregorien-info-2705">gregorien.info 2705</ref>
+          </item>
+        </list>
+      </sourceDesc>
+    </fileDesc>
+
+    <encodingDesc>
+      <editorialDecl>
+        <p>The edited text follows the accented Divinum Officium witness. The
+        liturgical asterisk is encoded as a caesura. The externally referenced
+        GABC file contains the GregoBase transcription identified as 1914; its
+        seasonal Alleluia and psalm-tone termination remain part of that
+        musical witness.</p>
+        <p>The Antiphonale Synopticum reports textual and orthographic variants.
+        They are not yet encoded as a critical apparatus because its individual
+        witnesses have not been collated for this Usuale file.</p>
+      </editorialDecl>
+    </encodingDesc>
+
+    <profileDesc>
+      <textClass>
+        <keywords scheme="#genre">
+          <term>antiphon</term>
+          <term>psalm-antiphon</term>
+        </keywords>
+        <keywords scheme="#liturgical-use">
+          <term>commune unius confessoris pontificis</term>
+          <term>common of pastors</term>
+        </keywords>
+        <keywords scheme="#mode">
+          <term>mode 7</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+
+    <revisionDesc>
+      <change when="2026-06-22">Initial pilot encoding from the linked
+      concordances and the Divinum Officium witness.</change>
+    </revisionDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <div type="antiphon" xml:id="ant-ecce-sacerdos-magnus.text">
+        <head>Ecce sacérdos magnus</head>
+
+        <ab type="liturgical-text" source="#w-do-commune-c4">
+          <seg type="incipit">Ecce sacérdos magnus</seg>,
+          <caesura type="asteriscus"/>
+          <seg type="continuatio">qui in diébus suis plácuit Deo, et invéntus
+          est justus.</seg>
+        </ab>
+
+        <note type="source-summary"
+              target="#ant-ecce-sacerdos-magnus.text"
+              cert="medium">cf. Sir 44,16–17</note>
+
+        <div type="source-context" xml:id="ant-ecce-sacerdos-magnus.sources">
+          <head>Text source</head>
+          <ref type="bibliographic"
+               target="../../indexes/bibliography.xml#bibl-sirach-44-16-17">Ecclesiasticus 44,16–17</ref>
+          <note type="source-relation">The antiphon is a liturgical adaptation:
+          gregorien.info relates the clause <quote>qui in diebus suis placuit
+          Deo</quote> to Sir 44,16 and <quote>et inventus est iustus</quote> to
+          Sir 44,17. The designation <quote>Ecce sacerdos magnus</quote> turns
+          the biblical language into a formula for a holy bishop.</note>
+        </div>
+
+        <div type="notation" xml:id="ant-ecce-sacerdos-magnus.music">
+          <notatedMusic xml:id="ant-ecce-sacerdos-magnus.gabc.gregobase-1914"
+                        type="gabc"
+                        source="#w-lu1961 #w-la1960"
+                        corresp="#ant-ecce-sacerdos-magnus.text">
+            <head>GregoBase transcription 1914</head>
+            <ptr type="notation-file"
+                 target="../../gabc/antiphons/ant-ecce-sacerdos-magnus.gabc"
+                 mimeType="text/plain"/>
+            <ptr type="bibliographic-record"
+                 target="../../indexes/bibliography.xml#bibl-gregobase-1914"/>
+          </notatedMusic>
+        </div>
+      </div>
+    </body>
+  </text>
+
+  <standOff>
+    <list type="liturgical-usages">
+      <item source="#w-do-commune-c4">Commune unius Confessoris Pontificis,
+      antiphona prima ad Vesperas.</item>
+    </list>
+  </standOff>
+</TEI>

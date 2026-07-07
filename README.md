@@ -12,6 +12,7 @@ identity.
 ## Architecture
 
 - **Texts**: TEI XML (Text Encoding Initiative, P5)
+- **Semantic vocabulary**: RDF/OWL ontology referenced from TEI `@ana`
 - **Precedence rules**: YAML
 - **Web application**: Python + Flask
 - **Cache**: SQLite
@@ -30,14 +31,26 @@ usuale/
 │   └── divinum-officium/        # DO source corpus (Perl/CGI + text files)
 ├── data/                        # Normalized and migrated data
 │   ├── indexes/                 # TEI index files, including celebrations
+│   ├── tei/                     # TEI editions of individual liturgical texts
+│   ├── gabc/                    # External GABC notation referenced from TEI
 │   ├── psalterium/              # Psalms and canticles (TEI XML)
 │   ├── offices/                 # Offices and Masses (TEI XML)
 │   └── rules/                   # Precedence rules (YAML)
 ├── tools/                       # Conversion and helper scripts
 ├── skills/                      # Codex/ChatGPT skills for repo-specific work
+├── ontology/                    # RDF/OWL semantic vocabulary (planned)
 ├── app/                         # Python/Flask web application
 └── planning/                    # Planning documents and analyses
 ```
+
+The central TEI bibliography is stored in
+`data/indexes/bibliography.xml`. Liturgical TEI files reference its
+`bibl/@xml:id` entries instead of duplicating bibliographic descriptions in
+their own `sourceDesc`.
+
+The planned separation between the RDF/OWL semantic vocabulary, TEI `@ana`
+links, persistent IRIs, hosting, and release archiving is documented in
+`planning/ontology-and-tei.md`.
 
 ## Sources
 

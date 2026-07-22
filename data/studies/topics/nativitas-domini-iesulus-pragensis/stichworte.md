@@ -1,3 +1,15 @@
+---
+id: study-topic-nativitas-domini-iesulus-pragensis-stichworte
+title: "Stichworte zur Meditation über Nativitas Domini und das Prager Jesulein"
+scope: thematic
+topic: nativitas-domini-iesulus-pragensis
+lang: de
+status: notes
+related_meditation: ../../../meditations/topics/nativitas-domini-iesulus-pragensis.md
+related_celebrations:
+  - celebratio-temporale-in-nativitate-domini
+---
+
 Das sind Stichworte für eine Meditation über die Geburt Christi, anlässlich des ersten Juni-Samstags 2026, in Betrachtung meiner neu erhaltenen Kopie des Prager Jesuleins.
 
 Gloria der Messe: "Gloria in excelsis Deo et in terra pax hominibus bonae voluntatis". "in excelsis": Laudes-Psalm 148: "laudate eum in excelsis". Verbindung zum Sanctus (Beginn des Kanons, während dessen Er leibhaftig gegenwärtig wird): "hosanna in excelsis". Auf Erden (wieder Psalm 148: "laudate Dominum de terra") bringt er Frieden: "Rex pacificus" (Antiphon von Weihnachten). "Agnus Dei" der Messe: "Dona nobis pacem". Doch es ist sein Friede ("non veni pacem mittere sed gladium"). Auch davon singen wir in den Laudes: Ps 149: "Exsultabunt sancti in gloria" (vgl. "gloria in excelsis Deo") "laetabuntur in cubilibus sui, Exaltationes Dei in gutture eorum: et gladii ancipites in manibus eorum". Wort Gottes ("verbum caro factum") ist wie ein zweischneidiges Schwert (ist das eine Paulus-Stelle?). Ist sein Friede die "gloria" seiner Gegenwart, deren Herrschaft auf Erden sich verbreitern soll (Psalm-Zitat: "ut inhabitet gloria in terra nostra")?

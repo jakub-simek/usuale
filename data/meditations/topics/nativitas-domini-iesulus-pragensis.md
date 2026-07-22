@@ -1,3 +1,21 @@
+---
+id: meditatio-topic-nativitas-domini-iesulus-pragensis
+title: "Meditatio de Nativitate Domini coram Iesu Infante Pragensi"
+scope: thematic
+topic: nativitas-domini-iesulus-pragensis
+lang: la
+status: draft
+related_study: ../../studies/topics/nativitas-domini-iesulus-pragensis/stichworte.md
+related_celebrations:
+  - celebratio-temporale-in-nativitate-domini
+related_texts:
+  - Gloria in excelsis Deo
+  - Psalmus 148
+  - Psalmus 149
+  - Agnus Dei
+  - O sacrum convivium
+---
+
 # Meditatio de Nativitate Domini coram Iesu Infante Pragensi
 
 ## Initium contemplationis
